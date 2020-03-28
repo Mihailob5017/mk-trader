@@ -17,12 +17,14 @@ const UserSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-  password: { type: String, minlength: 6, maxlength: 25, required: true },
+  avatarType: { type: String, required: true },
+  password: { type: String, minlength: 5, maxlength: 1024, required: true },
   willAddItemsToStore: { type: Boolean, required: true },
-  profileCreation: { type: Date },
-  dateOfBirth: { type: Date },
+  createdAt: { type: Date, default: Date.now },
+  dateOfBirth: { type: Date, default: '' },
   currentCity: { type: String, minlength: 2, maxlength: 30 },
   currentAddres: { type: String, minlength: 3, maxlength: 60 },
-  cartItemsId: { type: String, required: true },
-  storeItemsId: { type: String, required: true }
+  cartItems: { type: Array, required: true, default: [] }
 });
+
+module.exports = mongoose.model('users', UserSchema);

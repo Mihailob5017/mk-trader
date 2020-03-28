@@ -2,8 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv/config');
-
-//  routes
+//  importing routes
+const SignUp = require('./routes/sign-up');
 
 //  middleware
 const app = express();
@@ -16,6 +16,12 @@ mongoose.connect(
     console.log('MongoDb Connected');
   }
 );
+app.use(cors());
+app.use(express.json());
+
+//  routes
+app.use('/signup', SignUp);
+
 
 app.listen(PORT, () => {
   console.log('server started on port ' + PORT);
