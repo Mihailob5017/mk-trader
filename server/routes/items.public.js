@@ -18,14 +18,14 @@ Router.get('/items', async (req, res) => {
   }
 });
 
-//  Get Filtered Items by a specific Param
-Router.get('/items/:filter', async (req, res) => {
-  try {
-  } catch (error) {}
-});
+
+
+
+
+
+
 
 // Get Sorted Items by a specific param - ascending
-
 Router.get('/items/asc', async (req, res) => {
   try {
   } catch (error) {}
