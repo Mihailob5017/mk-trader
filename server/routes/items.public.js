@@ -1,14 +1,10 @@
 const Router = require('express').Router();
-const mongoose = require('mongoose');
-
-//  Item Model
-const Item = require('../mongodb/item-schema');
-
+const ItemModel = require('../mongodb/item-schema');
+const { filterAndSort } = require('../helpers/helper-functions');
 //  Get all Store Items
-
-Router.get('/items', async (req, res) => {
+Router.get('/', async (req, res) => {
   try {
-    const data = await Item.find();
+    const data = await ItemModel.find();
     res.send(data);
   } catch (error) {
     res.status(500).json({
@@ -18,29 +14,17 @@ Router.get('/items', async (req, res) => {
   }
 });
 
-
-
-
-
-
-
-
-// Get Sorted Items by a specific param - ascending
-Router.get('/items/asc', async (req, res) => {
+Router.get('/handled', async (req, res) => {
   try {
-  } catch (error) {}
+    const data = await ItemModel.find();
+    const handledData = filterAndSort(data, req.body);
+    res.send(handledData);
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+      error
+    });
+  }
 });
 
-//  Get Sorted Items by a specific param - descending
-
-Router.get('/items/desc', async (req, res) => {
-  try {
-  } catch (error) {}
-});
-
-//  Search for a specific item by name
-
-Router.get('/items/:name', async (req, res) => {
-  try {
-  } catch (error) {}
-});
+module.exports = Router;
