@@ -27,9 +27,13 @@ Router.post('/', async (req, res) => {
     res.status(400).send('The Password is Incorect');
   }
   //    Creating a token
-  const token = jwt.sign({ _id: user._id }, process.env.TOKEN);
-  res.header('auth-token', token).send(token);
-  res.send('Successfuly Signed In');
+  try {
+    const token = jwt.sign({ _id: user._id }, process.env.TOKEN);
+    res.header('auth-token', token).send(token);
+  } catch (error) {
+    res.status(500).send('Something went wrong in the Sign in Method');
+    console.log(error);
+  }
 });
 
 module.exports = Router;

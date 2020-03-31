@@ -7,6 +7,8 @@ const SignUp = require('./routes/sign-up.public');
 const SignIn = require('./routes/sign-in.public');
 const AddItem = require('./routes/private/add-item.private');
 const Items = require('./routes/items.public');
+const GetUser = require('./routes/private/profile.private');
+const Cart = require('./routes/private/cart.private');
 
 //  middleware
 const app = express();
@@ -14,7 +16,12 @@ const PORT = process.env.PORT || 5000;
 const DB_CONNECT = process.env.MONGODB;
 mongoose.connect(
   DB_CONNECT,
-  { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+  },
   () => {
     console.log('MongoDb Connected');
   }
@@ -27,6 +34,8 @@ app.use('/items', Items);
 app.use('/signup', SignUp);
 app.use('/signin', SignIn);
 app.use('/add', AddItem);
+app.use('/user', GetUser);
+app.use('/cart', Cart);
 
 app.listen(PORT, () => {
   console.log('server started on port ' + PORT);

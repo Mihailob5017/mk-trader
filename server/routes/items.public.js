@@ -1,6 +1,6 @@
 const Router = require('express').Router();
 const ItemModel = require('../mongodb/item-schema');
-const { filterAndSort } = require('../helpers/helper-functions');
+const { filterAndSort, searchForItems } = require('../helpers/item-handler');
 //  Get all Store Items
 Router.get('/', async (req, res) => {
   try {
@@ -19,6 +19,20 @@ Router.get('/handled', async (req, res) => {
     const data = await ItemModel.find();
     const handledData = filterAndSort(data, req.body);
     res.send(handledData);
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+      error
+    });
+  }
+});
+
+Router.get('/search', async (req, res) => {
+  const { name } = req.body;
+  try {
+    const responseData = await ItemModel.find();
+    console.log(searchForItems(responseData,name));
+    res.send('found!');
   } catch (error) {
     res.status(500).json({
       message: error.message,

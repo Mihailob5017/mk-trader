@@ -70,4 +70,10 @@ const filterByParam = (items, params) => {
 const compose = (fn1, fn2) => (items, params) =>
   fn1(fn2(items, params), params);
 
+const searchForItems = (itemArray, param) => {
+  const newArr = itemArray.filter(element => element.name.includes(param));
+
+  return newArr;
+};
+module.exports.searchForItems = searchForItems;
 module.exports.filterAndSort = filterAndSort;
