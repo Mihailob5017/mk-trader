@@ -5,7 +5,7 @@ require('dotenv/config');
 //  importing routes
 const SignUp = require('./routes/sign-up.public');
 const SignIn = require('./routes/sign-in.public');
-const AddItem = require('./routes/private/add-item.private');
+const Store = require('./routes/private/store.private');
 const Items = require('./routes/items.public');
 const GetUser = require('./routes/private/profile.private');
 const Cart = require('./routes/private/cart.private');
@@ -33,7 +33,7 @@ app.use(express.json());
 app.use('/items', Items);
 app.use('/signup', SignUp);
 app.use('/signin', SignIn);
-app.use('/add', AddItem);
+app.use('/store', Store);
 app.use('/user', GetUser);
 app.use('/cart', Cart);
 
