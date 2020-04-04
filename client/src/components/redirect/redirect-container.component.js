@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
+import RedirectChild from './redirect.component';
 
-const RedirectComponent = () => {
+const RedirectComponent = ({ to, message }) => {
   const [isRedirecting, setRedirect] = useState(false);
 
   return (
     <>
       {isRedirecting ? (
-        <Redirect to="/sign" />
+        <Redirect to={to} />
       ) : (
-        <div>
-          <h1>Cant go here,click to redirect</h1>
-          <button onClick={() => setRedirect(true)}>click</button>
-        </div>
+        <RedirectChild handleClick={() => setRedirect(true)}>
+          {message}
+        </RedirectChild>
       )}
     </>
   );
