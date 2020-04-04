@@ -7,14 +7,14 @@ import { connect } from 'react-redux';
 import './App.css';
 
 //  Pages
+import HomePage from './pages/home/home-page.container';
 import StartPage from './pages/start/start-page.container';
 import SignPage from './pages/sign/sign-page.container';
-import AddPage from './pages/add/add-page';
-import ProfilePage from './pages/profile/profile-page';
+import AddPage from './pages/add/add-page.container';
+import ProfilePage from './pages/profile/profile-page.container';
 
 //  Componentes
 import RedirectComponent from './components/redirect/redirect-container.component';
-import HomePage from './pages/home/home-page';
 
 const App = ({ getTokenFromStorage, getToken, hasToken }) => {
   useEffect(() => {

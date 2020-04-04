@@ -1,4 +1,5 @@
 import React from 'react';
+import './add-page.style.scss';
 
 const AddPage = () => {
   return (

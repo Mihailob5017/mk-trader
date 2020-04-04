@@ -1,7 +1,7 @@
 import React from 'react';
-
+import StartPage from './start.page';
 const startPageContainer = () => {
-  return <div></div>;
+  return <StartPage />;
 };
 
 export default startPageContainer;
