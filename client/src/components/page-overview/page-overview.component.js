@@ -5,7 +5,7 @@ const PageOverview = ({ children, to }) => {
   return (
     <div className="page-overview-container">
       <h2 className="page-overview-text">
-        <Link to={to}>{children}</Link>
+        <Link className='page-overview-link' to={to}>{children}</Link>
       </h2>
     </div>
   );
