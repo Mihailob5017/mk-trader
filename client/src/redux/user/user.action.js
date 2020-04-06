@@ -3,6 +3,7 @@ import {
   SIGN_IN_START,
   SIGN_IN_SUCCESS,
   SIGN_IN_FAILURE,
+  SIGN_OUT,
 } from '../types';
 const axios = require('axios').default;
 
@@ -36,4 +37,8 @@ export const asyncSignInStart = (data) => async (dispatch) => {
     console.log(error);
     dispatch(signInFailure(error));
   }
+};
+export const signOut = () => {
+  localStorage.removeItem('auth-token');
+  return { type: SIGN_OUT };
 };

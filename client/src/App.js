@@ -55,7 +55,11 @@ const App = ({ getTokenFromStorage, getToken, hasToken }) => {
             )
           }
         />
-        <Route exact path="/sign" component={SignPage} />
+        <Route
+          exact
+          path="/sign"
+          render={() => (hasToken ? <Redirect to="/" /> : <SignPage />)}
+        />
       </Switch>
     </>
   );

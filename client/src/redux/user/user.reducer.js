@@ -3,6 +3,7 @@ import {
   SIGN_IN_START,
   SIGN_IN_FAILURE,
   SIGN_IN_SUCCESS,
+  SIGN_OUT,
 } from '../types';
 
 const INITIAL_STATE = {
@@ -23,6 +24,9 @@ const userReducer = (state = INITIAL_STATE, action) => {
     }
     case SIGN_IN_SUCCESS: {
       return { ...state, token: action.payload, error: null };
+    }
+    case SIGN_OUT: {
+      return { ...state, token: null, error: null };
     }
 
     default:
