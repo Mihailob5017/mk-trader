@@ -1,7 +1,11 @@
 .sign-up-container {
+  overflow-y: scroll;
   width: 45%;
   border: 1px solid black;
   .sign-up-header {
     text-align: center;
+  }
+  .sign-up-body {
+    padding-bottom: 2em;
   }
 }

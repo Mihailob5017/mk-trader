@@ -4,13 +4,13 @@ const CheckboxComponent = ({ name, value, handleChange, children }) => {
   return (
     <div className="checkbox-container">
       <input
-        id="c1"
+        id={name}
         name={name}
         value={value}
         onChange={handleChange}
         type="checkbox"
       />
-      <label className="checkbox-label" htmlFor="c1">
+      <label className="checkbox-label" htmlFor={name}>
         {children}
       </label>
     </div>
