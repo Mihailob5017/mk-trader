@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './input.style.scss'
 const InputComponent = ({
   name,
   label,

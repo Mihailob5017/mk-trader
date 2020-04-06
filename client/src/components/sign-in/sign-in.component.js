@@ -1,36 +1,65 @@
 import React, { useState } from 'react';
+import {} from '../../redux/user/user.reducer';
+import { connect } from 'react-redux';
 import './sign-in.style.scss';
+//  Components
 import InputComponent from '../input/input.component';
+import ButtonComponent from '../button/button.somponent';
+import CheckboxComponent from '../checkbox/checkbox.component';
+import { asyncSignInStart } from '../../redux/user/user.action';
 
-const SignIn = () => {
+const SignIn = ({ signIn }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [kmsi, setKmsi] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === 'email') setEmail(value);
     if (name === 'password') setPassword(value);
+    if (name === 'kmsi') setKmsi(!kmsi);
+  };
+
+  const handleClick = () => {
+    if (email === '' || password === '') {
+      alert('You need to enter something');
+      return;
+    }
+    signIn({ email, password, kmsi });
+    setEmail('');
+    setPassword('');
+    setKmsi('');
   };
 
   return (
     <div className="sign-in-container">
       <h1 className="sign-in-header">Sign In</h1>
       <InputComponent
+        placeholder="Email"
         type="email"
         name="email"
         value={email}
         handleChange={handleChange}
-        label="Email:"
+        label="User Email:"
       />
       <InputComponent
+        placeholder="Password"
         type="password"
         name="password"
         value={password}
         handleChange={handleChange}
-        label="Password:"
+        label="User Password:"
       />
+      <CheckboxComponent value={kmsi} name="kmsi" handleChange={handleChange}>
+        Keep me signed In
+      </CheckboxComponent>
+      <ButtonComponent actionHandler={handleClick}>Sign In</ButtonComponent>
     </div>
   );
 };
 
-export default SignIn;
+const mapDispatchToProps = (dispatch) => ({
+  signIn: (data) => dispatch(asyncSignInStart(data)),
+});
+
+export default connect(null, mapDispatchToProps)(SignIn);

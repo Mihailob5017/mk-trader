@@ -1,0 +1,22 @@
+.button-container {
+  margin-top: 5em;
+
+  display: flex;
+  justify-content: center;
+  height: 5vh;
+  .button-main {
+    width: 30%;
+    color: black;
+    background: white;
+    outline: none;
+    font-size: 1.5rem;
+    border: 1px solid black;
+    border-radius: 10px;
+    transition: 500ms;
+    &:hover {
+      cursor: pointer;
+      color: white;
+      background: royalblue;
+    }
+  }
+}
