@@ -1,0 +1,27 @@
+.step-component-container {
+  display: flex;
+  height: 95%;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .step-component-btns {
+    display: flex;
+    justify-content: space-between;
+    button {
+      background-color: white;
+      width: 20%;
+      border: 1px solid black;
+      border-radius: 10px;
+      font-size: 2rem;
+      margin: 1em;
+      padding: 0.2em;
+      outline: none;
+      &:hover {
+        
+        cursor: pointer;
+        background: royalblue;
+        color: white;
+      }
+    }
+  }
+}

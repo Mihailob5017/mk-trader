@@ -1,0 +1,18 @@
+.select-component-container {
+  width: 100%;
+  margin: 4em 0;
+  margin-left: 2em;
+  display: flex;
+  justify-content:flex-start;
+  label{
+      font-size: 2rem;
+      margin-right: 1rem;
+  }
+  .select-component {
+    width: 50%;
+    font-size: 2rem;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+  }
+}
