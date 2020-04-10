@@ -4,6 +4,9 @@ import {
   SIGN_IN_FAILURE,
   SIGN_IN_SUCCESS,
   SIGN_OUT,
+  SIGN_UP_START,
+  SIGN_UP_SUCCESS,
+  SIGN_UP_FAILURE,
 } from '../types';
 
 const INITIAL_STATE = {
@@ -24,6 +27,15 @@ const userReducer = (state = INITIAL_STATE, action) => {
     }
     case SIGN_IN_SUCCESS: {
       return { ...state, token: action.payload, error: null };
+    }
+    case SIGN_UP_START: {
+      return state;
+    }
+    case SIGN_UP_SUCCESS: {
+      return { ...state, token: action.payload, error: null };
+    }
+    case SIGN_UP_FAILURE: {
+      return { ...state, token: null, error: action.payload };
     }
     case SIGN_OUT: {
       return { ...state, token: null, error: null };

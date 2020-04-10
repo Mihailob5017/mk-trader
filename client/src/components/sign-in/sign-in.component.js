@@ -51,7 +51,7 @@ const SignIn = ({ signIn }) => {
         label="User Password:"
       />
       <CheckboxComponent value={kmsi} name="kmsi" handleChange={handleChange}>
-        Keep me signed In
+        Remember me
       </CheckboxComponent>
       <ButtonComponent actionHandler={handleClick}>Sign In</ButtonComponent>
     </div>

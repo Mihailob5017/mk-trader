@@ -5,8 +5,10 @@ import ButtonComponent from '../button/button.somponent';
 import StepComponent from '../step/step.component';
 import SelectComponent from '../select/select.component';
 import './sign-up.style.scss';
+import { asyncSignUpStart } from '../../redux/user/user.action';
+import { connect } from 'react-redux';
 
-const SignUp = () => {
+const SignUp = ({ asyncSignUpStart }) => {
   const avatars = [
     { name: 'Default', value: 'default' },
     { name: 'Proffesional', value: 'prof' },
@@ -17,6 +19,7 @@ const SignUp = () => {
 
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [address, setAddress] = useState('');
@@ -24,14 +27,16 @@ const SignUp = () => {
   const [date, setDate] = useState('');
   const [willAdd, setWilAdd] = useState(false);
   const [image, setImage] = useState(false);
-  const [imageUrl, setImgeUrl] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
   const [step, setStep] = useState(1);
   const [avatar, setAvatar] = useState('');
+  const [kmsi, setKmsi] = useState(false);
 
   const handleChange = (e) => {
     const { value, name } = e.target;
     if (name === 'firstname') setFirstname(value);
     if (name === 'lastname') setLastname(value);
+    if (name === 'username') setUsername(value);
     if (name === 'email') setEmail(value);
     if (name === 'password') setPassword(value);
     if (name === 'address') setAddress(value);
@@ -39,10 +44,39 @@ const SignUp = () => {
     if (name === 'date') setDate(value);
     if (name === 'willadd') setWilAdd(!willAdd);
     if (name === 'setimg') setImage(!image);
-    if (name === 'imageurl') setImgeUrl(value);
+    if (name === 'imageurl') setImageUrl(value);
     if (name === 'avatar') setAvatar(value);
+    if (name === 'kmsi_signUp') setKmsi(!kmsi);
   };
   const moveStep = (val) => setStep(val);
+  const handleClick = () => {
+    const obj = {
+      firstname,
+      lastname,
+      username,
+      email,
+      password,
+      avatarType: setImage === true ? imageUrl : `avatar: ${avatar}`,
+      willAddItemsToStore: willAdd,
+      currentCity: currCity,
+      currentAddres: address,
+      dateOfBirth: date,
+      cartItems: [],
+    };
+    asyncSignUpStart(obj, kmsi);
+    setFirstname('');
+    setLastname('');
+    setPassword('');
+    setUsername('');
+    setEmail('');
+    setCurrCity('');
+    setAddress('');
+    setDate('');
+    setKmsi(false);
+    setImage(false);
+    setAvatar('');
+    setImageUrl('');
+  };
 
   if (step === 1)
     return (
@@ -64,6 +98,13 @@ const SignUp = () => {
             label="Last Name"
           />
           <InputComponent
+            value={username}
+            handleChange={handleChange}
+            placeholder="Required * "
+            name="username"
+            label="Username"
+          />
+          <InputComponent
             value={email}
             handleChange={handleChange}
             placeholder="Required * "
@@ -72,6 +113,7 @@ const SignUp = () => {
           />
           <InputComponent
             value={password}
+            type="password"
             handleChange={handleChange}
             placeholder="Required * "
             name="password"
@@ -142,18 +184,27 @@ const SignUp = () => {
             />
           ) : (
             <SelectComponent
-              message="avatar:"
+              message="Avatar"
               options={avatars}
               value={avatar}
               name="avatar"
               handleChange={handleChange}
             />
           )}
-
-          <ButtonComponent actionHandler="hello">Sign Up</ButtonComponent>
+          <CheckboxComponent
+            value={kmsi}
+            name="kmsi_signUp"
+            handleChange={handleChange}
+          >
+            Remember me
+          </CheckboxComponent>
+          <ButtonComponent actionHandler={handleClick}>Sign Up</ButtonComponent>
         </StepComponent>
       </div>
     );
 };
+const mapDispatchToProps = (dispatch) => ({
+  asyncSignUpStart: (object, kmsi) => dispatch(asyncSignUpStart(object, kmsi)),
+});
 
-export default SignUp;
+export default connect(null, mapDispatchToProps)(SignUp);
