@@ -1,0 +1,40 @@
+.item-container {
+  border: 1px solid #555555;
+  margin: 1em 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .item-image {
+    width: 150px;
+    height: 150px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .item-info {
+    width: 25%;
+  }
+  .item-score {
+    width: 15%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    .item-score-text {
+      text-align: center;
+    }
+    i {
+      cursor: pointer;
+      font-size: 2.5rem;
+      &:hover {
+        color: royalblue;
+      }
+    }
+  }
+  .item-btns {
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+  }
+}

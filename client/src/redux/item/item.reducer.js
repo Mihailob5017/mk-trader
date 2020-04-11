@@ -5,6 +5,7 @@ import {
 } from '../types';
 const INITIAL_STATE = {
   store: null,
+  cart: null,
   error: null,
 };
 
