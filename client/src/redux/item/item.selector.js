@@ -6,3 +6,5 @@ export const getItemsFromStore = createSelector(
   [Items],
   (items) => items.store
 );
+
+export const scoredItems = createSelector([Items], (items) => items.scored);
