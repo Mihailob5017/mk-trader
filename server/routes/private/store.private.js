@@ -65,18 +65,16 @@ Router.delete('/delete', jwtAuth, async (req, res) => {
 });
 
 //  Updates the item score by 1/-1
-Router.put('/update', jwtAuth, async (req, res) => {
-  const { itemId, newScore } = req.body;
-  const token = req.headers['auth-token'];
-  if (!token) {
-    res.status(401).send('Auth Error:You havent entered a token !');
-  }
+Router.put('/update', async (req, res) => {
+  const { items } = req.body;
   //  Checking if the user has the token
   try {
-    await ItemModel.findByIdAndUpdate(
-      { _id: itemId },
-      { $set: { score: newScore } }
-    );
+    for (const item of items) {
+      await ItemModel.findByIdAndUpdate(
+        { _id: item },
+        { $inc: { score: items[item] } }
+      );
+    }
   } catch (error) {
     res.status(500).send('Something went wrong');
     console.log(error);

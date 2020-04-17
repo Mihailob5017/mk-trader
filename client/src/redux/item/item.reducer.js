@@ -2,7 +2,9 @@ import {
   GET_ITEMS_START,
   GET_ITEMS_SUCCESS,
   GET_ITEMS_FAILURE,
-  GET_SCORED_ITEMS,
+  GET_SCORED_ITEMS_START,
+  GET_SCORED_ITEMS_SUCCESS,
+  GET_SCORED_ITEMS_FAILURE,
 } from '../types';
 const INITIAL_STATE = {
   store: null,
@@ -20,9 +22,17 @@ const itemReducer = (state = INITIAL_STATE, action) => {
     case GET_ITEMS_FAILURE: {
       return { ...state, store: null, error: action.payload };
     }
-    case GET_SCORED_ITEMS: {
-      return { ...state, scored: action.payload };
+    case GET_SCORED_ITEMS_START: {
+      return state;
     }
+
+    case GET_SCORED_ITEMS_SUCCESS: {
+      return { ...state, scored: action.payload, error: null };
+    }
+    case GET_SCORED_ITEMS_FAILURE: {
+      return { ...state, error: action.payload, scored: null };
+    }
+
     default: {
       return state;
     }

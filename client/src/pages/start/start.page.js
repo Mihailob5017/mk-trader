@@ -1,8 +1,10 @@
-import React from 'react';
-
+import React,{useEffect} from 'react';
 import './start-page.style.scss';
 import PageOverview from '../../components/page-overview/page-overview.component';
-const startPage = ({ hasToken, signOut }) => {
+const StartPage = ({ hasToken, signOut }) => {
+  useEffect(()=>{
+    
+  })
   return (
     <div className="start-page-container">
       <PageOverview to="/home">Home </PageOverview>
@@ -15,4 +17,4 @@ const startPage = ({ hasToken, signOut }) => {
   );
 };
 
-export default startPage;
+export default StartPage;

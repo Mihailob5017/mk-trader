@@ -52,16 +52,16 @@ const filterByParam = (items, params) => {
   const { type, param1, param2 } = params.filter;
   if (type === 'price') {
     filtered = items.filter(
-      item => item.price >= param1 && item.price <= param2
+      (item) => item.price >= param1 && item.price <= param2
     );
   }
   if (type === 'score') {
     filtered = items.filter(
-      item => item.score >= param1 && item.score <= param2
+      (item) => item.score >= param1 && item.score <= param2
     );
   }
   if (type === 'type' && param1 !== 'all') {
-    filtered = items.filter(item => item.type === param1);
+    filtered = items.filter((item) => item.type === param1);
   }
 
   return filtered;
@@ -71,9 +71,16 @@ const compose = (fn1, fn2) => (items, params) =>
   fn1(fn2(items, params), params);
 
 const searchForItems = (itemArray, param) => {
-  const newArr = itemArray.filter(element => element.name.includes(param));
+  const newArr = itemArray.filter((element) => element.name.includes(param));
 
   return newArr;
 };
+
+const appendObjectList = (objects, object) => {
+  const newObject = Object.assign(objects, object);
+  return newObject;
+};
+
 module.exports.searchForItems = searchForItems;
 module.exports.filterAndSort = filterAndSort;
+module.exports.appendObjectList = appendObjectList;

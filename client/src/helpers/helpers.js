@@ -1,7 +1,5 @@
-
-
 export const appendScoredList = (objects, object) => {
-  const newObject = { ...objects };
-  newObject[object.itemId] = object.scored;
+  const newObject = Object.assign(objects, object);
   return newObject;
 };
+

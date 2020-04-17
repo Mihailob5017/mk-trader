@@ -2,7 +2,9 @@ import {
   GET_ITEMS_START,
   GET_ITEMS_FAILURE,
   GET_ITEMS_SUCCESS,
-  GET_SCORED_ITEMS,
+  GET_SCORED_ITEMS_START,
+  GET_SCORED_ITEMS_SUCCESS,
+  GET_SCORED_ITEMS_FAILURE,
 } from '../types';
 const Axios = require('axios').default;
 
@@ -23,9 +25,27 @@ export const getItemsAsync = () => async (dispatch) => {
   }
 };
 
-export const getScoredItems = () => {
-  let data = [];
-  if (localStorage.getItem('scored') !== null)
-    data = JSON.parse(localStorage.getItem('scored'));
-  return { type: GET_SCORED_ITEMS, payload: data };
+const getScoredItemsStart = () => ({ type: GET_SCORED_ITEMS_START });
+
+const getScoredItemsSuccess = (items) => ({
+  type: GET_SCORED_ITEMS_SUCCESS,
+  payload: items,
+});
+
+const getScoredItemsFailure = (err) => ({
+  type: GET_SCORED_ITEMS_FAILURE,
+  payload: err,
+});
+
+export const getScoredItemsAsync = (token) => async (dispatch) => {
+  dispatch(getScoredItemsStart());
+  try {
+    const { data } = await Axios.get('http://localhost:5000/user/scored', {
+      headers: { ['auth-token']: token },
+    });
+
+    dispatch(getScoredItemsSuccess(data));
+  } catch (error) {
+    dispatch(getScoredItemsFailure(error));
+  }
 };

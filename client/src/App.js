@@ -15,10 +15,17 @@ import ProfilePage from './pages/profile/profile-page.container';
 
 //  Componentes
 import RedirectComponent from './components/redirect/redirect-container.component';
+import { getScoredItemsAsync } from './redux/item/item.action';
 
-const App = ({ getTokenFromStorage, getToken, hasToken }) => {
+const App = ({
+  getTokenFromStorage,
+  getScoredItemsAsync,
+  getToken,
+  hasToken,
+}) => {
   useEffect(() => {
     getTokenFromStorage();
+    
   }, []);
 
   return (
@@ -67,6 +74,7 @@ const App = ({ getTokenFromStorage, getToken, hasToken }) => {
 
 const mapDispatchToProps = (dispatch) => ({
   getTokenFromStorage: () => dispatch(getTokenFromStorage()),
+  getScoredItemsAsync: (token) => dispatch(getScoredItemsAsync(token)),
 });
 const mapStateToProps = createStructuredSelector({ hasToken, getToken });
 

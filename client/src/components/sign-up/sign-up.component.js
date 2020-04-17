@@ -62,6 +62,7 @@ const SignUp = ({ asyncSignUpStart }) => {
       currentAddres: address,
       dateOfBirth: date,
       cartItems: [],
+      scoredItems:{},
     };
     asyncSignUpStart(obj, kmsi);
     setFirstname('');

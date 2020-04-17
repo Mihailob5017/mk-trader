@@ -1,26 +1,51 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import HomePage from './home-page';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { getItemsAsync, getScoredItems } from '../../redux/item/item.action';
+import {
+  getItemsAsync,
+  getScoredItemsAsync,
+} from '../../redux/item/item.action';
+import { appendScoredList } from '../../helpers/helpers';
 import { getItemsFromStore, scoredItems } from '../../redux/item/item.selector';
-import { hasToken } from '../../redux/user/user.selector';
+import { hasToken, getToken } from '../../redux/user/user.selector';
 import LoadingComponent from '../../components/loading/loading.component';
+const Axios = require('axios').default;
 
 const HomePageContainer = ({
   getItemsAsync,
   hasToken,
+  getToken,
+  getScoredItems,
   getItemsFromStore,
   scoredItems,
-  getScoredItems,
 }) => {
+  const [newlyScored, setNewlyScored] = useState({});
+
+  const addNewlyScored = (newscore) =>
+    setNewlyScored(appendScoredList(newlyScored, newscore));
+
   useEffect(() => {
     getItemsAsync();
-    getScoredItems();
+    const token = localStorage.getItem('auth-token') || getToken;
+    if (token) getScoredItems(token);
+
+    return async () => {
+      await Axios.post(
+        'http://localhost:5000/user/scored',
+        { scored: newlyScored },
+        {
+          headers: { ['auth-token']: token },
+        }
+      );
+      getScoredItems(token);
+      getItemsAsync();
+    };
   }, []);
-  return getItemsFromStore !== null && scoredItems!==null ? (
+
+  return getItemsFromStore !== null && scoredItems !== null ? (
     <HomePage
-      
+      addNewlyScored={addNewlyScored}
       scoredItems={scoredItems}
       hasToken={hasToken}
       items={getItemsFromStore}
@@ -32,12 +57,13 @@ const HomePageContainer = ({
 
 const mapStateToProps = createStructuredSelector({
   hasToken,
+  getToken,
   getItemsFromStore,
   scoredItems,
 });
 const mapDispatchToProps = (dispatch) => ({
   getItemsAsync: () => dispatch(getItemsAsync()),
-  getScoredItems: () => dispatch(getScoredItems()),
+  getScoredItems: (token) => dispatch(getScoredItemsAsync(token)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePageContainer);

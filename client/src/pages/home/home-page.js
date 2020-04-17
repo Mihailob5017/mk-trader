@@ -1,30 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './home-page.style.scss';
-import { appendScoredList } from '../../helpers/helpers';
+
 import ItemComponent from '../../components/item/item.component';
-const HomePage = ({ items, hasToken, scoredItems }) => {
-  const [scored, addScored] = useState(scoredItems);
-  const addToScored = (obj) => addScored(appendScoredList(scored, obj));
-
-  useEffect(() => {
-    return () => {
-      localStorage.setItem('scored', JSON.stringify(scored));
-    };
-  });
-
+const HomePage = ({ items, hasToken, scoredItems, addNewlyScored }) => {
   return (
     <div className="home-page-container">
       {items.map((item, i) => (
         <ItemComponent
-          scored={scored[item._id]}
-          addToScored={addToScored}
+          scored={scoredItems[item._id]}
+          addNewlyScored={addNewlyScored}
           key={i}
           item={item}
           hasToken={hasToken}
         />
       ))}
-      <Link to="/sign">Go to</Link>
+      <Link to="/">Go Back</Link>
     </div>
   );
 };

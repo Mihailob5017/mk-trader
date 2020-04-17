@@ -24,7 +24,7 @@
     .item-score-text {
       text-align: center;
     }
-    .item-score-btn{
+    .item-score-btn {
       background: white;
       border: none;
       outline: none;
@@ -35,6 +35,9 @@
       &:hover {
         color: royalblue;
       }
+    }
+    .btn-disabled {
+      color: royalblue;
     }
   }
   .item-btns {

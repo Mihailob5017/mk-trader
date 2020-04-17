@@ -8,5 +8,5 @@ module.exports = Joi.object({
   type: Joi.string().required(),
   description: Joi.string(),
   imageUrl: Joi.string(),
-  price: Joi.number().required()
+  price: Joi.number().required(),
 });
