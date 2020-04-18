@@ -3,11 +3,14 @@ import {
   SIGN_IN_START,
   SIGN_IN_SUCCESS,
   SIGN_IN_FAILURE,
-  SIGN_OUT,
+  SIGN_OUT_START,
+  SIGN_OUT_SUCCESS,
   SIGN_UP_START,
   SIGN_UP_SUCCESS,
   SIGN_UP_FAILURE,
+  SIGN_OUT_FAILURE,
 } from '../types';
+import { cleanUp } from '../item/item.action';
 const axios = require('axios').default;
 
 export const getTokenFromStorage = () => ({
@@ -64,12 +67,26 @@ export const asyncSignUpStart = (inputObject, kmsi) => async (dispatch) => {
   }
 };
 
-export const signOut = () => {
+const signOutStart = () => ({ type: SIGN_OUT_START });
+const signOutSuccess = () => ({ type: SIGN_OUT_SUCCESS });
+const signOutFailure = (err) => ({ type: SIGN_OUT_FAILURE, payload: err });
+
+export const signOut = (token, scoredItems) => async (dispatch) => {
+  dispatch(signOutStart());
   localStorage.removeItem('auth-token');
-  return { type: SIGN_OUT };
+  dispatch(cleanUp());
+  try {
+    if (scoredItems) {
+      await axios.post(
+        'http://localhost:5000/user/scored',
+        { scored: scoredItems },
+        {
+          headers: { ['auth-token']: token },
+        }
+      );
+    }
+    dispatch(signOutSuccess());
+  } catch (error) {
+    dispatch(signUpFailure(error));
+  }
 };
-
-
-
-
-

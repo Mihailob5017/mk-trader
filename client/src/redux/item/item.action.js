@@ -5,6 +5,8 @@ import {
   GET_SCORED_ITEMS_START,
   GET_SCORED_ITEMS_SUCCESS,
   GET_SCORED_ITEMS_FAILURE,
+  UPDATE_SCORED_ITEMS,
+  CLEAN_UP_ITEMS,
 } from '../types';
 const Axios = require('axios').default;
 
@@ -49,3 +51,10 @@ export const getScoredItemsAsync = (token) => async (dispatch) => {
     dispatch(getScoredItemsFailure(error));
   }
 };
+
+export const updateScoredItems = (items) => ({
+  type: UPDATE_SCORED_ITEMS,
+  payload: items,
+});
+
+export const cleanUp = () => ({ type: CLEAN_UP_ITEMS });

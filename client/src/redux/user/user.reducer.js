@@ -3,7 +3,9 @@ import {
   SIGN_IN_START,
   SIGN_IN_FAILURE,
   SIGN_IN_SUCCESS,
-  SIGN_OUT,
+  SIGN_OUT_START,
+  SIGN_OUT_SUCCESS,
+  SIGN_OUT_FAILURE,
   SIGN_UP_START,
   SIGN_UP_SUCCESS,
   SIGN_UP_FAILURE,
@@ -37,7 +39,13 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case SIGN_UP_FAILURE: {
       return { ...state, token: null, error: action.payload };
     }
-    case SIGN_OUT: {
+    case SIGN_OUT_START: {
+      return state;
+    }
+    case SIGN_OUT_FAILURE: {
+      return { ...state, error: action.payload };
+    }
+    case SIGN_OUT_SUCCESS: {
       return { ...state, token: null, error: null };
     }
 

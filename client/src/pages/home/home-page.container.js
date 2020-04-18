@@ -5,12 +5,12 @@ import { createStructuredSelector } from 'reselect';
 import {
   getItemsAsync,
   getScoredItemsAsync,
+  updateScoredItems,
 } from '../../redux/item/item.action';
 import { appendScoredList } from '../../helpers/helpers';
 import { getItemsFromStore, scoredItems } from '../../redux/item/item.selector';
 import { hasToken, getToken } from '../../redux/user/user.selector';
 import LoadingComponent from '../../components/loading/loading.component';
-const Axios = require('axios').default;
 
 const HomePageContainer = ({
   getItemsAsync,
@@ -19,6 +19,7 @@ const HomePageContainer = ({
   getScoredItems,
   getItemsFromStore,
   scoredItems,
+  updateScoredItems,
 }) => {
   const [newlyScored, setNewlyScored] = useState({});
 
@@ -28,18 +29,12 @@ const HomePageContainer = ({
   useEffect(() => {
     getItemsAsync();
     const token = localStorage.getItem('auth-token') || getToken;
-    if (token) getScoredItems(token);
-
-    return async () => {
-      await Axios.post(
-        'http://localhost:5000/user/scored',
-        { scored: newlyScored },
-        {
-          headers: { ['auth-token']: token },
-        }
-      );
+    if (token && scoredItems === null) {
       getScoredItems(token);
-      getItemsAsync();
+      console.log('called an api');
+    }
+    return () => {
+      updateScoredItems(newlyScored);
     };
   }, []);
 
@@ -64,6 +59,7 @@ const mapStateToProps = createStructuredSelector({
 const mapDispatchToProps = (dispatch) => ({
   getItemsAsync: () => dispatch(getItemsAsync()),
   getScoredItems: (token) => dispatch(getScoredItemsAsync(token)),
+  updateScoredItems: (items) => dispatch(updateScoredItems(items)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePageContainer);

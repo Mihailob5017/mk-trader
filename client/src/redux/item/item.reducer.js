@@ -5,7 +5,10 @@ import {
   GET_SCORED_ITEMS_START,
   GET_SCORED_ITEMS_SUCCESS,
   GET_SCORED_ITEMS_FAILURE,
+  UPDATE_SCORED_ITEMS,
+  CLEAN_UP_ITEMS,
 } from '../types';
+import { appendScoredList } from '../../helpers/helpers';
 const INITIAL_STATE = {
   store: null,
   scored: null,
@@ -31,6 +34,16 @@ const itemReducer = (state = INITIAL_STATE, action) => {
     }
     case GET_SCORED_ITEMS_FAILURE: {
       return { ...state, error: action.payload, scored: null };
+    }
+
+    case UPDATE_SCORED_ITEMS: {
+      return {
+        ...state,
+        scored: appendScoredList(state.scored, action.payload),
+      };
+    }
+    case CLEAN_UP_ITEMS: {
+      return { ...state, scored: null, store: null, error: null };
     }
 
     default: {
