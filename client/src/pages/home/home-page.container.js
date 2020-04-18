@@ -28,20 +28,22 @@ const HomePageContainer = ({
 
   useEffect(() => {
     getItemsAsync();
-    const token = localStorage.getItem('auth-token') || sessionStorage.getItem('auth-token') || getToken;
+    const token =
+      localStorage.getItem('auth-token') ||
+      sessionStorage.getItem('auth-token') ||
+      getToken;
     if (token && scoredItems === null) {
       getScoredItems(token);
-      console.log('called an api');
     }
     return () => {
-      updateScoredItems(newlyScored);
+      if (hasToken) updateScoredItems(newlyScored);
     };
   }, []);
 
-  return getItemsFromStore !== null && scoredItems !== null ? (
+  return getItemsFromStore !== null ? (
     <HomePage
       addNewlyScored={addNewlyScored}
-      scoredItems={scoredItems}
+      scoredItems={scoredItems || {}}
       hasToken={hasToken}
       items={getItemsFromStore}
     />

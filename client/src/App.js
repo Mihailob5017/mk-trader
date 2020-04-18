@@ -16,21 +16,16 @@ import ProfilePage from './pages/profile/profile-page.container';
 //  Componentes
 import RedirectComponent from './components/redirect/redirect-container.component';
 import { getScoredItemsAsync } from './redux/item/item.action';
+import HeaderComponent from './components/header/header.component';
 
-const App = ({
-  getTokenFromStorage,
-  getScoredItemsAsync,
-  getToken,
-  hasToken,
-}) => {
+const App = ({ getTokenFromStorage, hasToken }) => {
   useEffect(() => {
     getTokenFromStorage();
-    
   }, []);
 
   return (
     <>
-      {/* Header Component */}
+      <HeaderComponent />
       <Switch>
         <Route exact path="/" component={StartPage} />
         <Route path="/home" component={HomePage} />
