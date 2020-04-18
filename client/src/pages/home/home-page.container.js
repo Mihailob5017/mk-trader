@@ -28,7 +28,7 @@ const HomePageContainer = ({
 
   useEffect(() => {
     getItemsAsync();
-    const token = localStorage.getItem('auth-token') || getToken;
+    const token = localStorage.getItem('auth-token') || sessionStorage.getItem('auth-token') || getToken;
     if (token && scoredItems === null) {
       getScoredItems(token);
       console.log('called an api');

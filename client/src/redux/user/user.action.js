@@ -15,7 +15,7 @@ const axios = require('axios').default;
 
 export const getTokenFromStorage = () => ({
   type: GET_TOKEN_FROM_STORAGE,
-  payload: localStorage.getItem('auth-token') || null,
+  payload: localStorage.getItem('auth-token') || sessionStorage.getItem('auth-token') || null,
 });
 
 const signInStart = () => ({ type: SIGN_IN_START });
@@ -38,6 +38,7 @@ export const asyncSignInStart = (data) => async (dispatch) => {
     });
     const token = response.data;
     if (kmsi) localStorage.setItem('auth-token', token);
+    else sessionStorage.setItem('auth-token', token);
     dispatch(signInSuccess(token));
   } catch (error) {
     console.log(error);
@@ -60,6 +61,7 @@ export const asyncSignUpStart = (inputObject, kmsi) => async (dispatch) => {
     });
     const token = response.data;
     if (kmsi) localStorage.setItem('auth-token', token);
+    sessionStorage.setItem('auth-token', token);
     dispatch(signUpSuccess(token));
   } catch (error) {
     console.log(error);
@@ -74,6 +76,7 @@ const signOutFailure = (err) => ({ type: SIGN_OUT_FAILURE, payload: err });
 export const signOut = (token, scoredItems) => async (dispatch) => {
   dispatch(signOutStart());
   localStorage.removeItem('auth-token');
+  sessionStorage.removeItem('auth-token');
   dispatch(cleanUp());
   try {
     if (scoredItems) {
@@ -87,6 +90,6 @@ export const signOut = (token, scoredItems) => async (dispatch) => {
     }
     dispatch(signOutSuccess());
   } catch (error) {
-    dispatch(signUpFailure(error));
+    dispatch(signOutFailure(error));
   }
 };
