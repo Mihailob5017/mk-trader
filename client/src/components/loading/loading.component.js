@@ -1,7 +1,14 @@
 import React from 'react';
 import './loading.style.scss';
 const LoadingComponent = () => {
-  return <h2 className="loading">Loading....</h2>;
+  return (
+    <div className="loading-container">
+      <div className="loading-logo">
+        <div className="loading-circle"></div>
+        <h1 className="loading-text">Loading ...</h1>
+      </div>
+    </div>
+  );
 };
 
 export default LoadingComponent;

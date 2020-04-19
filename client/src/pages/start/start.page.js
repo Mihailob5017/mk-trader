@@ -12,7 +12,7 @@ const StartPage = ({ hasToken, signOut }) => {
   return (
     <div className="start-page-container">
       <PageOverview image={homepage_img} to="/home">
-        Home{' '}
+        Home
       </PageOverview>
       <PageOverview image={profile_img} to="/profile">
         Profile
