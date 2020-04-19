@@ -3,7 +3,7 @@ import { isExact } from '../../helpers/helpers';
 import { Link, withRouter } from 'react-router-dom';
 import './header.style.scss';
 const HeaderComponent = ({ location }) => {
-  const [isVisable, setVisable] = useState(true);
+  const [isVisable, setVisable] = useState(false);
   console.log(isExact(location.pathname, 'home'));
   return (
     <>

@@ -17,6 +17,7 @@ import ProfilePage from './pages/profile/profile-page.container';
 import RedirectComponent from './components/redirect/redirect-container.component';
 import { getScoredItemsAsync } from './redux/item/item.action';
 import HeaderComponent from './components/header/header.component';
+import FooterComponent from './components/footer/footer.component';
 
 const App = ({ getTokenFromStorage, hasToken }) => {
   useEffect(() => {
@@ -63,6 +64,7 @@ const App = ({ getTokenFromStorage, hasToken }) => {
           render={() => (hasToken ? <Redirect to="/" /> : <SignPage />)}
         />
       </Switch>
+      <FooterComponent />
     </>
   );
 };

@@ -1,0 +1,40 @@
+.footer-component {
+  margin-top: 2em;
+
+  padding: 0;
+  margin-top: 3em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  * {
+    padding: 0.25em 1em;
+  }
+  .footer-btn {
+    margin-left: 2em;
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    * {
+      text-decoration: none;
+      font-size: 1.5rem;
+      color: black;
+      font-weight: 600;
+    }
+    &:hover {
+      transition: 500ms;
+
+      background: royalblue;
+      * {
+        color: white;
+      }
+    }
+  }
+  .footer-text {
+    display: flex;
+    align-items: center;
+  }
+}
