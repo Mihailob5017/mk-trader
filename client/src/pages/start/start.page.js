@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './start-page.style.scss';
 import PageOverview from '../../components/page-overview/page-overview.component';
 
@@ -8,7 +8,7 @@ import add_img from '../../assets/images/add.jpeg';
 import sign_img from '../../assets/images/sign.jpeg';
 
 const StartPage = ({ hasToken, signOut }) => {
-  useEffect(() => {});
+  
   return (
     <div className="start-page-container">
       <PageOverview image={homepage_img} to="/home">

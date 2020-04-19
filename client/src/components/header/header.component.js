@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { isExact } from '../../helpers/helpers';
 import { Link, withRouter } from 'react-router-dom';
 import './header.style.scss';
