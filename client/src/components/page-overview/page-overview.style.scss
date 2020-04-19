@@ -1,15 +1,28 @@
 .page-overview-container {
+  position: relative;
   margin-top: 1em;
   width: 20%;
   border: 1px solid black;
+  .page-overview-image {
+    position: absolute;
+    filter: brightness(50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
   .page-overview-text {
     text-align: center;
     position: relative;
     margin: 50% auto;
+    z-index: 2;
 
     .page-overview-link {
+      z-index: 2;
+      font-weight: 700;
+      font-size: 2rem;
       letter-spacing: 5px;
-      color: black;
+      color: white;
       text-decoration: none;
     }
     .page-overview-btn {

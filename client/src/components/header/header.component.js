@@ -66,11 +66,8 @@ const HeaderComponent = ({ location }) => {
       ) : (
         <div className="header-closed-bg">
           <h1 className="header-name">MKTrader</h1>
-          <div className="header-open">
-            <i
-              className="fas fa-ellipsis-v"
-              onClick={() => setVisable(true)}
-            ></i>
+          <div className="header-open" onClick={() => setVisable(true)}>
+            <i className="fas fa-ellipsis-v"></i>
           </div>
         </div>
       )}

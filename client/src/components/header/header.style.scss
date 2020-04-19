@@ -17,7 +17,7 @@
     &:hover {
       transition: 500ms;
       cursor: pointer;
-      color: royalblue;
+      color: white;
     }
   }
   .header-center-links {
@@ -53,7 +53,7 @@
   padding: 0.5em;
   position: relative;
   height: 10%;
-  color: royalblue;
+  color: black;
   * {
     font-size: 2rem;
   }
@@ -62,12 +62,12 @@
     height: fit-content;
     padding: 0 0.45em;
 
-    border: 1px solid royalblue;
+    border: 1px solid black;
     border-radius: 10px;
     &:hover {
       border-radius: 50%;
       cursor: pointer;
-      background: royalblue;
+      background: #444444;
       transition: 500ms;
       color: white;
     }
@@ -78,7 +78,7 @@
   font-weight: 600;
   * {
     letter-spacing: 5px;
-    color: royalblue;
+    color: white;
     text-decoration: none;
   }
 }

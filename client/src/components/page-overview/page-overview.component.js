@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './page-overview.style.scss';
-const PageOverview = ({ children, to, isBtn, action }) => {
+const PageOverview = ({ image, children, to, isBtn, action }) => {
   return (
     <div className="page-overview-container">
+      <img className="page-overview-image" src={image} />
       <h2 className="page-overview-text">
         {isBtn !== true ? (
           <Link className="page-overview-link" to={to}>
