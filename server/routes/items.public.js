@@ -10,7 +10,7 @@ Router.get('/', async (req, res) => {
   } catch (error) {
     res.status(500).json({
       message: 'Something went wrong with fetching all the items',
-      error
+      error,
     });
   }
 });
@@ -24,22 +24,22 @@ Router.get('/handled', async (req, res) => {
   } catch (error) {
     res.status(500).json({
       message: error.message,
-      error
+      error,
     });
   }
 });
 
-
 //  Grabs all the items and filters out by name
-Router.get('/search', async (req, res) => {
+Router.post('/search', async (req, res) => {
+  console.log(req.body);
   const { name } = req.body;
   try {
     const responseData = await ItemModel.find();
-    res.send(searchForItems(responseData,name));
+    res.send(searchForItems(responseData, name));
   } catch (error) {
     res.status(500).json({
       message: error.message,
-      error
+      error,
     });
   }
 });

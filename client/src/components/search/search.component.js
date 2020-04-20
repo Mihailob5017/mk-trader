@@ -3,7 +3,7 @@ import './search.style.scss';
 const SearchComponent = ({ action }) => {
   const [name, setName] = useState('');
   const fireAction = () => {
-    //action(name);
+    action(name);
     setName('');
   };
   return (

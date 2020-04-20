@@ -8,6 +8,9 @@ import {
   UPDATE_SCORED_ITEMS,
   CLEAN_UP_ITEMS,
   SET_IF_UPDATED,
+  SEARCH_ITEMS_START,
+  SEARCH_ITEMS_SUCCESS,
+  SEARCH_ITEMS_FAILURE,
 } from '../types';
 const Axios = require('axios').default;
 
@@ -59,5 +62,26 @@ export const updateScoredItems = (items) => ({
 });
 
 export const cleanUp = () => ({ type: CLEAN_UP_ITEMS });
-
 export const willUpdate = () => ({ type: SET_IF_UPDATED });
+
+const searchItemsStart = () => ({ type: SEARCH_ITEMS_START });
+const searchItemsSuccess = (items) => ({
+  type: SEARCH_ITEMS_SUCCESS,
+  payload: items,
+});
+const searchItemsFailure = (err) => ({
+  type: SEARCH_ITEMS_FAILURE,
+  payload: err,
+});
+
+export const searchItemsAsync = (name) => async (dispatch) => {
+  dispatch(searchItemsStart());
+  try {
+    const { data } = await Axios.post('http://localhost:5000/items/search', {
+      name,
+    });
+    dispatch(searchItemsSuccess(data));
+  } catch (error) {
+    dispatch(searchItemsFailure(error));
+  }
+};

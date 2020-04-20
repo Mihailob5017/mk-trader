@@ -8,6 +8,9 @@ import {
   UPDATE_SCORED_ITEMS,
   CLEAN_UP_ITEMS,
   SET_IF_UPDATED,
+  SEARCH_ITEMS_START,
+  SEARCH_ITEMS_SUCCESS,
+  SEARCH_ITEMS_FAILURE,
 } from '../types';
 import { appendScoredList } from '../../helpers/helpers';
 const INITIAL_STATE = {
@@ -44,6 +47,17 @@ const itemReducer = (state = INITIAL_STATE, action) => {
         scored: appendScoredList(state.scored, action.payload),
       };
     }
+
+    case SEARCH_ITEMS_START:
+      return state;
+
+    case SEARCH_ITEMS_SUCCESS: {
+      return { ...state, store: action.payload, error: null };
+    }
+    case SEARCH_ITEMS_FAILURE: {
+      return { ...state, error: action.payload, store: null };
+    }
+
     case CLEAN_UP_ITEMS: {
       return {
         ...state,

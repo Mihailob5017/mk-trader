@@ -5,7 +5,7 @@ import ButtonComponent from '../../components/button/button.somponent';
 import FilterComonent from '../../components/filter/filter-container.component';
 import EmptyComponent from '../../components/empty/empty.component';
 const HomePage = ({ items, hasToken, scoredItems, addNewlyScored }) => {
-  const [isFilterOpen, setFilterOpen] = useState(true);
+  const [isFilterOpen, setFilterOpen] = useState(false);
 
   return isFilterOpen ? (
     <FilterComonent close={() => setFilterOpen(false)} />
