@@ -8,3 +8,8 @@ export const getItemsFromStore = createSelector(
 );
 
 export const scoredItems = createSelector([Items], (items) => items.scored);
+
+export const shouldUpdate = createSelector(
+  [Items],
+  (items) => items.shouldUpdate
+);

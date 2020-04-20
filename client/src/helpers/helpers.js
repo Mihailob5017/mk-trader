@@ -4,8 +4,9 @@ export const appendScoredList = (objects, object) => {
 };
 
 export const isExact = (pathname, string) => {
-  const arg = pathname.substring(1, pathname.length );
-  console.log(arg);
-  console.log(string)
+  const arg = pathname.substring(1, pathname.length);
   return arg === string ? true : false;
 };
+
+export const checkIfEmpty = (obj) =>
+  Object.keys(obj).length === 0 ? false : true;

@@ -26,13 +26,15 @@
       text-decoration: none;
     }
     .page-overview-btn {
-      background-color: white;
+      background-color: transparent;
+      color: white;
       border: none;
       font-weight: bold;
       letter-spacing: 5px;
-      font-size: 1.5rem;
+      font-size: 2rem;
       outline: hidden;
       cursor: pointer;
+      outline: none;
     }
   }
 }

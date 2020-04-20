@@ -6,8 +6,9 @@ import {
   getItemsAsync,
   getScoredItemsAsync,
   updateScoredItems,
+  willUpdate,
 } from '../../redux/item/item.action';
-import { appendScoredList } from '../../helpers/helpers';
+import { appendScoredList, checkIfEmpty } from '../../helpers/helpers';
 import { getItemsFromStore, scoredItems } from '../../redux/item/item.selector';
 import { hasToken, getToken } from '../../redux/user/user.selector';
 import LoadingComponent from '../../components/loading/loading.component';
@@ -19,6 +20,7 @@ const HomePageContainer = ({
   getScoredItems,
   getItemsFromStore,
   scoredItems,
+  willUpdate,
   updateScoredItems,
 }) => {
   const [newlyScored, setNewlyScored] = useState({});
@@ -37,13 +39,24 @@ const HomePageContainer = ({
     }
     return () => {
       if (hasToken) updateScoredItems(newlyScored);
+      if (checkIfEmpty(newlyScored)) willUpdate();
     };
   }, []);
-
+  if (hasToken)
+    return getItemsFromStore !== null && scoredItems !== null ? (
+      <HomePage
+        addNewlyScored={addNewlyScored}
+        scoredItems={scoredItems}
+        hasToken={hasToken}
+        items={getItemsFromStore}
+      />
+    ) : (
+      <LoadingComponent />
+    );
   return getItemsFromStore !== null ? (
     <HomePage
       addNewlyScored={addNewlyScored}
-      scoredItems={scoredItems || {}}
+      scoredItems={{}}
       hasToken={hasToken}
       items={getItemsFromStore}
     />
@@ -62,6 +75,7 @@ const mapDispatchToProps = (dispatch) => ({
   getItemsAsync: () => dispatch(getItemsAsync()),
   getScoredItems: (token) => dispatch(getScoredItemsAsync(token)),
   updateScoredItems: (items) => dispatch(updateScoredItems(items)),
+  willUpdate: () => dispatch(willUpdate()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePageContainer);

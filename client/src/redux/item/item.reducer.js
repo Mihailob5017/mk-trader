@@ -7,12 +7,14 @@ import {
   GET_SCORED_ITEMS_FAILURE,
   UPDATE_SCORED_ITEMS,
   CLEAN_UP_ITEMS,
+  SET_IF_UPDATED,
 } from '../types';
 import { appendScoredList } from '../../helpers/helpers';
 const INITIAL_STATE = {
   store: null,
   scored: null,
   error: null,
+  shouldUpdate: false,
 };
 
 const itemReducer = (state = INITIAL_STATE, action) => {
@@ -43,7 +45,16 @@ const itemReducer = (state = INITIAL_STATE, action) => {
       };
     }
     case CLEAN_UP_ITEMS: {
-      return { ...state, scored: null, store: null, error: null };
+      return {
+        ...state,
+        scored: null,
+        store: null,
+        error: null,
+        shouldUpdate: false,
+      };
+    }
+    case SET_IF_UPDATED: {
+      return { ...state, shouldUpdate: true };
     }
 
     default: {

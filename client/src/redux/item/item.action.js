@@ -7,6 +7,7 @@ import {
   GET_SCORED_ITEMS_FAILURE,
   UPDATE_SCORED_ITEMS,
   CLEAN_UP_ITEMS,
+  SET_IF_UPDATED,
 } from '../types';
 const Axios = require('axios').default;
 
@@ -58,3 +59,5 @@ export const updateScoredItems = (items) => ({
 });
 
 export const cleanUp = () => ({ type: CLEAN_UP_ITEMS });
+
+export const willUpdate = () => ({ type: SET_IF_UPDATED });

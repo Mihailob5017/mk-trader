@@ -11,11 +11,15 @@ import {
   SIGN_OUT_FAILURE,
 } from '../types';
 import { cleanUp } from '../item/item.action';
+import { shouldUpdate } from '../item/item.selector';
 const axios = require('axios').default;
 
 export const getTokenFromStorage = () => ({
   type: GET_TOKEN_FROM_STORAGE,
-  payload: localStorage.getItem('auth-token') || sessionStorage.getItem('auth-token') || null,
+  payload:
+    localStorage.getItem('auth-token') ||
+    sessionStorage.getItem('auth-token') ||
+    null,
 });
 
 const signInStart = () => ({ type: SIGN_IN_START });
@@ -73,13 +77,16 @@ const signOutStart = () => ({ type: SIGN_OUT_START });
 const signOutSuccess = () => ({ type: SIGN_OUT_SUCCESS });
 const signOutFailure = (err) => ({ type: SIGN_OUT_FAILURE, payload: err });
 
-export const signOut = (token, scoredItems) => async (dispatch) => {
+export const signOut = (token, scoredItems, shouldUpdate) => async (
+  dispatch
+) => {
   dispatch(signOutStart());
   localStorage.removeItem('auth-token');
   sessionStorage.removeItem('auth-token');
   dispatch(cleanUp());
   try {
-    if (scoredItems) {
+    if (scoredItems && shouldUpdate) {
+      console.log('updated!');
       await axios.post(
         'http://localhost:5000/user/scored',
         { scored: scoredItems },
@@ -87,7 +94,7 @@ export const signOut = (token, scoredItems) => async (dispatch) => {
           headers: { ['auth-token']: token },
         }
       );
-    }
+    } 
     dispatch(signOutSuccess());
   } catch (error) {
     dispatch(signOutFailure(error));

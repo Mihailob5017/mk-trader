@@ -5,9 +5,15 @@ import { createStructuredSelector } from 'reselect';
 import { hasToken, getToken } from '../../redux/user/user.selector';
 import StartPage from './start.page';
 import { getScoredItemsAsync } from '../../redux/item/item.action';
-import { scoredItems } from '../../redux/item/item.selector';
+import { scoredItems, shouldUpdate } from '../../redux/item/item.selector';
 
-const StartPageContainer = ({ hasToken, getToken, signOut, scoredItems }) => {
+const StartPageContainer = ({
+  hasToken,
+  getToken,
+  signOut,
+  scoredItems,
+  shouldUpdate,
+}) => {
   useEffect(() => {
     getScoredItemsAsync(getToken);
   }, []);
@@ -16,18 +22,20 @@ const StartPageContainer = ({ hasToken, getToken, signOut, scoredItems }) => {
     <StartPage
       hasToken={hasToken}
       token={getToken}
-      signOut={() => signOut(getToken, scoredItems)}
+      signOut={() => signOut(getToken, scoredItems, shouldUpdate)}
     />
   );
 };
 const mapDispatchToProps = (dispatch) => ({
-  signOut: (token, scoredItems) => dispatch(signOut(token, scoredItems)),
+  signOut: (token, scoredItems, shouldUpdate) =>
+    dispatch(signOut(token, scoredItems, shouldUpdate)),
   getScoredItems: (token) => dispatch(getScoredItemsAsync(token)),
 });
 const mapStateToProps = createStructuredSelector({
   hasToken,
   getToken,
   scoredItems,
+  shouldUpdate,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(StartPageContainer);
