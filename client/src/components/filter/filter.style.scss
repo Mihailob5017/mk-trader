@@ -1,0 +1,22 @@
+.filter-container {
+  top: 0;
+  left: 0;
+  background-color: #aeaeae;
+  position: absolute;
+  width: 99.9vw;
+  height: 99.9vh;
+  .filter-exit {
+    margin-left: auto;
+    font-size: 3rem;
+    width: fit-content;
+    height: fit-content;
+    & {
+      color: black;
+    }
+    &:hover {
+      transition: 500ms;
+      cursor: pointer;
+      color: white;
+    }
+  }
+}
