@@ -1,0 +1,36 @@
+.search-component {
+  width: 60%;
+  margin: 10rem auto;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 3rem;
+  .search-input {
+    font-size: 1.5rem;
+    width: 64%;
+    border-radius: 5px;
+    outline: none;
+  }
+  .search-btn {
+    font-weight: 600;
+    width: 20%;
+    font-size: 1.5rem;
+    color: black;
+    background: transparent;
+    border: 1px solid black;
+    border-radius: 15px;
+    &:hover {
+      transition: 500ms;
+      cursor: pointer;
+      background: royalblue;
+      color: white;
+    }
+  }
+  .seach-name {
+    font-weight: 600;
+    font-size: 1.5rem;
+    align-self: center;
+    width: 15%;
+  }
+}
