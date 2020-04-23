@@ -31,7 +31,6 @@ Router.get('/handled', async (req, res) => {
 
 //  Grabs all the items and filters out by name
 Router.post('/search', async (req, res) => {
-  console.log(req.body);
   const { name } = req.body;
   try {
     const responseData = await ItemModel.find();
