@@ -13,3 +13,5 @@ export const shouldUpdate = createSelector(
   [Items],
   (items) => items.shouldUpdate
 );
+
+export const getItem = createSelector([Items], (items) => items.item);

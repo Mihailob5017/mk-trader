@@ -14,6 +14,7 @@ import {
   SEARCH_AND_FILTER_START,
   SEARCH_AND_FILTER_SUCCESS,
   SEARCH_AND_FILTER_FAILURE,
+  GET_ITEM,
 } from '../types';
 import { appendScoredList } from '../../helpers/helpers';
 const INITIAL_STATE = {
@@ -21,6 +22,7 @@ const INITIAL_STATE = {
   scored: null,
   error: null,
   shouldUpdate: false,
+  item: null,
 };
 
 const itemReducer = (state = INITIAL_STATE, action) => {
@@ -77,6 +79,9 @@ const itemReducer = (state = INITIAL_STATE, action) => {
     }
     case SET_IF_UPDATED: {
       return { ...state, shouldUpdate: true };
+    }
+    case GET_ITEM: {
+      return { ...state, item: action.payload };
     }
 
     default: {

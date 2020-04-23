@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import ButtonComponent from '../button/button.somponent';
 import './item.style.scss';
 const ItemComponent = ({ item, hasToken, scored, addNewlyScored }) => {
@@ -49,7 +50,9 @@ const ItemComponent = ({ item, hasToken, scored, addNewlyScored }) => {
         {hasToken && (
           <ButtonComponent fullWidth={true}>Add to Cart</ButtonComponent>
         )}
-        <ButtonComponent fullWidth={true}>More Info</ButtonComponent>
+        <ButtonComponent fullWidth={true}>
+          <Link to={`/item/${_id}`}>More Info</Link>
+        </ButtonComponent>
       </div>
     </div>
   );

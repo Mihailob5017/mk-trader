@@ -14,10 +14,17 @@
     border: 1px solid black;
     border-radius: 10px;
     transition: 500ms;
+    * {
+      color: black;
+      text-decoration: none;
+    }
     &:hover {
       cursor: pointer;
       color: white;
       background: royalblue;
+      * {
+        color: white;
+      }
     }
   }
   .button-main_fullwidth {

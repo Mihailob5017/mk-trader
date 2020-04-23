@@ -14,7 +14,9 @@ import {
   SEARCH_AND_FILTER_START,
   SEARCH_AND_FILTER_SUCCESS,
   SEARCH_AND_FILTER_FAILURE,
+  GET_ITEM,
 } from '../types';
+import { filterOutItem } from '../../helpers/helpers';
 const Axios = require('axios').default;
 
 const getItemsStart = () => ({ type: GET_ITEMS_START });
@@ -102,9 +104,17 @@ const searchAndFilterFailure = (err) => ({
 export const asyncSearchAndFilter = (object) => async (dispatch) => {
   dispatch(searchAndFilterStart());
   try {
-    const { data } = await Axios.post('http://localhost:5000/items/handled', object);
+    const { data } = await Axios.post(
+      'http://localhost:5000/items/handled',
+      object
+    );
     dispatch(searchAndFilterSuccess(data));
   } catch (error) {
     dispatch(searchAndFilterFailure(error));
   }
 };
+
+export const getItemFromStore = (store, item) => ({
+  type: GET_ITEM,
+  payload: filterOutItem(store, item),
+});

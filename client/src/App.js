@@ -18,6 +18,7 @@ import RedirectComponent from './components/redirect/redirect-container.componen
 import { getScoredItemsAsync } from './redux/item/item.action';
 import HeaderComponent from './components/header/header.component';
 import FooterComponent from './components/footer/footer.component';
+import ItemPageContainer from './pages/item/item-page.container';
 
 const App = ({ getTokenFromStorage, hasToken }) => {
   useEffect(() => {
@@ -29,6 +30,7 @@ const App = ({ getTokenFromStorage, hasToken }) => {
       <HeaderComponent />
       <Switch>
         <Route exact path="/" component={StartPage} />
+
         <Route path="/home" component={HomePage} />
         <Route
           exact
@@ -63,6 +65,7 @@ const App = ({ getTokenFromStorage, hasToken }) => {
           path="/sign"
           render={() => (hasToken ? <Redirect to="/" /> : <SignPage />)}
         />
+        <Route path="/item/" component={ItemPageContainer} />
       </Switch>
       <FooterComponent />
     </>

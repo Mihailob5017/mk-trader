@@ -14,6 +14,8 @@ import {
 const INITIAL_STATE = {
   token: null,
   error: null,
+  cart: null,
+  user: null,
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
