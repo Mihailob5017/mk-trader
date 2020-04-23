@@ -16,7 +16,7 @@ Router.get('/', async (req, res) => {
 });
 
 //  Filters & sorts all the items by the request params
-Router.get('/handled', async (req, res) => {
+Router.post('/handled', async (req, res) => {
   try {
     const data = await ItemModel.find();
     const handledData = filterAndSort(data, req.body);

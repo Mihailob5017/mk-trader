@@ -11,6 +11,9 @@ import {
   SEARCH_ITEMS_START,
   SEARCH_ITEMS_SUCCESS,
   SEARCH_ITEMS_FAILURE,
+  SEARCH_AND_FILTER_START,
+  SEARCH_AND_FILTER_SUCCESS,
+  SEARCH_AND_FILTER_FAILURE,
 } from '../types';
 import { appendScoredList } from '../../helpers/helpers';
 const INITIAL_STATE = {
@@ -24,39 +27,44 @@ const itemReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case GET_ITEMS_START:
       return state;
-    case GET_ITEMS_SUCCESS: {
+    case GET_ITEMS_SUCCESS:
       return { ...state, store: action.payload, error: null };
-    }
-    case GET_ITEMS_FAILURE: {
+
+    case GET_ITEMS_FAILURE:
       return { ...state, store: null, error: action.payload };
-    }
-    case GET_SCORED_ITEMS_START: {
+
+    case GET_SCORED_ITEMS_START:
       return state;
-    }
 
-    case GET_SCORED_ITEMS_SUCCESS: {
+    case GET_SCORED_ITEMS_SUCCESS:
       return { ...state, scored: action.payload, error: null };
-    }
-    case GET_SCORED_ITEMS_FAILURE: {
-      return { ...state, error: action.payload, scored: null };
-    }
 
-    case UPDATE_SCORED_ITEMS: {
+    case GET_SCORED_ITEMS_FAILURE:
+      return { ...state, error: action.payload, scored: null };
+
+    case UPDATE_SCORED_ITEMS:
       return {
         ...state,
         scored: appendScoredList(state.scored, action.payload),
       };
-    }
 
     case SEARCH_ITEMS_START:
       return state;
 
-    case SEARCH_ITEMS_SUCCESS: {
+    case SEARCH_ITEMS_SUCCESS:
       return { ...state, store: action.payload, error: null };
-    }
-    case SEARCH_ITEMS_FAILURE: {
+
+    case SEARCH_ITEMS_FAILURE:
       return { ...state, error: action.payload, store: null };
-    }
+
+    case SEARCH_AND_FILTER_START:
+      return state;
+
+    case SEARCH_AND_FILTER_SUCCESS:
+      return { ...state, store: action.payload, error: null };
+
+    case SEARCH_AND_FILTER_FAILURE:
+      return { ...state, error: action.payload, store: null };
 
     case CLEAN_UP_ITEMS: {
       return {

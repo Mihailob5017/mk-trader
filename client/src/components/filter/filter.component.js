@@ -13,11 +13,11 @@ const searchNameType = [
 const types = [
   { name: 'Male', value: 'male' },
   { name: 'Female', value: 'female' },
-  { name: 'Sneakers', value: 'sneakers' },
+  { name: 'Sneakers', value: 'shoes' },
   { name: 'Jackets', value: 'jackets' },
 ];
 
-const FilterComponent = ({ close, searchByName }) => {
+const FilterComponent = ({ close, searchByName, searchAndFilter }) => {
   //  Search
   const [searchParam, setSearchParam] = useState('');
   const [param1, setParam1] = useState('');
@@ -25,7 +25,7 @@ const FilterComponent = ({ close, searchByName }) => {
 
   //  Sort
   const [sortValue, setSortValue] = useState(false);
-  const [sortByName, setSortByName] = useState('');
+  const [sortByName, setSortByName] = useState('name');
 
   const handleChange = (e) => {
     const { value, name } = e.target;
@@ -36,6 +36,27 @@ const FilterComponent = ({ close, searchByName }) => {
     //  Sort
     if (name === 'radio-group') setSortValue(!sortValue);
     if (setSortByName === 'sort-by-name') setSortByName(value);
+  };
+
+  const executeSearchAndFilter = () => {
+    console.log('elo');
+    const obj = {
+      filter: {
+        type: searchParam,
+        param1: param1,
+        param2: param2,
+      },
+      sort: {
+        type: sortByName,
+        param: sortValue ? 'asc' : 'desc',
+      },
+    };
+    searchAndFilter(obj);
+    setSearchParam('');
+    setParam1('');
+    setParam2('');
+    setSortByName('');
+    setSortValue(false);
   };
 
   return (
@@ -92,7 +113,9 @@ const FilterComponent = ({ close, searchByName }) => {
         />
       </div>
       <div className="search-and-filter-btn">
-        <ButtonComponent>Search</ButtonComponent>
+        <ButtonComponent actionHandler={executeSearchAndFilter}>
+          Search
+        </ButtonComponent>
       </div>
     </div>
   );

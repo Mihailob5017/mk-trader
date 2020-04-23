@@ -11,6 +11,9 @@ import {
   SEARCH_ITEMS_START,
   SEARCH_ITEMS_SUCCESS,
   SEARCH_ITEMS_FAILURE,
+  SEARCH_AND_FILTER_START,
+  SEARCH_AND_FILTER_SUCCESS,
+  SEARCH_AND_FILTER_FAILURE,
 } from '../types';
 const Axios = require('axios').default;
 
@@ -83,5 +86,25 @@ export const searchItemsAsync = (name) => async (dispatch) => {
     dispatch(searchItemsSuccess(data));
   } catch (error) {
     dispatch(searchItemsFailure(error));
+  }
+};
+
+const searchAndFilterStart = () => ({ type: SEARCH_AND_FILTER_START });
+const searchAndFilterSuccess = (res) => ({
+  type: SEARCH_AND_FILTER_SUCCESS,
+  payload: res,
+});
+const searchAndFilterFailure = (err) => ({
+  type: SEARCH_AND_FILTER_FAILURE,
+  payload: err,
+});
+
+export const asyncSearchAndFilter = (object) => async (dispatch) => {
+  dispatch(searchAndFilterStart());
+  try {
+    const { data } = await Axios.post('http://localhost:5000/items/handled', object);
+    dispatch(searchAndFilterSuccess(data));
+  } catch (error) {
+    dispatch(searchAndFilterFailure(error));
   }
 };
