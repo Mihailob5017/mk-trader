@@ -17,5 +17,9 @@ export const getLastParam = (url) => {
 };
 
 export const filterOutItem = (storeItems, itemId) => {
-  return storeItems.filter((item) => item._id === itemId);
+  if (storeItems !== null) {
+    const res = storeItems.filter((item) => item._id === itemId);
+    sessionStorage.setItem('curr-item', JSON.stringify(res));
+    return res;
+  } else return JSON.parse(sessionStorage.getItem('curr-item'));
 };
