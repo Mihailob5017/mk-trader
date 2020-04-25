@@ -1,0 +1,14 @@
+.reject-container {
+  width: 90%;
+  overflow: hidden;
+  height: 80vh;
+  .reject-body{
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+  justify-content: center;
+    margin: auto;
+    text-align: center;
+    width: 30%;
+  }
+}

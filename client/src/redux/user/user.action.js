@@ -9,6 +9,9 @@ import {
   SIGN_UP_SUCCESS,
   SIGN_UP_FAILURE,
   SIGN_OUT_FAILURE,
+  GET_USER_PROFILE_START,
+  GET_USER_PROFILE_SUCCESS,
+  GET_USER_PROFILE_FAILURE,
 } from '../types';
 import { cleanUp } from '../item/item.action';
 const axios = require('axios').default;
@@ -85,7 +88,6 @@ export const signOut = (token, scoredItems, shouldUpdate) => async (
   dispatch(cleanUp());
   try {
     if (scoredItems && shouldUpdate) {
-      console.log('updated!');
       await axios.post(
         'http://localhost:5000/user/scored',
         { scored: scoredItems },
@@ -97,5 +99,27 @@ export const signOut = (token, scoredItems, shouldUpdate) => async (
     dispatch(signOutSuccess());
   } catch (error) {
     dispatch(signOutFailure(error));
+  }
+};
+
+const getProfileStart = () => ({ type: GET_USER_PROFILE_START });
+const getProfileSuccess = (profile) => ({
+  type: GET_USER_PROFILE_SUCCESS,
+  payload: profile,
+});
+const getPRofileFailure = (err) => ({
+  type: GET_USER_PROFILE_FAILURE,
+  payload: err,
+});
+
+export const asyncGetUserProfile = (token) => async (dispatch) => {
+  dispatch(getProfileStart());
+  try {
+    const { data } = await axios.get('http://localhost:5000/user', {
+      headers: { ['auth-token']: token },
+    });
+    dispatch(getProfileSuccess(data));
+  } catch (error) {
+    dispatch(getPRofileFailure(error));
   }
 };

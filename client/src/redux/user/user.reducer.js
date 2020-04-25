@@ -9,13 +9,16 @@ import {
   SIGN_UP_START,
   SIGN_UP_SUCCESS,
   SIGN_UP_FAILURE,
+  GET_USER_PROFILE_START,
+  GET_USER_PROFILE_SUCCESS,
+  GET_USER_PROFILE_FAILURE,
 } from '../types';
 
 const INITIAL_STATE = {
-  token: null,
-  error: null,
   cart: null,
   user: null,
+  token: null,
+  error: null,
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -50,6 +53,15 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case SIGN_OUT_SUCCESS: {
       return { ...state, token: null, error: null };
     }
+
+    case GET_USER_PROFILE_START:
+      return state;
+
+    case GET_USER_PROFILE_SUCCESS:
+      return { ...state, user: action.payload, error: null };
+
+    case GET_USER_PROFILE_FAILURE:
+      return { ...state, user: null, error: action.payload };
 
     default:
       return state;
