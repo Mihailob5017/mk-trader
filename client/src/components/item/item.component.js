@@ -2,11 +2,17 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ButtonComponent from '../button/button.somponent';
 import './item.style.scss';
-const ItemComponent = ({ item, hasToken, scored, addNewlyScored }) => {
+const ItemComponent = ({
+  item,
+  hasToken,
+  scored,
+  addNewlyScored,
+  isInCart,
+}) => {
   const { _id, name, price, type, imageUrl, score } = item;
   const [posOrNeg, setPosOrNeg] = useState(scored);
   const [scoreState, setScoreState] = useState(score);
-
+  console.log(isInCart);
   const scoreHandler = (newScore) => () => {
     setScoreState(scoreState + parseInt(newScore));
     setPosOrNeg(newScore);
@@ -48,7 +54,13 @@ const ItemComponent = ({ item, hasToken, scored, addNewlyScored }) => {
       </div>
       <div className="item-btns">
         {hasToken && (
-          <ButtonComponent fullWidth={true}>Add to Cart</ButtonComponent>
+          <>
+            {isInCart ? (
+              <h2 className="in-cart">In Cart</h2>
+            ) : (
+              <ButtonComponent fullWidth={true}>Add to Cart</ButtonComponent>
+            )}
+          </>
         )}
         <ButtonComponent fullWidth={true}>
           <Link to={`/item/${_id}`}>More Info</Link>

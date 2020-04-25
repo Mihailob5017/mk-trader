@@ -23,3 +23,10 @@ export const filterOutItem = (storeItems, itemId) => {
     return res;
   } else return JSON.parse(sessionStorage.getItem('curr-item'));
 };
+
+export const isInCart = (items, item_id) => {
+  for (let item of items) {
+    if (item === item_id) return true;
+  }
+  return false;
+};

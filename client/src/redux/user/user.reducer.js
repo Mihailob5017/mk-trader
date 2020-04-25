@@ -12,6 +12,7 @@ import {
   GET_USER_PROFILE_START,
   GET_USER_PROFILE_SUCCESS,
   GET_USER_PROFILE_FAILURE,
+  GET_CART_ITEMS,
 } from '../types';
 
 const INITIAL_STATE = {
@@ -62,6 +63,9 @@ const userReducer = (state = INITIAL_STATE, action) => {
 
     case GET_USER_PROFILE_FAILURE:
       return { ...state, user: null, error: action.payload };
+
+    case GET_CART_ITEMS:
+      return { ...state, cart: action.payload };
 
     default:
       return state;

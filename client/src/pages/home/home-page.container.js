@@ -10,7 +10,8 @@ import {
 } from '../../redux/item/item.action';
 import { appendScoredList, checkIfEmpty } from '../../helpers/helpers';
 import { getItemsFromStore, scoredItems } from '../../redux/item/item.selector';
-import { hasToken, getToken } from '../../redux/user/user.selector';
+import { hasToken, getToken, cartItems } from '../../redux/user/user.selector';
+import { asyncGetUserProfile } from '../../redux/user/user.action';
 import LoadingComponent from '../../components/loading/loading.component';
 
 const HomePageContainer = ({
@@ -21,7 +22,9 @@ const HomePageContainer = ({
   getItemsFromStore,
   scoredItems,
   willUpdate,
+  asyncGetUserProfile,
   updateScoredItems,
+  cartItems,
 }) => {
   const [newlyScored, setNewlyScored] = useState({});
 
@@ -34,6 +37,8 @@ const HomePageContainer = ({
       localStorage.getItem('auth-token') ||
       sessionStorage.getItem('auth-token') ||
       getToken;
+
+    asyncGetUserProfile(token);
     if (token && scoredItems === null) {
       getScoredItems(token);
     }
@@ -45,6 +50,7 @@ const HomePageContainer = ({
   if (hasToken)
     return getItemsFromStore !== null && scoredItems !== null ? (
       <HomePage
+        cartItems={cartItems}
         addNewlyScored={addNewlyScored}
         scoredItems={scoredItems}
         hasToken={hasToken}
@@ -53,10 +59,11 @@ const HomePageContainer = ({
     ) : (
       <LoadingComponent />
     );
-  return getItemsFromStore !== null ? (
+  return getItemsFromStore !== null && cartItems !== null ? (
     <HomePage
       addNewlyScored={addNewlyScored}
       scoredItems={{}}
+      cartItems={cartItems}
       hasToken={hasToken}
       items={getItemsFromStore}
     />
@@ -70,12 +77,14 @@ const mapStateToProps = createStructuredSelector({
   getToken,
   getItemsFromStore,
   scoredItems,
+  cartItems,
 });
 const mapDispatchToProps = (dispatch) => ({
   getItemsAsync: () => dispatch(getItemsAsync()),
   getScoredItems: (token) => dispatch(getScoredItemsAsync(token)),
   updateScoredItems: (items) => dispatch(updateScoredItems(items)),
   willUpdate: () => dispatch(willUpdate()),
+  asyncGetUserProfile: (tkn) => dispatch(asyncGetUserProfile(tkn)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePageContainer);

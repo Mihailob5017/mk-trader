@@ -12,6 +12,7 @@ import {
   GET_USER_PROFILE_START,
   GET_USER_PROFILE_SUCCESS,
   GET_USER_PROFILE_FAILURE,
+  GET_CART_ITEMS,
 } from '../types';
 import { cleanUp } from '../item/item.action';
 const axios = require('axios').default;
@@ -111,6 +112,7 @@ const getPRofileFailure = (err) => ({
   type: GET_USER_PROFILE_FAILURE,
   payload: err,
 });
+const getCartItems = (items) => ({ type: GET_CART_ITEMS, payload: items });
 
 export const asyncGetUserProfile = (token) => async (dispatch) => {
   dispatch(getProfileStart());
@@ -118,6 +120,7 @@ export const asyncGetUserProfile = (token) => async (dispatch) => {
     const { data } = await axios.get('http://localhost:5000/user', {
       headers: { ['auth-token']: token },
     });
+    dispatch(getCartItems(data.cartItems));
     dispatch(getProfileSuccess(data));
   } catch (error) {
     dispatch(getPRofileFailure(error));
