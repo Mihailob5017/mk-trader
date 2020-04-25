@@ -11,7 +11,6 @@ import {
   SIGN_OUT_FAILURE,
 } from '../types';
 import { cleanUp } from '../item/item.action';
-import { shouldUpdate } from '../item/item.selector';
 const axios = require('axios').default;
 
 export const getTokenFromStorage = () => ({
@@ -94,7 +93,7 @@ export const signOut = (token, scoredItems, shouldUpdate) => async (
           headers: { ['auth-token']: token },
         }
       );
-    } 
+    }
     dispatch(signOutSuccess());
   } catch (error) {
     dispatch(signOutFailure(error));
