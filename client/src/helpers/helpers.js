@@ -30,3 +30,11 @@ export const isInCart = (items, item_id) => {
   }
   return false;
 };
+
+export const getInCartParam = (url) => {
+  const args = url.split('/');
+  return args[args.length - 2];
+};
+export const newCartItems = (Items, item) => {
+  return Items.includes(item) ? [...Items] : [...Items, item];
+};

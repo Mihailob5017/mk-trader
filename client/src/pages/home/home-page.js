@@ -11,9 +11,9 @@ const HomePage = ({
   scoredItems,
   addNewlyScored,
   cartItems,
+  getToken,
 }) => {
   const [isFilterOpen, setFilterOpen] = useState(false);
-  console.log(cartItems);
   return isFilterOpen ? (
     <FilterComonent close={() => setFilterOpen(false)} />
   ) : items.length === 0 ? (
@@ -30,6 +30,7 @@ const HomePage = ({
           scored={scoredItems[item._id]}
           addNewlyScored={addNewlyScored}
           key={i}
+          token={getToken}
           item={item}
           hasToken={hasToken}
         />

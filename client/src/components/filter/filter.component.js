@@ -39,7 +39,7 @@ const FilterComponent = ({ close, searchByName, searchAndFilter }) => {
   };
 
   const executeSearchAndFilter = () => {
-    console.log('elo');
+   
     const obj = {
       filter: {
         type: searchParam,

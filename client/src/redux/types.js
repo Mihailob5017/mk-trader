@@ -36,5 +36,8 @@ export const GET_ITEM = 'GET_ITEM';
 export const GET_USER_PROFILE_START = 'GET_USER_PROFILE_START';
 export const GET_USER_PROFILE_SUCCESS = 'GET_USER_PROFILE_SUCCSESS';
 export const GET_USER_PROFILE_FAILURE = 'GET_USER_PROFILE_FAILURE';
-//  Cart Items 
-export const GET_CART_ITEMS='GET_CART_ITEMS'
+//  Cart Items
+export const GET_CART_ITEMS = 'GET_CART_ITEMS';
+// Add to Cart
+export const ADD_TO_CART = 'ADD_TO_CART';
+

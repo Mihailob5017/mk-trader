@@ -13,6 +13,7 @@ import {
   GET_USER_PROFILE_SUCCESS,
   GET_USER_PROFILE_FAILURE,
   GET_CART_ITEMS,
+  ADD_TO_CART,
 } from '../types';
 import { cleanUp } from '../item/item.action';
 const axios = require('axios').default;
@@ -126,3 +127,5 @@ export const asyncGetUserProfile = (token) => async (dispatch) => {
     dispatch(getPRofileFailure(error));
   }
 };
+
+export const addToCart = (newItem) => ({ type: ADD_TO_CART, payload: newItem });

@@ -2,10 +2,21 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../../components/button/button.somponent';
 import './item.style.scss';
-
-const ItemPage = ({ token, item }) => {
-  console.log(token);
+const axios = require('axios').default;
+const ItemPage = ({ hasToken, token,   item, isInCart, addToCart }) => {
   const [fullImg, setFullImg] = useState(false);
+  const [inCart, setInCart] = useState(isInCart === 't' ? true : false);
+  const Add = () => {
+    addToCart(item._id);
+    setInCart(true);
+    axios.put(
+      'http://localhost:5000/cart/add',
+      { itemId: item._id },
+      {
+        headers: { ['auth-token']: token },
+      }
+    );
+  };
   return (
     <div className="item-page-container">
       {fullImg === true ? (
@@ -47,9 +58,15 @@ const ItemPage = ({ token, item }) => {
                 <Link to="/home">All items</Link>
               </Button>
             </div>
-            {token === true && (
+            {hasToken === true && (
               <div className="item-page-btn">
-                <Button fullWidth={true}>Add to cart</Button>
+                {inCart ? (
+                  <div className="in-cart-btn">In Cart</div>
+                ) : (
+                  <Button actionHandler={Add} fullWidth={true}>
+                    Add to cart
+                  </Button>
+                )}
               </div>
             )}
           </div>

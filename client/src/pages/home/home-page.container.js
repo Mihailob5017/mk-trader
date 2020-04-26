@@ -27,7 +27,7 @@ const HomePageContainer = ({
   cartItems,
 }) => {
   const [newlyScored, setNewlyScored] = useState({});
-
+  const [token, setToken] = useState('');
   const addNewlyScored = (newscore) =>
     setNewlyScored(appendScoredList(newlyScored, newscore));
 
@@ -37,7 +37,7 @@ const HomePageContainer = ({
       localStorage.getItem('auth-token') ||
       sessionStorage.getItem('auth-token') ||
       getToken;
-
+    setToken(token);
     asyncGetUserProfile(token);
     if (token && scoredItems === null) {
       getScoredItems(token);
@@ -55,6 +55,7 @@ const HomePageContainer = ({
         scoredItems={scoredItems}
         hasToken={hasToken}
         items={getItemsFromStore}
+        getToken={token}
       />
     ) : (
       <LoadingComponent />
@@ -66,6 +67,7 @@ const HomePageContainer = ({
       cartItems={cartItems}
       hasToken={hasToken}
       items={getItemsFromStore}
+      getToken={token}
     />
   ) : (
     <LoadingComponent />
