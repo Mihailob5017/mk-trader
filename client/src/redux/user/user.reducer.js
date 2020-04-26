@@ -53,7 +53,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
       return { ...state, error: action.payload };
     }
     case SIGN_OUT_SUCCESS: {
-      return { ...state, token: null, error: null };
+      return { ...state, token: null, error: null, user: null, cart: null };
     }
 
     case GET_USER_PROFILE_START:

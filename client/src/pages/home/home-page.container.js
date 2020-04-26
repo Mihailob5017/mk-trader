@@ -38,7 +38,7 @@ const HomePageContainer = ({
       sessionStorage.getItem('auth-token') ||
       getToken;
     setToken(token);
-    asyncGetUserProfile(token);
+    if (token) asyncGetUserProfile(token);
     if (token && scoredItems === null) {
       getScoredItems(token);
     }
@@ -60,11 +60,11 @@ const HomePageContainer = ({
     ) : (
       <LoadingComponent />
     );
-  return getItemsFromStore !== null && cartItems !== null ? (
+  return getItemsFromStore !== null ? (
     <HomePage
       addNewlyScored={addNewlyScored}
       scoredItems={{}}
-      cartItems={cartItems}
+      cartItems={[]}
       hasToken={hasToken}
       items={getItemsFromStore}
       getToken={token}
