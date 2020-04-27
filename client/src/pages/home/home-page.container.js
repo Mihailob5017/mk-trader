@@ -9,7 +9,7 @@ import {
   willUpdate,
 } from '../../redux/item/item.action';
 import { appendScoredList, checkIfEmpty } from '../../helpers/helpers';
-import { getItemsFromStore, scoredItems } from '../../redux/item/item.selector';
+import { storeItems, scoredItems } from '../../redux/item/item.selector';
 import { hasToken, getToken, cartItems } from '../../redux/user/user.selector';
 import { asyncGetUserProfile } from '../../redux/user/user.action';
 import LoadingComponent from '../../components/loading/loading.component';
@@ -19,7 +19,7 @@ const HomePageContainer = ({
   hasToken,
   getToken,
   getScoredItems,
-  getItemsFromStore,
+  storeItems,
   scoredItems,
   willUpdate,
   asyncGetUserProfile,
@@ -48,7 +48,7 @@ const HomePageContainer = ({
     };
   }, []);
   if (hasToken)
-    return getItemsFromStore !== null &&
+    return storeItems !== null &&
       scoredItems !== null &&
       cartItems !== null ? (
       <HomePage
@@ -56,19 +56,19 @@ const HomePageContainer = ({
         addNewlyScored={addNewlyScored}
         scoredItems={scoredItems}
         hasToken={hasToken}
-        items={getItemsFromStore}
+        items={storeItems}
         getToken={token}
       />
     ) : (
       <LoadingComponent />
     );
-  return getItemsFromStore !== null ? (
+  return storeItems !== null ? (
     <HomePage
       addNewlyScored={addNewlyScored}
       scoredItems={{}}
       cartItems={[]}
       hasToken={hasToken}
-      items={getItemsFromStore}
+      items={storeItems}
       getToken={token}
     />
   ) : (
@@ -79,7 +79,7 @@ const HomePageContainer = ({
 const mapStateToProps = createStructuredSelector({
   hasToken,
   getToken,
-  getItemsFromStore,
+  storeItems,
   scoredItems,
   cartItems,
 });

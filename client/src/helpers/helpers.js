@@ -38,3 +38,8 @@ export const getInCartParam = (url) => {
 export const newCartItems = (Items, item) => {
   return Items.includes(item) ? [...Items] : [...Items, item];
 };
+
+export const getCartItems = (storeItems, cartItems) => {
+  
+  return storeItems.filter((item) => cartItems.includes(item._id));
+};

@@ -5,7 +5,7 @@ import { createStructuredSelector } from 'reselect';
 
 //  Helper Components
 import { getItemFromStore } from '../../redux/item/item.action';
-import { getItem, getItemsFromStore } from '../../redux/item/item.selector';
+import { getItem, storeItems } from '../../redux/item/item.selector';
 import { hasToken, getToken } from '../../redux/user/user.selector';
 import { asyncGetUserProfile, addToCart } from '../../redux/user/user.action';
 import { getLastParam, getInCartParam } from '../../helpers/helpers';
@@ -20,7 +20,7 @@ const ItemPageContainer = ({
   hasToken,
   getToken,
   findItem,
-  getItemsFromStore,
+  storeItems,
   asyncGetUserProfile,
   addToCart,
 }) => {
@@ -32,7 +32,7 @@ const ItemPageContainer = ({
       getToken;
     setToken(token);
     asyncGetUserProfile(token);
-    findItem(getItemsFromStore, getLastParam(location.pathname));
+    findItem(storeItems, getLastParam(location.pathname));
 
     return () => {
       sessionStorage.removeItem('curr-item');
@@ -52,7 +52,7 @@ const ItemPageContainer = ({
 };
 const mapStateToProps = createStructuredSelector({
   getItem,
-  getItemsFromStore,
+  storeItems,
   hasToken,
   getToken,
 });
