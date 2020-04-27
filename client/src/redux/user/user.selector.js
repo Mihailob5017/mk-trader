@@ -20,3 +20,7 @@ export const willAddItems = createSelector([profile], (profile) =>
 export const cartItems = createSelector([profile], (profile) =>
   profile !== null ? profile.cartItems : null
 );
+
+export const numOfItems = createSelector([cartItems], (items) =>
+  items !== null ? items.length : 0
+);

@@ -48,7 +48,9 @@ const HomePageContainer = ({
     };
   }, []);
   if (hasToken)
-    return getItemsFromStore !== null && scoredItems !== null ? (
+    return getItemsFromStore !== null &&
+      scoredItems !== null &&
+      cartItems !== null ? (
       <HomePage
         cartItems={cartItems}
         addNewlyScored={addNewlyScored}

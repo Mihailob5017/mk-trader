@@ -1,19 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import { isExact } from '../../helpers/helpers';
 import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { numOfItems } from '../../redux/user/user.selector';
+import { asyncGetUserProfile } from '../../redux/user/user.action';
 import './header.style.scss';
-const HeaderComponent = ({ location }) => {
+const HeaderComponent = ({ location, numOfItems, asyncGetUserProfile }) => {
   const [isVisable, setVisable] = useState(false);
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    const token =
+      localStorage.getItem('auth-token') ||
+      sessionStorage.getItem('auth-token');
+
+    asyncGetUserProfile(token);
+    setCount(numOfItems);
+  });
 
   return (
     <>
       {isVisable ? (
         <div className="header-backround-div">
-          <div className="header-exit">
-            <i
-              className="far fa-times-circle"
-              onClick={() => setVisable(false)}
-            ></i>
+          <div className="header-icons">
+            <div className="header-count">
+              <i class="fas fa-shopping-cart">
+                <h6 className="count">
+                  <Link to="/profile">{count}</Link>
+                </h6>
+              </i>
+            </div>
+            <div className="header-exit">
+              <i
+                className="far fa-times-circle"
+                onClick={() => setVisable(false)}
+              ></i>
+            </div>
           </div>
           <div className="header-center-links">
             <div
@@ -74,5 +96,12 @@ const HeaderComponent = ({ location }) => {
     </>
   );
 };
-
-export default withRouter(HeaderComponent);
+const mapDispatchToProps = (dispatch) => ({
+  asyncGetUserProfile: (token) => dispatch(asyncGetUserProfile(token)),
+});
+const mapStateToProps = createStructuredSelector({
+  numOfItems,
+});
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(HeaderComponent)
+);
