@@ -7,6 +7,7 @@ import SelectComponent from '../select/select.component';
 import './sign-up.style.scss';
 import { asyncSignUpStart } from '../../redux/user/user.action';
 import { connect } from 'react-redux';
+import RadioComponent from '../radio/radio.component';
 
 const SignUp = ({ asyncSignUpStart }) => {
   const avatars = [
@@ -16,7 +17,10 @@ const SignUp = ({ asyncSignUpStart }) => {
     { name: 'Gold', value: 'gold' },
     { name: 'Premium', value: 'premium' },
   ];
-
+  const genders = [
+    { name: 'Male', value: 'male' },
+    { name: 'Female', value: 'female' },
+  ];
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
   const [username, setUsername] = useState('');
@@ -31,6 +35,7 @@ const SignUp = ({ asyncSignUpStart }) => {
   const [step, setStep] = useState(1);
   const [avatar, setAvatar] = useState('');
   const [kmsi, setKmsi] = useState(false);
+  const [gender, setGender] = useState('male');
 
   const handleChange = (e) => {
     const { value, name } = e.target;
@@ -47,6 +52,7 @@ const SignUp = ({ asyncSignUpStart }) => {
     if (name === 'imageurl') setImageUrl(value);
     if (name === 'avatar') setAvatar(value);
     if (name === 'kmsi_signUp') setKmsi(!kmsi);
+    if (name === 'radio-group') setGender(value);
   };
   const moveStep = (val) => setStep(val);
   const handleClick = () => {
@@ -56,13 +62,14 @@ const SignUp = ({ asyncSignUpStart }) => {
       username,
       email,
       password,
-      avatarType: setImage === true ? imageUrl : `avatar: ${avatar}`,
+      avatarType: setImage === true ? imageUrl : `${avatar}`,
       willAddItemsToStore: willAdd,
       currentCity: currCity,
       currentAddres: address,
+      gender,
       dateOfBirth: date,
       cartItems: [],
-      scoredItems:{},
+      scoredItems: {},
     };
     asyncSignUpStart(obj, kmsi);
     setFirstname('');
@@ -77,6 +84,7 @@ const SignUp = ({ asyncSignUpStart }) => {
     setImage(false);
     setAvatar('');
     setImageUrl('');
+    setGender('male');
   };
 
   if (step === 1)
@@ -150,6 +158,11 @@ const SignUp = ({ asyncSignUpStart }) => {
             name="date"
             type="date"
             label="Date of Birth::"
+          />
+          <RadioComponent
+            values={genders}
+            handleChange={handleChange}
+            value={gender === 'male' ? 'male' : 'female'}
           />
         </StepComponent>
       </div>

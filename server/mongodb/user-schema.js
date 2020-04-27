@@ -27,6 +27,7 @@ const UserSchema = new mongoose.Schema(
     currentAddres: { type: String, minlength: 3, maxlength: 60 },
     cartItems: { type: Array, required: true, default: [] },
     scoredItems: { type: Object, required: true, default: {} },
+    gender: { type: String, default: 'male' },
   },
   { minimize: false }
 );

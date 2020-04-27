@@ -40,6 +40,9 @@ export const newCartItems = (Items, item) => {
 };
 
 export const getCartItems = (storeItems, cartItems) => {
-  
   return storeItems.filter((item) => cartItems.includes(item._id));
+};
+
+export const isUrl = (url) => {
+  return url.startsWith('http') && url.includes('/') ? true : false;
 };

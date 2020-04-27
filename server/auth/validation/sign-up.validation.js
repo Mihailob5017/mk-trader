@@ -14,4 +14,5 @@ module.exports = Joi.object({
   currentAddres: Joi.string().min(3).max(60),
   cartItems: Joi.array().required(),
   scoredItems: Joi.object().required(),
+  gender: Joi.string(),
 });
