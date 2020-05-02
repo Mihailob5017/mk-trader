@@ -46,3 +46,9 @@ export const getCartItems = (storeItems, cartItems) => {
 export const isUrl = (url) => {
   return url.startsWith('http') && url.includes('/') ? true : false;
 };
+
+export const getTotal = (itemArr) => {
+  const sum = itemArr.reduce((acc, curr) => acc + curr.price, 0);
+
+  return sum;
+};
