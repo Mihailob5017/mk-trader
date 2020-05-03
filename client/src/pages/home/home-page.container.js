@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import HomePage from './home-page';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+
+//  Helper Components
 import {
   getItemsAsync,
   getScoredItemsAsync,
@@ -10,14 +11,16 @@ import {
 } from '../../redux/item/item.action';
 import { appendScoredList, checkIfEmpty } from '../../helpers/helpers';
 import { storeItems, scoredItems } from '../../redux/item/item.selector';
-import { hasToken, getToken, cartItems } from '../../redux/user/user.selector';
+import { hasToken, cartItems, profile } from '../../redux/user/user.selector';
 import { asyncGetUserProfile } from '../../redux/user/user.action';
+
+//  Components
+import HomePage from './home-page';
 import LoadingComponent from '../../components/loading/loading.component';
 
 const HomePageContainer = ({
   getItemsAsync,
   hasToken,
-  getToken,
   getScoredItems,
   storeItems,
   scoredItems,
@@ -35,22 +38,18 @@ const HomePageContainer = ({
     getItemsAsync();
     const token =
       localStorage.getItem('auth-token') ||
-      sessionStorage.getItem('auth-token') ||
-      getToken;
+      sessionStorage.getItem('auth-token');
     setToken(token);
-    if (token) asyncGetUserProfile(token);
-    if (token && scoredItems === null) {
-      getScoredItems(token);
-    }
+    if (token && profile === null) asyncGetUserProfile(token);
+    if (token && scoredItems === null) getScoredItems(token);
+
     return () => {
       if (hasToken) updateScoredItems(newlyScored);
       if (checkIfEmpty(newlyScored)) willUpdate();
     };
   }, []);
   if (hasToken)
-    return storeItems !== null &&
-      scoredItems !== null &&
-      cartItems !== null ? (
+    return storeItems !== null && scoredItems !== null && cartItems !== null ? (
       <HomePage
         cartItems={cartItems}
         addNewlyScored={addNewlyScored}
@@ -78,7 +77,6 @@ const HomePageContainer = ({
 
 const mapStateToProps = createStructuredSelector({
   hasToken,
-  getToken,
   storeItems,
   scoredItems,
   cartItems,

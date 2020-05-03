@@ -1,7 +1,11 @@
 import React from 'react';
+
+//  Components
 import './sort-items.style.scss';
 import SelectComponent from '../select/select.component';
 import RadioComponent from '../radio/radio.component';
+
+//  Helpers
 const sortValues = [
   {
     name: 'Ascending',
@@ -23,6 +27,7 @@ const options = [
     value: 'score',
   },
 ];
+
 const SortItemsComponent = ({ handleChange, sortBy, sortValue }) => {
   return (
     <div className="sort-components-container">

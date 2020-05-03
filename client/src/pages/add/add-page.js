@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import './add-page.style.scss';
+
 //  Components
 import InputComponent from '../../components/input/input.component';
 import SelectComponent from '../../components/select/select.component';
 import CheckBoxComponent from '../../components/checkbox/checkbox.component';
 import ButtonComponent from '../../components/button/button.somponent';
+import './add-page.style.scss';
+
+//  Helpers
 const options = [
   { name: 'Male', value: 'female' },
   { name: 'Female', value: 'female' },
@@ -52,8 +55,7 @@ const AddPage = ({ addItem, token }) => {
       />
       <InputComponent
         label="Item Price"
-
-        type='number'
+        type="number"
         name="price"
         min={0}
         value={price}

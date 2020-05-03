@@ -1,5 +1,7 @@
 import React from 'react';
+//  Components
 import './checkbox.style.scss';
+
 const CheckboxComponent = ({ name, value, handleChange, children }) => {
   return (
     <div className="checkbox-container">

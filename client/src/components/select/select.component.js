@@ -1,4 +1,6 @@
 import React from 'react';
+
+//  Components
 import './select.style.scss';
 
 const SelectComponent = ({ handleChange, name, value, options, message }) => {

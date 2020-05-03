@@ -1,4 +1,6 @@
 import React from 'react';
+
+//  Components
 import './loading.style.scss';
 const LoadingComponent = () => {
   return (

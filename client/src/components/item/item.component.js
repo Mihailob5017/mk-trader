@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import ButtonComponent from '../button/button.somponent';
 import { connect } from 'react-redux';
+
+//  Helper Components
 import { addToCart } from '../../redux/user/user.action';
+
+//  Componennts
 import './item.style.scss';
+import ButtonComponent from '../button/button.somponent';
+//  Helpers
 const axios = require('axios').default;
 const ItemComponent = ({
   item,

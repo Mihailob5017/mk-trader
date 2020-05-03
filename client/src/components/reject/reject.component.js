@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
+//  Components
 import ButtonComponent from '../button/button.somponent';
 import './reject.style.scss';
 const RejectComponent = () => {

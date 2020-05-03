@@ -2,7 +2,7 @@ const Router = require('express').Router();
 const {
   getUpadatedCart,
   removeFromCart,
-  checkIfInCart
+  checkIfInCart,
 } = require('../../helpers/cart-operations');
 const jwtAuth = require('../../auth/jwt-auth');
 const UserModel = require('../../mongodb/user-schema');
@@ -75,8 +75,9 @@ Router.get('/items', jwtAuth, async (req, res) => {
     res.status(500).send('Something Went Wrong');
   }
 });
+
 //  Clearing the cart
-Router.put('/clear', jwtAuth, async (req, res) => {
+Router.post('/clear', jwtAuth, async (req, res) => {
   const token = req.headers['auth-token'];
   if (!token) {
     res.status(401).send('Auth Error:You havent entered a token !');

@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
+
+//  Helper Components
+import { isInCart } from '../../helpers/helpers';
+
+//  Components
 import './home-page.style.scss';
 import ItemComponent from '../../components/item/item.component';
 import ButtonComponent from '../../components/button/button.somponent';
 import FilterComonent from '../../components/filter/filter-container.component';
 import EmptyComponent from '../../components/empty/empty.component';
-import { isInCart } from '../../helpers/helpers';
+
 const HomePage = ({
   items,
   hasToken,

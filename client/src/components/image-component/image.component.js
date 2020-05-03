@@ -1,6 +1,9 @@
 import React from 'react';
+
+//  Components
+
 import './image.style.scss';
-//  Avatars
+//  Helpers
 import gold_m from '../../assets/avatars/gold_m.png';
 import gold_f from '../../assets/avatars/gold_f.png';
 import default_m from '../../assets/avatars/default_m.png';

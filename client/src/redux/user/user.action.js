@@ -14,6 +14,7 @@ import {
   GET_USER_PROFILE_FAILURE,
   GET_CART_ITEMS,
   ADD_TO_CART,
+  CLEAR_CART,
 } from '../types';
 import { cleanUp } from '../item/item.action';
 const axios = require('axios').default;
@@ -129,3 +130,4 @@ export const asyncGetUserProfile = (token) => async (dispatch) => {
 };
 
 export const addToCart = (newItem) => ({ type: ADD_TO_CART, payload: newItem });
+export const clearCart = () => ({ type: CLEAR_CART });

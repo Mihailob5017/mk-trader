@@ -2,10 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { isExact } from '../../helpers/helpers';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+
+//  Helper Components
 import { createStructuredSelector } from 'reselect';
 import { numOfItems } from '../../redux/user/user.selector';
 import { asyncGetUserProfile } from '../../redux/user/user.action';
+
+// Components
 import './header.style.scss';
+
 const HeaderComponent = ({ location, numOfItems, asyncGetUserProfile }) => {
   const [isVisable, setVisable] = useState(false);
   const [count, setCount] = useState(0);

@@ -1,26 +1,33 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+
+//  Helper Components
+import { asyncSignUpStart } from '../../redux/user/user.action';
+
+
+//  Components
 import InputComponent from '../input/input.component';
 import CheckboxComponent from '../checkbox/checkbox.component';
 import ButtonComponent from '../button/button.somponent';
 import StepComponent from '../step/step.component';
 import SelectComponent from '../select/select.component';
 import './sign-up.style.scss';
-import { asyncSignUpStart } from '../../redux/user/user.action';
-import { connect } from 'react-redux';
 import RadioComponent from '../radio/radio.component';
 
+//  Helpers
+const avatars = [
+  { name: 'Default', value: 'default' },
+  { name: 'Proffesional', value: 'prof' },
+  { name: 'Ocasional', value: 'ocs' },
+  { name: 'Gold', value: 'gold' },
+  { name: 'Premium', value: 'premium' },
+];
+const genders = [
+  { name: 'Male', value: 'male' },
+  { name: 'Female', value: 'female' },
+];
+
 const SignUp = ({ asyncSignUpStart }) => {
-  const avatars = [
-    { name: 'Default', value: 'default' },
-    { name: 'Proffesional', value: 'prof' },
-    { name: 'Ocasional', value: 'ocs' },
-    { name: 'Gold', value: 'gold' },
-    { name: 'Premium', value: 'premium' },
-  ];
-  const genders = [
-    { name: 'Male', value: 'male' },
-    { name: 'Female', value: 'female' },
-  ];
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
   const [username, setUsername] = useState('');

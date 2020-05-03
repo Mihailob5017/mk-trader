@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+
+//  Components
 import './search.style.scss';
 const SearchComponent = ({ action }) => {
   const [name, setName] = useState('');

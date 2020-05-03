@@ -14,6 +14,7 @@ import {
   GET_USER_PROFILE_FAILURE,
   GET_CART_ITEMS,
   ADD_TO_CART,
+  CLEAR_CART,
 } from '../types';
 import { newCartItems } from '../../helpers/helpers';
 const INITIAL_STATE = {
@@ -70,6 +71,9 @@ const userReducer = (state = INITIAL_STATE, action) => {
 
     case ADD_TO_CART:
       return { ...state, cart: newCartItems(state.cart, action.payload) };
+
+    case CLEAR_CART:
+      return { ...state, cart: null };
 
     default:
       return state;

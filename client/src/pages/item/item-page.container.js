@@ -6,7 +6,7 @@ import { createStructuredSelector } from 'reselect';
 //  Helper Components
 import { getItemFromStore } from '../../redux/item/item.action';
 import { getItem, storeItems } from '../../redux/item/item.selector';
-import { hasToken, getToken } from '../../redux/user/user.selector';
+import { hasToken } from '../../redux/user/user.selector';
 import { asyncGetUserProfile, addToCart } from '../../redux/user/user.action';
 import { getLastParam, getInCartParam } from '../../helpers/helpers';
 
@@ -18,7 +18,6 @@ const ItemPageContainer = ({
   location,
   getItem,
   hasToken,
-  getToken,
   findItem,
   storeItems,
   asyncGetUserProfile,
@@ -28,8 +27,7 @@ const ItemPageContainer = ({
   useEffect(() => {
     const token =
       localStorage.getItem('auth-token') ||
-      sessionStorage.getItem('auth-token') ||
-      getToken;
+      sessionStorage.getItem('auth-token');
     setToken(token);
     asyncGetUserProfile(token);
     findItem(storeItems, getLastParam(location.pathname));
@@ -54,7 +52,6 @@ const mapStateToProps = createStructuredSelector({
   getItem,
   storeItems,
   hasToken,
-  getToken,
 });
 const mapDispatchToProps = (dispatch) => ({
   findItem: (store, item) => dispatch(getItemFromStore(store, item)),

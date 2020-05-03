@@ -1,5 +1,8 @@
-import React from 'react';
+import React from 'react'
+
+//  Components
 import './step.style.scss';
+
 const StepComponent = ({ step, children, moveStep }) => {
   return (
     <div className="step-component-container">

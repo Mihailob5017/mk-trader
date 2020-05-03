@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 //  Helper Components
-import { asyncGetUserProfile } from '../../redux/user/user.action';
+import { asyncGetUserProfile, clearCart } from '../../redux/user/user.action';
 import { getItemsAsync } from '../../redux/item/item.action';
 import { getToken, cartItems, profile } from '../../redux/user/user.selector';
 import { storeItems } from '../../redux/item/item.selector';
@@ -20,6 +20,7 @@ const ProfilePageContainer = ({
   profile,
   storeItems,
   cartItems,
+  clearCart,
 }) => {
   useEffect(() => {
     const token =
@@ -35,6 +36,7 @@ const ProfilePageContainer = ({
     <LoadingComponent />
   ) : (
     <ProfilePage
+      clearCart={clearCart}
       profile={profile}
       items={getCartItems(storeItems, cartItems)}
     />
@@ -51,6 +53,7 @@ const mapStateToProps = createStructuredSelector({
 const mapDispatchToProps = (dispatch) => ({
   asyncGetUserProfile: (token) => dispatch(asyncGetUserProfile(token)),
   getItemsAsync: () => dispatch(getItemsAsync()),
+  clearCart: () => dispatch(clearCart()),
 });
 export default connect(
   mapStateToProps,

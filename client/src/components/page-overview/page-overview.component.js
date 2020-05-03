@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+//  Components
 import './page-overview.style.scss';
 const PageOverview = ({ image, children, to, isBtn, action }) => {
   return (

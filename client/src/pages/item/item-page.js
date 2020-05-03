@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+//  Components
 import Button from '../../components/button/button.somponent';
 import './item.style.scss';
 const axios = require('axios').default;
+
 const ItemPage = ({ hasToken, token,   item, isInCart, addToCart }) => {
   const [fullImg, setFullImg] = useState(false);
   const [inCart, setInCart] = useState(isInCart === 't' ? true : false);

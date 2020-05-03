@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import {} from '../../redux/user/user.reducer';
 import { connect } from 'react-redux';
-import './sign-in.style.scss';
+
 //  Components
 import InputComponent from '../input/input.component';
 import ButtonComponent from '../button/button.somponent';
 import CheckboxComponent from '../checkbox/checkbox.component';
 import { asyncSignInStart } from '../../redux/user/user.action';
+import './sign-in.style.scss';
 
 const SignIn = ({ signIn }) => {
   const [email, setEmail] = useState('');

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
-import RedirectChild from './redirect.component';
 
+//  Components
+import RedirectChild from './redirect.component';
 const RedirectComponent = ({ to, message }) => {
   const [isRedirecting, setRedirect] = useState(false);
 

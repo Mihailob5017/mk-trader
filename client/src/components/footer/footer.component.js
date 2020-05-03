@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+
+//  Helper Components
 import './footer.style.scss';
 const FooterComponent = ({ location }) => {
   return (

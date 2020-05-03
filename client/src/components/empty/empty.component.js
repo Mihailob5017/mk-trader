@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+//  Components
 import './empty.style.scss';
+
 const EmptyComponent = () => {
   return (
     <div className="empty-container">

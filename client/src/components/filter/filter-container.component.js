@@ -1,10 +1,15 @@
 import React from 'react';
-import FilterComponent from './filter.component';
 import { connect } from 'react-redux';
+
+//  Helper Components
+
 import {
   searchItemsAsync,
   asyncSearchAndFilter,
 } from '../../redux/item/item.action';
+
+//  Components
+import FilterComponent from './filter.component';
 const FilterComonentContainer = ({
   close,
   searchItemsAsync,

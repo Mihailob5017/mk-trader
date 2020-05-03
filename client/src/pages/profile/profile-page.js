@@ -1,14 +1,33 @@
-import React from 'react';
-import './profile-page.style.scss';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+//  Helper Components
+import { isUrl, getTotal } from '../../helpers/helpers';
+
+//  Components
+import ProfileItem from '../../components/profile-item/profile-item.component';
 import ImageComponent from '../../components/image-component/image.component';
 import ButtonComponent from '../../components/button/button.somponent';
-import { isUrl, getTotal } from '../../helpers/helpers';
-import { Link } from 'react-router-dom';
-import ProfileItem from '../../components/profile-item/profile-item.component';
-const ProfilePage = ({ profile, items }) => {
+import './profile-page.style.scss';
+const Axios = require('axios').default;
+
+const ProfilePage = ({ profile, items, clearCart }) => {
   const { avatarType } = profile;
-  console.log(items);
-  console.log(profile);
+  const [state, setState] = useState(getTotal(items));
+  const handleState = async () => {
+    const token =
+      localStorage.getItem('auth-token') ||
+      sessionStorage.getItem('auth-token');
+    setState(0);
+    clearCart();
+    await Axios.post(
+      'http://localhost:5000/cart/clear',
+      {},
+      {
+        headers: { ['auth-token']: token },
+      }
+    );
+  };
   return (
     <div className="profile-container">
       <div className="info-component">
@@ -43,18 +62,21 @@ const ProfilePage = ({ profile, items }) => {
       </div>
       <div className="cart-component">
         <div className="cart">
-          {items.map((item, i) => (
-            <ProfileItem item={item} key={i} />
-          ))}
+          {state !== 0 &&
+            items.map((item, i) => <ProfileItem item={item} key={i} />)}
         </div>
         <div className="total">
-          <h1>Total:{getTotal(items)}$</h1>
+          <h1>Total:{state}$</h1>
           <div className="btns">
             <div>
-              <ButtonComponent fullWidth={true}>Clear Cart</ButtonComponent>
+              <ButtonComponent actionHandler={handleState} fullWidth={true}>
+                Clear Cart
+              </ButtonComponent>
             </div>
             <div>
-              <ButtonComponent fullWidth={true}>Purchase</ButtonComponent>
+              <ButtonComponent actionHandler={handleState} fullWidth={true}>
+                Purchase
+              </ButtonComponent>
             </div>
           </div>
         </div>
