@@ -29,7 +29,7 @@ const HeaderComponent = ({ location, numOfItems, asyncGetUserProfile }) => {
         <div className="header-backround-div">
           <div className="header-icons">
             <div className="header-count">
-              <i class="fas fa-shopping-cart">
+              <i className="fas fa-shopping-cart">
                 <h6 className="count">
                   <Link to="/profile">{count}</Link>
                 </h6>

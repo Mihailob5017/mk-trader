@@ -12,13 +12,14 @@ import StartPage from './pages/start/start-page.container';
 import SignPage from './pages/sign/sign-page.container';
 import AddPage from './pages/add/add-page.container';
 import ProfilePage from './pages/profile/profile-page.container';
+import SettingsPage from './pages/settings/settings-page.container';
+import ItemPageContainer from './pages/item/item-page.container';
 
 //  Componentes
 import RedirectComponent from './components/redirect/redirect-container.component';
 import { getScoredItemsAsync } from './redux/item/item.action';
 import HeaderComponent from './components/header/header.component';
 import FooterComponent from './components/footer/footer.component';
-import ItemPageContainer from './pages/item/item-page.container';
 
 const App = ({ getTokenFromStorage, hasToken }) => {
   useEffect(() => {
@@ -64,6 +65,20 @@ const App = ({ getTokenFromStorage, hasToken }) => {
           exact
           path="/sign"
           render={() => (hasToken ? <Redirect to="/" /> : <SignPage />)}
+        />
+        <Route
+          exact
+          path="/settings"
+          render={() =>
+            hasToken ? (
+              <SettingsPage />
+            ) : (
+              <RedirectComponent
+                to="/sign"
+                message="Cant access this page without an account!"
+              />
+            )
+          }
         />
         <Route path="/item/" component={ItemPageContainer} />
       </Switch>
