@@ -46,10 +46,13 @@ Router.put('/edit', jwtAuth, async (req, res) => {
     res.status(401).send('Auth Error:You havent entered a token !');
   }
   //  Getting the id from the token & the profile from the id
+ 
   try {
     const { _id } = jwt.verify(token, process.env.TOKEN);
     const { paramName, paramValue } = req.body;
-    //  Wea are putting paramName in [] because that way the value of the paramName is being changed,otherwise we would set
+    console.log(paramName)
+    console.log(paramValue)
+    //  We are putting paramName in [] because that way the value of the paramName is being changed,otherwise we would set
     //  paramName:erjrgerjg witch would not change the value,this way we are changing the value of the paramName for exmp
     //  if paramName is "firstname" , the update will go like this --> firstname:qijeqwje
     await UserModel.findOneAndUpdate(

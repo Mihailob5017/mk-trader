@@ -4,6 +4,7 @@ import React from 'react';
 import './select.style.scss';
 
 const SelectComponent = ({ handleChange, name, value, options, message }) => {
+  
   return (
     <div className="select-component-container">
       <label>Select {message}:</label>
