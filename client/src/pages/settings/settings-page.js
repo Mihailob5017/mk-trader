@@ -6,19 +6,32 @@ import React, { useState } from "react";
 import "./settings-page.style.scss";
 import UpdateComponent from "../../components/update/update.component";
 import SelectComponent from "../../components/select/select.component";
-import CheckboxComponent from "../../components/checkbox/checkbox.component";
 
 const genders = [
   { name: "Male", value: "male" },
   { name: "Female", value: "female" },
 ];
 
+const willAddItems = [
+  {
+    name: "will add",
+    value: true,
+  },
+  { name: "wont add", value: false },
+];
+
 const SettingPage = ({ profile, token }) => {
   console.log(profile);
   const [gender, setGender] = useState(profile.gender);
+  const [willAddItemsToStore, setWillAddItemsToStore] = useState(
+    profile.willAddItemsToStore
+  );
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === "gender") setGender(value);
+
+    if (name === "willAddItemsToStore")
+      setWillAddItemsToStore(!willAddItemsToStore);
   };
 
   return (
@@ -63,8 +76,8 @@ const SettingPage = ({ profile, token }) => {
         />
         <UpdateComponent
           token={token}
-          label="Current Addres"
-          value={profile.dateOfBirth}
+          label="Date of Birth"
+          value={profile.dateOfBirth || ""}
           type="date"
           name="dateOfBirth"
         />
@@ -82,7 +95,17 @@ const SettingPage = ({ profile, token }) => {
           />
         </UpdateComponent>
       </div>
-      <div className="other-options"></div>
+
+      <div className="other-options-container">
+        <UpdateComponent isCustom={true}>
+          <SelectComponent
+            options={willAddItems}
+            name="willAddItemsToStore"
+            value={profile.willAddItemsToStore}
+            handleChange={handleChange}
+          />
+        </UpdateComponent>
+      </div>
     </div>
   );
 };
