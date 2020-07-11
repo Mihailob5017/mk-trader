@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 //  Helper Components
-
+import { getThemeKey } from "../../helpers/helpers";
 //  Components
 import "./settings-page.style.scss";
 import UpdateComponent from "../../components/update/update.component";
@@ -20,18 +20,31 @@ const willAddItems = [
   { name: "wont add", value: false },
 ];
 
+const themes = [
+  { name: "light", value: false },
+  { name: "dark", value: true },
+];
+
 const SettingPage = ({ profile, token }) => {
-  console.log(profile);
+  const [theme, setTheme] = useState(getThemeKey());
   const [gender, setGender] = useState(profile.gender);
   const [willAddItemsToStore, setWillAddItemsToStore] = useState(
     profile.willAddItemsToStore
   );
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    if (getThemeKey() === true)
+      //document.body.style.backgroundColor = "#333333";
+      console.log("set to dark");
+    // document.body.style.backgroundColor = "#ffffff";
+    else console.log("set to light ");
+  });
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === "gender") setGender(value);
-
-    if (name === "willAddItemsToStore")
-      setWillAddItemsToStore(!willAddItemsToStore);
+    if (name === "theme") setTheme(value);
+    if (name === "willAddItemsToStore") setWillAddItemsToStore(value);
   };
 
   return (
@@ -97,14 +110,27 @@ const SettingPage = ({ profile, token }) => {
       </div>
 
       <div className="other-options-container">
-        <UpdateComponent isCustom={true}>
+        <UpdateComponent
+          isCustom={true}
+          name="willAddItemsToStore"
+          token={token}
+          value={willAddItemsToStore}
+        >
           <SelectComponent
             options={willAddItems}
             name="willAddItemsToStore"
-            value={profile.willAddItemsToStore}
+            value={willAddItemsToStore}
             handleChange={handleChange}
           />
         </UpdateComponent>
+
+        <SelectComponent
+          options={themes}
+          message="theme"
+          name="theme"
+          value={theme}
+          handleChange={handleChange}
+        />
       </div>
     </div>
   );

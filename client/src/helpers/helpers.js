@@ -12,16 +12,16 @@ export const checkIfEmpty = (obj) =>
   Object.keys(obj).length === 0 ? false : true;
 
 export const getLastParam = (url) => {
-  const args = url.split('/');
+  const args = url.split("/");
   return args[args.length - 1];
 };
 
 export const filterOutItem = (storeItems, itemId) => {
   if (storeItems !== null) {
     const res = storeItems.filter((item) => item._id === itemId);
-    sessionStorage.setItem('curr-item', JSON.stringify(res));
+    sessionStorage.setItem("curr-item", JSON.stringify(res));
     return res;
-  } else return JSON.parse(sessionStorage.getItem('curr-item'));
+  } else return JSON.parse(sessionStorage.getItem("curr-item"));
 };
 
 export const isInCart = (items, item_id) => {
@@ -32,7 +32,7 @@ export const isInCart = (items, item_id) => {
 };
 
 export const getInCartParam = (url) => {
-  const args = url.split('/');
+  const args = url.split("/");
   return args[args.length - 2];
 };
 export const newCartItems = (Items, item) => {
@@ -44,11 +44,17 @@ export const getCartItems = (storeItems, cartItems) => {
 };
 
 export const isUrl = (url) => {
-  return url.startsWith('http') && url.includes('/') ? true : false;
+  return url.startsWith("http") && url.includes("/") ? true : false;
 };
 
 export const getTotal = (itemArr) => {
   const sum = itemArr.reduce((acc, curr) => acc + curr.price, 0);
 
   return sum;
+};
+
+export const getThemeKey = () => {
+  console.log(localStorage.getItem("theme"));
+  if (localStorage.getItem("theme") === null) return false;
+  else return localStorage.getItem("theme");
 };
