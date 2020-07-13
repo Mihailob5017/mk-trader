@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 
 //  Helper Components
-import { profile } from '../../redux/user/user.selector';
-import { asyncGetUserProfile } from '../../redux/user/user.action';
+import { profile } from "../../redux/user/user.selector";
+import { asyncGetUserProfile, signOut } from "../../redux/user/user.action";
 
 //  Components
-import SettingPage from './settings-page';
-import LoadingComponent from '../../components/loading/loading.component';
+import SettingPage from "./settings-page";
+import LoadingComponent from "../../components/loading/loading.component";
 
-const SettingPageContainer = ({ profile, asyncGetUserProfile }) => {
+const SettingPageContainer = ({ profile, asyncGetUserProfile, signOut }) => {
   const [isUpdated, setUpdate] = useState(false);
   const token =
-    localStorage.getItem('auth-token') || sessionStorage.getItem('auth-token');
+    localStorage.getItem("auth-token") || sessionStorage.getItem("auth-token");
   useEffect(() => {
     if (profile === null) asyncGetUserProfile(token);
 
@@ -25,6 +25,7 @@ const SettingPageContainer = ({ profile, asyncGetUserProfile }) => {
       profile={profile}
       token={token}
       update={() => setUpdate(true)}
+      signOut={signOut}
     />
   ) : (
     <LoadingComponent />
@@ -34,6 +35,7 @@ const SettingPageContainer = ({ profile, asyncGetUserProfile }) => {
 const mapStateToProps = createStructuredSelector({ profile });
 const mapDispatchToProps = (disatpch) => ({
   asyncGetUserProfile: (token) => disatpch(asyncGetUserProfile(token)),
+  signOut: (token) => disatpch(signOut(token)),
 });
 
 export default connect(

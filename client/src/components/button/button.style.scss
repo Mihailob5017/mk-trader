@@ -27,6 +27,19 @@
       }
     }
   }
+  .disabled-btn {
+    cursor: initial;
+    background: grey;
+    color: #111111;
+    &:hover {
+      cursor: initial;
+      color: #111111;
+      background: grey;
+      * {
+        color: #111111;
+      }
+    }
+  }
   .button-main_fullwidth {
     width: 100%;
   }

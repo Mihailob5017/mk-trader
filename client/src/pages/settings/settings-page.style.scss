@@ -11,5 +11,15 @@
   .other-options-container {
     width: 40%;
     border: 1px solid black;
+    .delete-profile_container {
+      margin-top: 2.65rem;
+      padding: 1em 0;
+      h2{
+        text-align: center;
+        margin: 0 2em;
+        color: firebrick;
+      }
+      border: 2px solid firebrick;
+    }
   }
 }

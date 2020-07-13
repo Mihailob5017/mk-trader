@@ -1,12 +1,13 @@
-import React from 'react';
+import React from "react";
 
 //  Components
-import './button.style.scss';
-const ButtonComponent = ({ children, actionHandler, fullWidth }) => {
+import "./button.style.scss";
+const ButtonComponent = ({ children, actionHandler, fullWidth, disabled }) => {
   return (
-    <div className="button-container">
+    <div className={`button-container `}>
       <button
-        className={`button-main ${fullWidth && 'button-main_fullwidth'}`}
+        disabled={disabled}
+        className={`button-main ${fullWidth && "button-main_fullwidth"} ${disabled && 'disabled-btn'}`}
         onClick={actionHandler}
       >
         {children}
