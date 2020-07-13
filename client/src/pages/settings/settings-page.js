@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
 
 //  Helper Components
-import { getTheme, setTheme } from "../../helpers/helpers";
+import {
+  getTheme,
+  setTheme,
+  getRMState,
+  changeRMState,
+} from "../../helpers/helpers";
 //  Components
 import "./settings-page.style.scss";
 import UpdateComponent from "../../components/update/update.component";
 import SelectComponent from "../../components/select/select.component";
+import CheckboxComponent from "../../components/checkbox/checkbox.component";
 
 const genders = [
   { name: "Male", value: "male" },
@@ -31,10 +37,11 @@ const SettingPage = ({ profile, token }) => {
   const [willAddItemsToStore, setWillAddItemsToStore] = useState(
     profile.willAddItemsToStore
   );
+  const [rememberMeState, setRememberState] = useState(getRMState);
   useEffect(() => {
     localStorage.setItem("theme", theme);
-
     setTheme(getTheme());
+    changeRMState(rememberMeState);
   });
 
   const handleChange = (e) => {
@@ -42,6 +49,7 @@ const SettingPage = ({ profile, token }) => {
     if (name === "gender") setGender(value);
     if (name === "theme") setThemeState(value);
     if (name === "willAddItemsToStore") setWillAddItemsToStore(value);
+    if (name === "remember") setRememberState(!rememberMeState);
   };
 
   return (
@@ -128,6 +136,13 @@ const SettingPage = ({ profile, token }) => {
           value={theme}
           handleChange={handleChange}
         />
+        <CheckboxComponent
+          value={rememberMeState}
+          name="remember"
+          handleChange={handleChange}
+        >
+          Remember Me
+        </CheckboxComponent>
       </div>
     </div>
   );

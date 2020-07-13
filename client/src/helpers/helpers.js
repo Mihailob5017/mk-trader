@@ -77,3 +77,21 @@ export const setTheme = (theme) => {
       .forEach((el) => (el.style.color = "#000000"));
   }
 };
+
+export const getRMState = () =>
+  localStorage.getItem("auth-token") ? true : false;
+
+export const changeRMState = (NRMState) => {
+  const lStorage = localStorage.getItem("auth-token");
+  const sStorage = sessionStorage.getItem("auth-token");
+
+  if (lStorage && NRMState === false) {
+    sessionStorage.setItem("auth-token", lStorage);
+    localStorage.removeItem("auth-token");
+    return;
+  } else if (sStorage && NRMState === true) {
+    localStorage.setItem("auth-token", sStorage);
+    sessionStorage.removeItem("auth-token");
+    return;
+  } else return;
+};

@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 //  Components
-import './checkbox.style.scss';
+import "./checkbox.style.scss";
 
 const CheckboxComponent = ({ name, value, handleChange, children }) => {
   return (
@@ -11,8 +11,9 @@ const CheckboxComponent = ({ name, value, handleChange, children }) => {
         value={value}
         onChange={handleChange}
         type="checkbox"
+        defaultChecked={value}
       />
-      <label className="checkbox-label" htmlFor={name}>
+      <label className="checkbox-label change" htmlFor={name}>
         {children}
       </label>
     </div>
