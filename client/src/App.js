@@ -20,16 +20,13 @@ import RedirectComponent from "./components/redirect/redirect-container.componen
 import { getScoredItemsAsync } from "./redux/item/item.action";
 import HeaderComponent from "./components/header/header.component";
 import FooterComponent from "./components/footer/footer.component";
-import { getThemeKey } from "./helpers/helpers";
+import { getTheme, setTheme } from "./helpers/helpers";
 
 const App = ({ getTokenFromStorage, hasToken }) => {
   useEffect(() => {
     getTokenFromStorage();
-    if (getThemeKey() === true)
-      //document.body.style.backgroundColor = "#333333";
-      console.log("set to dark");
-    // document.body.style.backgroundColor = "#ffffff";
-    else console.log("set to light ");
+
+    setTheme(getTheme());
   }, []);
 
   return (

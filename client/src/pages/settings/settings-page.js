@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 //  Helper Components
-import { getThemeKey } from "../../helpers/helpers";
+import { getTheme, setTheme } from "../../helpers/helpers";
 //  Components
 import "./settings-page.style.scss";
 import UpdateComponent from "../../components/update/update.component";
@@ -26,24 +26,21 @@ const themes = [
 ];
 
 const SettingPage = ({ profile, token }) => {
-  const [theme, setTheme] = useState(getThemeKey());
+  const [theme, setThemeState] = useState(getTheme());
   const [gender, setGender] = useState(profile.gender);
   const [willAddItemsToStore, setWillAddItemsToStore] = useState(
     profile.willAddItemsToStore
   );
   useEffect(() => {
     localStorage.setItem("theme", theme);
-    if (getThemeKey() === true)
-      //document.body.style.backgroundColor = "#333333";
-      console.log("set to dark");
-    // document.body.style.backgroundColor = "#ffffff";
-    else console.log("set to light ");
+
+    setTheme(getTheme());
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === "gender") setGender(value);
-    if (name === "theme") setTheme(value);
+    if (name === "theme") setThemeState(value);
     if (name === "willAddItemsToStore") setWillAddItemsToStore(value);
   };
 

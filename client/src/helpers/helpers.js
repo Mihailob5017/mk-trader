@@ -53,8 +53,21 @@ export const getTotal = (itemArr) => {
   return sum;
 };
 
-export const getThemeKey = () => {
-  console.log(localStorage.getItem("theme"));
-  if (localStorage.getItem("theme") === null) return false;
-  else return localStorage.getItem("theme");
+export const getTheme = () => {
+  const isSet = localStorage.getItem("theme");
+  if (isSet === null)
+    //if there is no theme,it will set it a light theme to default
+    localStorage.setItem("theme", false);
+  else if (isSet === "true") return true;
+  else return false;
+};
+
+export const setTheme = (theme) => {
+  if (theme === true) {
+    //  more style changes if needed
+    document.body.style.backgroundColor = "#333333";
+  } else {
+    // more style changes if needed
+    document.body.style.backgroundColor = "#ffffff";
+  }
 };
