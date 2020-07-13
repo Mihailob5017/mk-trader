@@ -66,8 +66,14 @@ export const setTheme = (theme) => {
   if (theme === true) {
     //  more style changes if needed
     document.body.style.backgroundColor = "#333333";
+    document
+      .querySelectorAll("*  .change")
+      .forEach((el) => (el.style.color = "#aaaaaa"));
   } else {
     // more style changes if needed
     document.body.style.backgroundColor = "#ffffff";
+    document
+      .querySelectorAll("*  .change")
+      .forEach((el) => (el.style.color = "#000000"));
   }
 };
