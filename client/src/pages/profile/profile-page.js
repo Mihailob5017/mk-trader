@@ -1,30 +1,31 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 //  Helper Components
-import { isUrl, getTotal } from '../../helpers/helpers';
+import { isUrl, getTotal } from "../../helpers/helpers";
 
 //  Components
-import ProfileItem from '../../components/profile-item/profile-item.component';
-import ImageComponent from '../../components/image-component/image.component';
-import ButtonComponent from '../../components/button/button.somponent';
-import './profile-page.style.scss';
-const Axios = require('axios').default;
+import ProfileItem from "../../components/profile-item/profile-item.component";
+import ImageComponent from "../../components/image-component/image.component";
+import ButtonComponent from "../../components/button/button.somponent";
+import "./profile-page.style.scss";
+const Axios = require("axios").default;
 
 const ProfilePage = ({ profile, items, clearCart }) => {
+  console.log(profile);
   const { avatarType } = profile;
   const [state, setState] = useState(getTotal(items));
   const handleState = async () => {
     const token =
-      localStorage.getItem('auth-token') ||
-      sessionStorage.getItem('auth-token');
+      localStorage.getItem("auth-token") ||
+      sessionStorage.getItem("auth-token");
     setState(0);
     clearCart();
     await Axios.post(
-      'http://localhost:5000/cart/clear',
+      "http://localhost:5000/cart/clear",
       {},
       {
-        headers: { ['auth-token']: token },
+        headers: { ["auth-token"]: token },
       }
     );
   };
@@ -49,7 +50,7 @@ const ProfilePage = ({ profile, items, clearCart }) => {
           <h2>Gender:{profile.gender}</h2>
           <h2>
             Date of Birth:
-            {profile.dateOfBirth ? profile.dateOfBirth : 'not defined'}
+            {profile.dateOfBirth ? profile.dateOfBirth : "not defined"}
           </h2>
           <h2>Addres:{profile.currentAddres}</h2>
           <h2>City:{profile.currentCity}</h2>
@@ -74,7 +75,11 @@ const ProfilePage = ({ profile, items, clearCart }) => {
               </ButtonComponent>
             </div>
             <div>
-              <ButtonComponent actionHandler={handleState} fullWidth={true}>
+              <ButtonComponent
+                disabled={true}
+                actionHandler={handleState}
+                fullWidth={true}
+              >
                 Purchase
               </ButtonComponent>
             </div>

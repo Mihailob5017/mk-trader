@@ -1,47 +1,57 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 //  Components
-import InputComponent from '../../components/input/input.component';
-import SelectComponent from '../../components/select/select.component';
-import CheckBoxComponent from '../../components/checkbox/checkbox.component';
-import ButtonComponent from '../../components/button/button.somponent';
-import './add-page.style.scss';
+import InputComponent from "../../components/input/input.component";
+import SelectComponent from "../../components/select/select.component";
+import CheckBoxComponent from "../../components/checkbox/checkbox.component";
+import ButtonComponent from "../../components/button/button.somponent";
+import "./add-page.style.scss";
 
 //  Helpers
 const options = [
-  { name: 'Male', value: 'female' },
-  { name: 'Female', value: 'female' },
-  { name: 'Sneakers', value: 'shoes' },
-  { name: 'Jackets', value: 'jackets' },
+  { name: "Male", value: "male" },
+  { name: "Female", value: "female" },
+  { name: "Sneakers", value: "shoes" },
+  { name: "Shirts", value: "shirts" },
+  { name: "Pants", value: "pants" },
+  { name: "Hats", value: "hats" },
+  { name: "Hoodies", value: "hoodies" },
+  { name: "Polos", value: "polos" },
+  { name: "Shoes", value: "shoes" },
+  { name: "Socks", value: "socks" },
+  { name: "Sweaters", value: "sweaters" },
+  { name: "Heels", value: "heels" },
+  { name: "Swimsuits", value: "swimsuits" },
+  { name: "Other", value: "other" },
 ];
 
 const AddPage = ({ addItem, token }) => {
   const [willAddUrl, setAddUrl] = useState(false);
-  const [url, setUrl] = useState('');
-  const [desc, setDesc] = useState('');
-  const [type, setType] = useState('');
-  const [price, setPrice] = useState('');
-  const [name, setName] = useState('');
+  const [url, setUrl] = useState("");
+  const [desc, setDesc] = useState("");
+  const [type, setType] = useState("");
+  const [price, setPrice] = useState("");
+  const [name, setName] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name === 'checkbox') setAddUrl(!willAddUrl);
-    if (name === 'url') setUrl(value);
-    if (name === 'desc') setDesc(value);
-    if (name === 'type') setType(value);
-    if (name === 'name') setName(value);
-    if (name === 'price') setPrice(value);
+    if (name === "checkbox") setAddUrl(!willAddUrl);
+    if (name === "url") setUrl(value);
+    if (name === "desc") setDesc(value);
+    if (name === "type") setType(value);
+    if (name === "name") setName(value);
+    if (name === "price") setPrice(value);
   };
 
   const addItemExec = () => {
     const item = { name, type, description: desc, imageUrl: url, price };
     addItem(item, token);
-    setPrice('');
-    setDesc('');
-    setName('');
-    setType('');
+    setPrice("");
+    setDesc("");
+    setName("");
+    setType("");
     setAddUrl(false);
-    setUrl('');
+    setUrl("");
   };
 
   return (

@@ -1,45 +1,54 @@
-import React, { useState } from 'react';
-import './filter.style.scss';
-import SearchComponent from '../search/search.component';
-import SortItemsComponent from '../sort-items/sort-items.component';
-import SelectComponent from '../select/select.component';
-import InputComponent from '../input/input.component';
-import ButtonComponent from '../button/button.somponent';
+import React, { useState } from "react";
+import "./filter.style.scss";
+import SearchComponent from "../search/search.component";
+import SortItemsComponent from "../sort-items/sort-items.component";
+import SelectComponent from "../select/select.component";
+import InputComponent from "../input/input.component";
+import ButtonComponent from "../button/button.somponent";
 const searchNameType = [
-  { name: 'Type', value: 'type' },
-  { name: 'Price', value: 'price' },
-  { name: 'Rating', value: 'score' },
+  { name: "Type", value: "type" },
+  { name: "Price", value: "price" },
+  { name: "Rating", value: "score" },
 ];
 const types = [
-  { name: 'Male', value: 'male' },
-  { name: 'Female', value: 'female' },
-  { name: 'Sneakers', value: 'shoes' },
-  { name: 'Jackets', value: 'jackets' },
+  { name: "Male", value: "male" },
+  { name: "Female", value: "female" },
+  { name: "Sneakers", value: "shoes" },
+  { name: "Shirts", value: "shirts" },
+  { name: "Pants", value: "pants" },
+  { name: "Hats", value: "hats" },
+  { name: "Hoodies", value: "hoodies" },
+  { name: "Polos", value: "polos" },
+  { name: "Shoes", value: "shoes" },
+  { name: "Socks", value: "socks" },
+  { name: "Sweaters", value: "sweaters" },
+  { name: "Heels", value: "heels" },
+  { name: "Swimsuits", value: "swimsuits" },
+  { name: "Other", value: "other" },
 ];
 
 const FilterComponent = ({ close, searchByName, searchAndFilter }) => {
   //  Search
-  const [searchParam, setSearchParam] = useState('');
-  const [param1, setParam1] = useState('');
-  const [param2, setParam2] = useState('');
+  const [searchParam, setSearchParam] = useState("");
+  const [param1, setParam1] = useState("");
+  const [param2, setParam2] = useState("");
 
   //  Sort
   const [sortValue, setSortValue] = useState(false);
-  const [sortByName, setSortByName] = useState('name');
+  const [sortByName, setSortByName] = useState("name");
 
   const handleChange = (e) => {
     const { value, name } = e.target;
     //  Search
-    if (name === 'search-type') setSearchParam(value);
-    if (name === 'item-type' || name === 'param1') setParam1(value);
-    if (name === 'param2') setParam2(value);
+    if (name === "search-type") setSearchParam(value);
+    if (name === "item-type" || name === "param1") setParam1(value);
+    if (name === "param2") setParam2(value);
     //  Sort
-    if (name === 'radio-group') setSortValue(!sortValue);
-    if (setSortByName === 'sort-by-name') setSortByName(value);
+    if (name === "radio-group") setSortValue(!sortValue);
+    if (setSortByName === "sort-by-name") setSortByName(value);
   };
 
   const executeSearchAndFilter = () => {
-   
     const obj = {
       filter: {
         type: searchParam,
@@ -48,14 +57,14 @@ const FilterComponent = ({ close, searchByName, searchAndFilter }) => {
       },
       sort: {
         type: sortByName,
-        param: sortValue ? 'asc' : 'desc',
+        param: sortValue ? "asc" : "desc",
       },
     };
     searchAndFilter(obj);
-    setSearchParam('');
-    setParam1('');
-    setParam2('');
-    setSortByName('');
+    setSearchParam("");
+    setParam1("");
+    setParam2("");
+    setSortByName("");
     setSortValue(false);
   };
 
@@ -75,8 +84,8 @@ const FilterComponent = ({ close, searchByName, searchAndFilter }) => {
             name="search-type"
             handleChange={handleChange}
           />
-          {searchParam !== '' ? (
-            searchParam === 'type' ? (
+          {searchParam !== "" ? (
+            searchParam === "type" ? (
               <SelectComponent
                 options={types}
                 value={param1}
@@ -87,14 +96,14 @@ const FilterComponent = ({ close, searchByName, searchAndFilter }) => {
             ) : (
               <>
                 <InputComponent
-                  placeholder={searchParam === 'price' ? 'Price' : 'Rating'}
+                  placeholder={searchParam === "price" ? "Price" : "Rating"}
                   label="Min:"
                   name="param1"
                   value={param1}
                   handleChange={handleChange}
                 />
                 <InputComponent
-                  placeholder={searchParam === 'price' ? 'Price' : 'Rating'}
+                  placeholder={searchParam === "price" ? "Price" : "Rating"}
                   label="Max:"
                   name="param2"
                   value={param2}

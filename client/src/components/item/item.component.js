@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 //  Helper Components
-import { addToCart } from '../../redux/user/user.action';
+import { addToCart } from "../../redux/user/user.action";
 
 //  Componennts
-import './item.style.scss';
-import ButtonComponent from '../button/button.somponent';
+import "./item.style.scss";
+import ButtonComponent from "../button/button.somponent";
+import ItemImageComponent from "../item-image/item-image.component";
 //  Helpers
-const axios = require('axios').default;
+const axios = require("axios").default;
 const ItemComponent = ({
   item,
   hasToken,
@@ -34,16 +35,21 @@ const ItemComponent = ({
     setInCart(true);
     addToCart(id);
     axios.put(
-      'http://localhost:5000/cart/add',
+      "http://localhost:5000/cart/add",
       { itemId: id },
-      { headers: { ['auth-token']: token } }
+      { headers: { ["auth-token"]: token } }
     );
   };
   return (
     <div className="item-container">
-      <div className="item-image">
+      {/* <div className="item-image">
         <img src={imageUrl} />
-      </div>
+      </div> */}
+      <ItemImageComponent
+        imageUrl={imageUrl}
+        className="item-image"
+        type={type}
+      />
       <div className="item-info">
         <h2 className="item-name">Name: {name}</h2>
         <h2 className="item-type">Type: {type}</h2>
@@ -54,7 +60,7 @@ const ItemComponent = ({
         {hasToken && (
           <button
             disabled={posOrNeg == 1 ? true : false}
-            className={`item-score-btn ${posOrNeg == 1 && 'btn-disabled'}`}
+            className={`item-score-btn ${posOrNeg == 1 && "btn-disabled"}`}
             onClick={scoreHandler(1)}
           >
             <i className="fas fa-angle-up"></i>
@@ -65,7 +71,7 @@ const ItemComponent = ({
         {hasToken && (
           <button
             disabled={posOrNeg == -1 ? true : false}
-            className={`item-score-btn ${posOrNeg == -1 && 'btn-disabled'}`}
+            className={`item-score-btn ${posOrNeg == -1 && "btn-disabled"}`}
             onClick={scoreHandler(-1)}
           >
             <i className="fas fa-angle-down"></i>
@@ -85,7 +91,7 @@ const ItemComponent = ({
           </>
         )}
         <ButtonComponent fullWidth={true}>
-          <Link to={`/item/${isInCart ? 't' : 'f'}/${_id}`}>More Info</Link>
+          <Link to={`/item/${isInCart ? "t" : "f"}/${_id}`}>More Info</Link>
         </ButtonComponent>
       </div>
     </div>

@@ -1,21 +1,24 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 //  Components
-import Button from '../../components/button/button.somponent';
-import './item.style.scss';
-const axios = require('axios').default;
+import Button from "../../components/button/button.somponent";
+import "./item.style.scss";
+import ItemImageComponent from "../../components/item-image/item-image.component";
+const axios = require("axios").default;
 
-const ItemPage = ({ hasToken, token,   item, isInCart, addToCart }) => {
+const ItemPage = ({ hasToken, token, item, isInCart, addToCart }) => {
+  console.log(item.imageUrl);
+  console.log(item.type);
   const [fullImg, setFullImg] = useState(false);
-  const [inCart, setInCart] = useState(isInCart === 't' ? true : false);
+  const [inCart, setInCart] = useState(isInCart === "t" ? true : false);
   const Add = () => {
     addToCart(item._id);
     setInCart(true);
     axios.put(
-      'http://localhost:5000/cart/add',
+      "http://localhost:5000/cart/add",
       { itemId: item._id },
       {
-        headers: { ['auth-token']: token },
+        headers: { ["auth-token"]: token },
       }
     );
   };
@@ -26,9 +29,14 @@ const ItemPage = ({ hasToken, token,   item, isInCart, addToCart }) => {
           <div className="exit-icon" onClick={() => setFullImg(false)}>
             <i className="far fa-times-circle"></i>
           </div>
-          <div className="big-image-container">
+          {/* <div className="big-image-container">
             <img src={item.imageUrl} alt={item.name} />
-          </div>
+          </div> */}
+          <ItemImageComponent
+            className="big-image-container"
+            imageUrl={item.imageUrl}
+            type={item.type}
+          />
         </>
       ) : (
         <>
@@ -42,7 +50,11 @@ const ItemPage = ({ hasToken, token,   item, isInCart, addToCart }) => {
                   <i className="fas fa-search-plus"></i>
                 </div>
               </div>
-              <img src={item.imageUrl} alt={item.name} />
+              <ItemImageComponent
+                className="img"
+                imageUrl={item.imageUrl}
+                type={item.type}
+              />
             </div>
             <div className="item-basic-info">
               <h1>Name:{item.name}</h1>
