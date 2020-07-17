@@ -34,7 +34,9 @@ const UpdateComponent = ({
   return (
     <div className="update-component-container">
       <div className="input">
-        <label htmlFor={name}>{label}</label>
+        <label htmlFor={name} className="change">
+          {label}
+        </label>
         {isCustom ? (
           <div>{children}</div>
         ) : (
