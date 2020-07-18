@@ -15,6 +15,7 @@ import SelectComponent from "../../components/select/select.component";
 import CheckboxComponent from "../../components/checkbox/checkbox.component";
 import ButtonComponent from "../../components/button/button.somponent";
 import SubsectionComponent from "../../components/subsection/subsection.component";
+import InputComponent from "../../components/input/input.component";
 
 const axios = require("axios").default;
 
@@ -47,6 +48,8 @@ const SettingPage = ({ profile, token, signOut }) => {
   const [ays, setAys] = useState(false);
   const [rememberMeState, setRememberState] = useState(getRMState);
   const [subsection, setSubsection] = useState(1);
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   useEffect(() => {
     localStorage.setItem("theme", theme);
@@ -62,7 +65,8 @@ const SettingPage = ({ profile, token, signOut }) => {
     if (name === "willAddItemsToStore") setWillAddItemsToStore(value);
     if (name === "remember") setRememberState(!rememberMeState);
     if (name === "ays") setAys(!ays);
-    if (name === "test") console.log("value");
+    if (name === "password") setPassword(value);
+    if (name === "confirm-password") setConfirmPassword(value);
   };
 
   const deleteProfile = () => {
@@ -78,6 +82,21 @@ const SettingPage = ({ profile, token, signOut }) => {
     else sessionStorage.removeItem("auth-token");
 
     history.push("/sign");
+  };
+
+  const updatePassword = () => {
+    axios.put(
+      "http://localhost:5000/user/edit",
+      {
+        paramName: "password",
+        paramValue: password,
+      },
+      {
+        headers: { ["auth-token"]: token },
+      }
+    );
+    setPassword("");
+    setConfirmPassword("");
   };
 
   return (
@@ -229,11 +248,34 @@ const SettingPage = ({ profile, token, signOut }) => {
           </CheckboxComponent>
         </div>
       </SubsectionComponent>
+
       <SubsectionComponent state={subsection} number={4}>
-        {/* Add the part of changin the password here */}
+        <div className="update-component">
+          <h2 className="change">Update Password:</h2>
+          <InputComponent
+            name="password"
+            value={password}
+            handleChange={handleChange}
+            type="password"
+            label="New Password"
+          />
+          <InputComponent
+            name="confirm-password"
+            value={confirmPassword}
+            handleChange={handleChange}
+            type="password"
+            label="Confirm Password"
+          />
+        </div>
+        <ButtonComponent
+          disabled={password !== confirmPassword || password.length < 5}
+          actionHandler={updatePassword}
+        >
+          Update Password
+        </ButtonComponent>
         <div className="delete-profile_container">
           <div className="update-component">
-            <h1 className='danger'>Dangerous</h1>
+            <h1 className="danger">Dangerous</h1>
             <h4 className="change">
               Are you sure you want to delete your profile?Choose wisely,because
               you wont be able to bring it back,also all the items you have
