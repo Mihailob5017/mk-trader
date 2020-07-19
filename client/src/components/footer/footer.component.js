@@ -12,7 +12,7 @@ const FooterComponent = ({ location }) => {
         </div>
       )}
       <div className="footer-text">
-        <h1>Mihailo Boskovic 2020</h1>
+        <h2>Mihailo Boskovic 2020</h2>
         <h3>All rights reviced</h3>
       </div>
     </div>
