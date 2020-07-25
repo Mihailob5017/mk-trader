@@ -1,21 +1,23 @@
 .button-container {
   margin-top: 1em;
-
+  width: 100%;
   display: flex;
   justify-content: center;
-  height: 5vh;
+  align-items: center;
+  height: 6vh;
   .button-main {
-    width: 30%;
-    color: black;
-    background: white;
+    width: 40%;
+    height: 100%;
+    color: royalblue;
+    border: 1px solid royalblue;
+    background: transparent;
     outline: none;
     font-size: 1.5rem;
-    font-weight: 600;
-    border: 1px solid black;
-    border-radius: 10px;
+    font-weight: 400;
+    border-radius: 4px;
     transition: 500ms;
     * {
-      color: black;
+      color: royalblue;
       text-decoration: none;
     }
     &:hover {
@@ -28,19 +30,65 @@
     }
   }
   .disabled-btn {
+    border: none;
+    background: rgb(132, 158, 236);
+    color: white;
     cursor: initial;
-    background: grey;
-    color: #111111;
     &:hover {
+      border: none;
+      background: rgb(132, 158, 236);
+      color: white;
       cursor: initial;
-      color: #111111;
-      background: grey;
-      * {
-        color: #111111;
-      }
     }
   }
   .button-main_fullwidth {
     width: 100%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .button-container {
+    margin-top: 1em;
+    margin: auto;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
+    .button-main {
+      width: 100%;
+      height: 100%;
+      color: royalblue;
+      border: 1px solid royalblue;
+      background: transparent;
+      outline: none;
+      font-size: 1.1rem;
+      font-weight: 400;
+      border-radius: 4px;
+      transition: 500ms;
+
+      &:hover {
+        cursor: pointer;
+        color: white;
+        background: royalblue;
+      }
+    }
+    .disabled-btn {
+      border: none;
+      background: rgb(132, 158, 236);
+      color: white;
+      cursor: initial;
+      &:hover {
+        border: none;
+        background: rgb(132, 158, 236);
+        color: white;
+        cursor: initial;
+        * {
+          color: white;
+        }
+      }
+    }
+    .button-main_fullwidth {
+      width: 100%;
+    }
   }
 }

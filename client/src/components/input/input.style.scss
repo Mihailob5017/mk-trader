@@ -32,3 +32,41 @@
     letter-spacing: 3px;
   }
 }
+@media screen and (max-width: 500px) {
+  .input-container {
+    display: flex;
+    justify-content: space-between;
+    background: white;
+    flex-direction: column;
+    margin: 0;
+
+    margin-bottom: 2em;
+
+    width: 90%;
+    .input-label {
+      width: 100%;
+      font-weight: 400;
+      font-size: 1.1rem;
+
+      margin-bottom: 0.3em;
+    }
+
+    .input-input-field {
+      background: white;
+      width: 100%;
+      font-size: 1.1rem;
+      border: none;
+      padding: 0.2em 0em;
+      font-weight: 300;
+      border-radius: 3px;
+      border: 1px solid #bbbbbb;
+      outline: none;
+      &:focus {
+        border: 1px solid #777;
+      }
+    }
+    [type="password"] {
+      letter-spacing: 3px;
+    }
+  }
+}
