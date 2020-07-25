@@ -1,12 +1,12 @@
-import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import React from "react";
+import { Link, withRouter } from "react-router-dom";
 
 //  Helper Components
-import './footer.style.scss';
+import "./footer.style.scss";
 const FooterComponent = ({ location }) => {
   return (
     <div className="footer-component change">
-      {location.pathname !== '/' && (
+      {location.pathname !== "/" && (
         <div className="footer-btn">
           <Link to="/">Go Back</Link>
         </div>

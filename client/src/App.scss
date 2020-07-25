@@ -1,28 +1,30 @@
-
-
 * {
   margin: 0em;
   padding: 0em;
   font-family: "Roboto", sans-serif;
-  
 }
 
 /* width */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 12px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #cfcfcf;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #888;
+  border-radius: 10rem;
+  cursor: pointer;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: royalblue;
+  background: #999999;
+  border: 1px solid black;
+
+  transition: 500ms;
 }

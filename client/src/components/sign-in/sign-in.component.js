@@ -33,7 +33,6 @@ const SignIn = ({ signIn }) => {
 
   return (
     <div className="sign-in-container">
-      <h1 className="sign-in-header">Sign In</h1>
       <InputComponent
         placeholder="Email"
         type="email"

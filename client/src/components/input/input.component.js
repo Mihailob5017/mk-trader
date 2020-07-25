@@ -12,7 +12,7 @@ const InputComponent = ({
     <div className="input-container">
       <label className='input-label' htmlFor={name}>{label}</label>
       <input 
-        
+        className='input-input-field'
         name={name}
         value={value}
         onChange={handleChange}

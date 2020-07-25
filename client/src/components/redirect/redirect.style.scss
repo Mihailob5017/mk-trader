@@ -1,29 +1,67 @@
 .redirect-container {
-  width: 99.9vw;
-  height: 60vh;
+  width: 50vw;
+  height: 50vh;
+
+  margin: auto;
   .redirect-main {
     margin: auto;
     margin-top: 20vh;
-    width: 40%;
-    height: 30%;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
   }
-  .redirect-btn {
-    width: 50%;
-    height: 30%;
-    border: 1px solid black;
+  .redirect-text {
+    text-align: center;
     font-size: 1.5rem;
-    background: white;
-    border-radius: 10px;
-    font-weight: 600;
+    font-weight: 400;
+  }
+  .redirect-btn {
+    background: #dddddd;
+    width: 100%;
+    height: 20%;
+    border-radius: 0;
+    font-weight: 400;
+    border: 1px solid black;
+    font-size: 1.3rem;
+    font-weight: 500;
     &:hover {
       transition: 500ms;
       cursor: pointer;
       background: royalblue;
       color: white;
+    }
+  }
+}
+@media screen and (max-width: 900px) {
+  .redirect-container {
+    background: #dddddd;
+    width: 80.9vw;
+    height: 40vh;
+    margin: auto;
+    .redirect-main {
+      margin: auto;
+      margin-top: 20vh;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .redirect-text {
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: 400;
+    }
+    .redirect-btn {
+      background: #dddddd;
+      width: 100%;
+      height: 20%;
+      border-radius: 0;
+      font-weight: 400;
     }
   }
 }

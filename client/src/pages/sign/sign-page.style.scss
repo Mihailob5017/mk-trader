@@ -2,10 +2,59 @@
   margin-top: 20px;
   .sign-page-header {
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .sign-page-btns {
+      height: 20vh;
+      width: 30%;
+      margin: auto;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      .sign-btn {
+        height: 40%;
+        font-size: 1.5rem;
+        font-weight: 300;
+        color: #ffffff;
+        border: none;
+        background: royalblue;
+        &:hover {
+          transition: 500ms;
+          cursor: pointer;
+
+          background: #9fadfd;
+        }
+      }
+    }
+
+    .sign-page-headtext {
+      width: 30%;
+      font-size: 1.5rem;
+      font-weight: 400;
+    }
+    .sign-page-btn {
+      width: 30%;
+      .sign-btn {
+        height: 7.5vh;
+        width: 100%;
+        font-size: 1.5rem;
+        font-weight: 300;
+        color: #ffffff;
+        border: none;
+        background: royalblue;
+        &:hover {
+          transition: 500ms;
+          cursor: pointer;
+
+          background: #9fadfd;
+        }
+      }
+    }
   }
   .sign-page-body {
     height: 90vh;
-
     display: flex;
     flex-direction: row;
     justify-content: space-between;
