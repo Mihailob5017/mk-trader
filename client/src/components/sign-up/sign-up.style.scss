@@ -1,7 +1,10 @@
 .sign-up-container {
-  .sign-up-header {
-    text-align: center;
-  }
-  border: 1px solid black;
+  margin: auto;
   width: 45%;
+}
+@media screen and (max-width: 700px) {
+  .sign-up-container {
+    margin: auto;
+    width: 100%;
+  }
 }

@@ -97,7 +97,6 @@ const SignUp = ({ asyncSignUpStart }) => {
   if (step === 1)
     return (
       <div className="sign-up-container">
-        <h1 className="sign-up-header">Sign Up</h1>
         <StepComponent step={1} moveStep={moveStep}>
           <InputComponent
             value={firstname}
@@ -142,7 +141,6 @@ const SignUp = ({ asyncSignUpStart }) => {
   if (step === 2)
     return (
       <div className="sign-up-container">
-        <h1 className="sign-up-header">Sign Up</h1>
         <StepComponent step={2} moveStep={moveStep}>
           <InputComponent
             value={address}
@@ -178,7 +176,6 @@ const SignUp = ({ asyncSignUpStart }) => {
   if (step === 3)
     return (
       <div className="sign-up-container">
-        <h1 className="sign-up-header">Sign Up</h1>
         <StepComponent step={3} moveStep={moveStep}>
           <CheckboxComponent
             value={willAdd}

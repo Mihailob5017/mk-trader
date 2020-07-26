@@ -1,26 +1,61 @@
 .step-component-container {
   display: flex;
   height: 95%;
+
   flex-direction: column;
   justify-content: space-between;
 
   .step-component-btns {
     display: flex;
     justify-content: space-between;
+    height: 6vh;
     button {
       background-color: white;
-      width: 20%;
-      border: 1px solid black;
-      border-radius: 10px;
-      font-size: 2rem;
-      margin: 1em;
-      padding: 0.2em;
+      width: 49.5%;
+      border: 1px solid royalblue;
+      border-radius: 4px;
+      font-size: 1.5rem;
+      color: royalblue;
       outline: none;
       &:hover {
-        
+        transition: 500ms;
         cursor: pointer;
         background: royalblue;
         color: white;
+      }
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  .step-component-container {
+    display: flex;
+    height: 95%;
+
+    flex-direction: column;
+    justify-content: space-between;
+
+    .step-component-btns {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+
+      button {
+        background-color: white;
+        width: 100%;
+        height: 9vh;
+        padding: 0.5em 0;
+        border: 1px solid royalblue;
+        border-radius: 4px;
+        margin-bottom: 1em;
+        font-size: 1.5rem;
+        color: royalblue;
+        outline: none;
+        &:hover {
+          transition: 500ms;
+          cursor: pointer;
+          background: royalblue;
+          color: white;
+        }
       }
     }
   }
