@@ -1,11 +1,12 @@
 .step-component-container {
   display: flex;
   height: 95%;
-
+  margin-bottom: 1em;
   flex-direction: column;
   justify-content: space-between;
 
   .step-component-btns {
+    margin-top: 2em;;
     display: flex;
     justify-content: space-between;
     height: 6vh;
@@ -30,7 +31,7 @@
   .step-component-container {
     display: flex;
     height: 95%;
-
+    margin-bottom: 1em;
     flex-direction: column;
     justify-content: space-between;
 

@@ -1,65 +1,64 @@
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import React, { useState } from "react";
+import { connect } from "react-redux";
 
 //  Helper Components
-import { asyncSignUpStart } from '../../redux/user/user.action';
-
+import { asyncSignUpStart } from "../../redux/user/user.action";
 
 //  Components
-import InputComponent from '../input/input.component';
-import CheckboxComponent from '../checkbox/checkbox.component';
-import ButtonComponent from '../button/button.somponent';
-import StepComponent from '../step/step.component';
-import SelectComponent from '../select/select.component';
-import './sign-up.style.scss';
-import RadioComponent from '../radio/radio.component';
+import InputComponent from "../input/input.component";
+import CheckboxComponent from "../checkbox/checkbox.component";
+import ButtonComponent from "../button/button.somponent";
+import StepComponent from "../step/step.component";
+import SelectComponent from "../select/select.component";
+import "./sign-up.style.scss";
+import RadioComponent from "../radio/radio.component";
 
 //  Helpers
 const avatars = [
-  { name: 'Default', value: 'default' },
-  { name: 'Proffesional', value: 'prof' },
-  { name: 'Ocasional', value: 'ocs' },
-  { name: 'Gold', value: 'gold' },
-  { name: 'Premium', value: 'premium' },
+  { name: "Default", value: "default" },
+  { name: "Proffesional", value: "prof" },
+  { name: "Ocasional", value: "ocs" },
+  { name: "Gold", value: "gold" },
+  { name: "Premium", value: "premium" },
 ];
 const genders = [
-  { name: 'Male', value: 'male' },
-  { name: 'Female', value: 'female' },
+  { name: "Male", value: "male" },
+  { name: "Female", value: "female" },
 ];
 
 const SignUp = ({ asyncSignUpStart }) => {
-  const [firstname, setFirstname] = useState('');
-  const [lastname, setLastname] = useState('');
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [address, setAddress] = useState('');
-  const [currCity, setCurrCity] = useState('');
-  const [date, setDate] = useState('');
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [address, setAddress] = useState("");
+  const [currCity, setCurrCity] = useState("");
+  const [date, setDate] = useState("");
   const [willAdd, setWilAdd] = useState(false);
   const [image, setImage] = useState(false);
-  const [imageUrl, setImageUrl] = useState('');
+  const [imageUrl, setImageUrl] = useState("");
   const [step, setStep] = useState(1);
-  const [avatar, setAvatar] = useState('');
+  const [avatar, setAvatar] = useState("");
   const [kmsi, setKmsi] = useState(false);
-  const [gender, setGender] = useState('male');
+  const [gender, setGender] = useState("male");
 
   const handleChange = (e) => {
     const { value, name } = e.target;
-    if (name === 'firstname') setFirstname(value);
-    if (name === 'lastname') setLastname(value);
-    if (name === 'username') setUsername(value);
-    if (name === 'email') setEmail(value);
-    if (name === 'password') setPassword(value);
-    if (name === 'address') setAddress(value);
-    if (name === 'city') setCurrCity(value);
-    if (name === 'date') setDate(value);
-    if (name === 'willadd') setWilAdd(!willAdd);
-    if (name === 'setimg') setImage(!image);
-    if (name === 'imageurl') setImageUrl(value);
-    if (name === 'avatar') setAvatar(value);
-    if (name === 'kmsi_signUp') setKmsi(!kmsi);
-    if (name === 'radio-group') setGender(value);
+    if (name === "firstname") setFirstname(value);
+    if (name === "lastname") setLastname(value);
+    if (name === "username") setUsername(value);
+    if (name === "email") setEmail(value);
+    if (name === "password") setPassword(value);
+    if (name === "address") setAddress(value);
+    if (name === "city") setCurrCity(value);
+    if (name === "date") setDate(value);
+    if (name === "willadd") setWilAdd(!willAdd);
+    if (name === "setimg") setImage(!image);
+    if (name === "imageurl") setImageUrl(value);
+    if (name === "avatar") setAvatar(value);
+    if (name === "kmsi_signUp") setKmsi(!kmsi);
+    if (name === "radio-group") setGender(value);
   };
   const moveStep = (val) => setStep(val);
   const handleClick = () => {
@@ -79,19 +78,19 @@ const SignUp = ({ asyncSignUpStart }) => {
       scoredItems: {},
     };
     asyncSignUpStart(obj, kmsi);
-    setFirstname('');
-    setLastname('');
-    setPassword('');
-    setUsername('');
-    setEmail('');
-    setCurrCity('');
-    setAddress('');
-    setDate('');
+    setFirstname("");
+    setLastname("");
+    setPassword("");
+    setUsername("");
+    setEmail("");
+    setCurrCity("");
+    setAddress("");
+    setDate("");
     setKmsi(false);
     setImage(false);
-    setAvatar('');
-    setImageUrl('');
-    setGender('male');
+    setAvatar("");
+    setImageUrl("");
+    setGender("male");
   };
 
   if (step === 1)
@@ -165,9 +164,10 @@ const SignUp = ({ asyncSignUpStart }) => {
             label="Date of Birth::"
           />
           <RadioComponent
+            message="Select Gender:"
             values={genders}
             handleChange={handleChange}
-            value={gender === 'male' ? 'male' : 'female'}
+            value={gender === "male" ? "male" : "female"}
           />
         </StepComponent>
       </div>
@@ -183,6 +183,13 @@ const SignUp = ({ asyncSignUpStart }) => {
             handleChange={handleChange}
           >
             I will be adding my items to the Store
+          </CheckboxComponent>
+          <CheckboxComponent
+            value={kmsi}
+            name="kmsi_signUp"
+            handleChange={handleChange}
+          >
+            I will stay logged in
           </CheckboxComponent>
           <CheckboxComponent
             value={willAdd}
@@ -209,13 +216,6 @@ const SignUp = ({ asyncSignUpStart }) => {
               handleChange={handleChange}
             />
           )}
-          <CheckboxComponent
-            value={kmsi}
-            name="kmsi_signUp"
-            handleChange={handleChange}
-          >
-            Remember me
-          </CheckboxComponent>
           <ButtonComponent actionHandler={handleClick}>Sign Up</ButtonComponent>
         </StepComponent>
       </div>
