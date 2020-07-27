@@ -12,8 +12,8 @@ import "./profile-page.style.scss";
 const Axios = require("axios").default;
 
 const ProfilePage = ({ profile, items, clearCart }) => {
-  console.log(profile);
-  const { avatarType } = profile;
+  const { avatarType, gender } = profile;
+
   const [state, setState] = useState(getTotal(items));
   const handleState = async () => {
     const token =
@@ -31,29 +31,14 @@ const ProfilePage = ({ profile, items, clearCart }) => {
   };
   return (
     <div className="profile-container">
-      <div className="info-component">
+      <div className="image-component">
         <div className="basic-info">
           <ImageComponent
             className="profile-image"
             avatar={avatarType}
-            gender={profile.gender}
+            gender={gender}
             hasUrl={isUrl(avatarType)}
           />
-          <div className="info-primary">
-            <h2>Username: {profile.username}</h2>
-            <h2>First Name: {profile.firstname}</h2>
-            <h2>Last Name: {profile.lastname}</h2>
-            <h2>A member since:{profile.createdAt}</h2>
-          </div>
-        </div>
-        <div className="other-info">
-          <h2>Gender:{profile.gender}</h2>
-          <h2>
-            Date of Birth:
-            {profile.dateOfBirth ? profile.dateOfBirth : "not defined"}
-          </h2>
-          <h2>Addres:{profile.currentAddres}</h2>
-          <h2>City:{profile.currentCity}</h2>
         </div>
         <div className="info-btns">
           <ButtonComponent fullWidth={true}>
@@ -61,6 +46,21 @@ const ProfilePage = ({ profile, items, clearCart }) => {
           </ButtonComponent>
         </div>
       </div>
+
+      <div className="info-component">
+        <h2 className="change">Username: {profile.username}</h2>
+        <h2 className="change">First Name: {profile.firstname}</h2>
+        <h2 className="change">Last Name: {profile.lastname}</h2>
+        <h2 className="change">A member since:{profile.createdAt}</h2>
+        <h2 className="change">Gender:{profile.gender}</h2>
+        <h2 className="change">
+          Date of Birth:
+          {profile.dateOfBirth ? profile.dateOfBirth : "not defined"}
+        </h2>
+        <h2 className="change">Addres:{profile.currentAddres}</h2>
+        <h2 className="change">City:{profile.currentCity}</h2>
+      </div>
+
       <div className="cart-component">
         <div className="cart">
           {state !== 0 &&

@@ -4,33 +4,22 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  .image-component {
+    background: #ddd;
+  }
+
   .info-component {
-    width: 30%;
-
+    background: #ddd;
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    font-weight: 400;
+    justify-content: space-evenly;
     height: 100%;
-    .basic-info {
-      height: 200px;
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      .profile-image {
-        width: 200px;
-        height: 200px;
-      }
-      .info-primary {
-        height: 200px;
-        * {
-          margin-bottom: 1em;
-        }
-
-        margin-left: 1em;
-      }
-    }
-    .other-info {
-      margin-left: 1em;
-      * {
-        margin-top: 1em;
-      }
+    h2 {
+      margin: 0.5em;
+      font-weight: 400;
+      font-size: 1.5rem;
     }
   }
   .info-btns {
@@ -38,12 +27,17 @@
   }
 
   .cart-component {
+    background: #ddd;
     width: 30%;
     .cart {
       overflow-y: scroll;
       border: 1px solid black;
       height: 80%;
       margin-bottom: 1em;
+      overflow-x: hidden;
+    }
+    .total * {
+      font-weight: 400;
     }
     .btns {
       justify-content: space-between;
@@ -51,6 +45,121 @@
       flex-direction: row;
       div {
         width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .profile-container {
+    height: 75vh;
+    width: 60vw;
+    margin: auto;
+    display: flex;
+    overflow-y: scroll;
+    flex-direction: column;
+    .image-component {
+      background: #ddd;
+      width: 100%;
+      .profile-image {
+        border: 1px solid black;
+      }
+    }
+
+    .info-component {
+      background: #ddd;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      font-weight: 400;
+      justify-content: space-evenly;
+      height: 100%;
+      h2 {
+        font-weight: 400;
+        font-size: 1.5rem;
+      }
+    }
+    .info-btns {
+      margin-top: 5em;
+    }
+
+    .cart-component {
+      background: #ddd;
+      width: 100%;
+      .cart {
+        overflow-y: scroll;
+
+        height: 80%;
+        margin-bottom: 1em;
+        overflow-x: hidden;
+      }
+      .total * {
+        font-weight: 400;
+      }
+      .btns {
+        justify-content: space-between;
+        display: flex;
+        flex-direction: row;
+        div {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+  .profile-container {
+    height: 75vh;
+    width: 100%;
+    margin: 2em auto;
+    display: flex;
+    overflow-y: scroll;
+    flex-direction: column;
+    .image-component {
+      background: #ddd;
+      width: 100%;
+      .profile-image {
+        border: 1px solid black;
+      }
+    }
+
+    .info-component {
+      background: #ddd;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      font-weight: 400;
+      justify-content: space-evenly;
+      height: 100%;
+      h2 {
+        font-weight: 400;
+        font-size: 1.5rem;
+      }
+    }
+    .info-btns {
+      margin-top: 5em;
+    }
+
+    .cart-component {
+      background: #ddd;
+      width: 100%;
+      .cart {
+        overflow-y: scroll;
+       
+        height: 80%;
+        margin-bottom: 1em;
+        overflow-x: hidden;
+      }
+      .total * {
+        font-weight: 400;
+      }
+      .btns {
+        justify-content: space-between;
+        display: flex;
+        flex-direction: row;
+        div {
+          width: 100%;
+        }
       }
     }
   }

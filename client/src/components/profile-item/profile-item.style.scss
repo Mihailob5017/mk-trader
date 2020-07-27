@@ -1,21 +1,26 @@
 .profile-item {
   margin: 1em 0;
-  border: 1px solid black;
+
   display: flex;
-  flex-direction: row;
-  .image-container {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-  }
-  .basic-info{
+  flex-direction: column;
+  .profile-main {
+    display: flex;
+    flex-direction: row;
+    .image-container {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+    }
+    .basic-info {
+     
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;
-      width: 40%;
-  }
-  .view-more-btn{
-      width: 30%;
-      margin-left: 4em;;
+      width: 60%;
+      * {
+        font-weight: 400;
+        font-size: 1.2rem;
+      }
+    }
   }
 }
