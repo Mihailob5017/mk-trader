@@ -1,7 +1,6 @@
 .input-container {
   display: flex;
   justify-content: space-between;
-  background: white;
   flex-direction: column;
   margin-bottom: 2em;
   width: 90%;
@@ -26,17 +25,19 @@
     outline: none;
     &:focus {
       border: 1px solid #777;
+      background: transparent;
     }
   }
   [type="password"] {
     letter-spacing: 3px;
+    background: transparent;
   }
 }
 @media screen and (max-width: 500px) {
   .input-container {
     display: flex;
     justify-content: space-between;
-    background: white;
+
     flex-direction: column;
     margin: 0;
 

@@ -67,13 +67,13 @@ export const setTheme = (theme) => {
     //  more style changes if needed
     document.body.style.backgroundColor = "#333333";
     document
-      .querySelectorAll("*  .change")
+      .querySelectorAll(" .change")
       .forEach((el) => (el.style.color = "#aaaaaa"));
   } else {
     // more style changes if needed
     document.body.style.backgroundColor = "#ffffff";
     document
-      .querySelectorAll("*  .change")
+      .querySelectorAll(" .change")
       .forEach((el) => (el.style.color = "#000000"));
   }
 };

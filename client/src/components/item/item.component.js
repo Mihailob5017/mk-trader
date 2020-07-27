@@ -42,57 +42,56 @@ const ItemComponent = ({
   };
   return (
     <div className="item-container">
-      {/* <div className="item-image">
-        <img src={imageUrl} />
-      </div> */}
       <ItemImageComponent
         imageUrl={imageUrl}
         className="item-image"
         type={type}
       />
-      <div className="item-info">
-        <h2 className="item-name">Name: {name}</h2>
-        <h2 className="item-type">Type: {type}</h2>
-        <h2 className="item-price">Price: {price}$</h2>
-      </div>
+      <div className="item-info-container">
+        <div className="item-info">
+          <h2 className="item-name">Name: {name}</h2>
+          <h2 className="item-type">Type: {type}</h2>
+          <h2 className="item-price">Price: {price}$</h2>
+        </div>
 
-      <div className="item-score">
-        {hasToken && (
-          <button
-            disabled={posOrNeg == 1 ? true : false}
-            className={`item-score-btn ${posOrNeg == 1 && "btn-disabled"}`}
-            onClick={scoreHandler(1)}
-          >
-            <i className="fas fa-angle-up"></i>
-          </button>
-        )}
+        <div className="item-score">
+          {hasToken && (
+            <button
+              disabled={posOrNeg == 1 ? true : false}
+              className={`item-score-btn ${posOrNeg == 1 && "btn-disabled"}`}
+              onClick={scoreHandler(1)}
+            >
+              <i className="fas fa-angle-up"></i>
+            </button>
+          )}
 
-        <h2 className="item-score-text">Rating:{scoreState}</h2>
-        {hasToken && (
-          <button
-            disabled={posOrNeg == -1 ? true : false}
-            className={`item-score-btn ${posOrNeg == -1 && "btn-disabled"}`}
-            onClick={scoreHandler(-1)}
-          >
-            <i className="fas fa-angle-down"></i>
-          </button>
-        )}
-      </div>
-      <div className="item-btns">
-        {hasToken && (
-          <>
-            {inCart ? (
-              <h2 className="in-cart">In Cart</h2>
-            ) : (
-              <ButtonComponent actionHandler={Add(_id)} fullWidth={true}>
-                Add to Cart
-              </ButtonComponent>
-            )}
-          </>
-        )}
-        <ButtonComponent fullWidth={true}>
-          <Link to={`/item/${isInCart ? "t" : "f"}/${_id}`}>More Info</Link>
-        </ButtonComponent>
+          <h2 className="item-score-text">Rating:{scoreState}</h2>
+          {hasToken && (
+            <button
+              disabled={posOrNeg == -1 ? true : false}
+              className={`item-score-btn ${posOrNeg == -1 && "btn-disabled"}`}
+              onClick={scoreHandler(-1)}
+            >
+              <i className="fas fa-angle-down"></i>
+            </button>
+          )}
+        </div>
+        <div className="item-btns">
+          {hasToken && (
+            <>
+              {inCart ? (
+                <h2 className="in-cart">In Cart</h2>
+              ) : (
+                <ButtonComponent actionHandler={Add(_id)} fullWidth={true}>
+                  Add to Cart
+                </ButtonComponent>
+              )}
+            </>
+          )}
+          <ButtonComponent fullWidth={true}>
+            <Link to={`/item/${isInCart ? "t" : "f"}/${_id}`}>More Info</Link>
+          </ButtonComponent>
+        </div>
       </div>
     </div>
   );

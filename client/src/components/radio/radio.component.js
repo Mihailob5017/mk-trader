@@ -6,7 +6,7 @@ import "./radio.style.scss";
 const RadioComponent = ({ value, handleChange, values, message }) => {
   return (
     <div className="radio-btns-container">
-      <h3>{message}</h3>
+      <h3 className="change">{message}</h3>
       <div className="radio-btns-main">
         {values.map((singleValue, i) => (
           <label className="container" key={i} htmlFor={singleValue.value}>

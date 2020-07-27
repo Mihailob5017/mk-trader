@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 //  Components
-import './input.style.scss'
+import "./input.style.scss";
 const InputComponent = ({
   name,
   label,
@@ -9,10 +9,12 @@ const InputComponent = ({
   ...otherProps
 }) => {
   return (
-    <div className="input-container">
-      <label className='input-label' htmlFor={name}>{label}</label>
-      <input 
-        className='input-input-field'
+    <div className="input-container change">
+      <label className="input-label change" htmlFor={name}>
+        {label}
+      </label>
+      <input
+        className="input-input-field change"
         name={name}
         value={value}
         onChange={handleChange}

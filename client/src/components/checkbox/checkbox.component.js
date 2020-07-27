@@ -4,7 +4,7 @@ import "./checkbox.style.scss";
 
 const CheckboxComponent = ({ name, value, handleChange, children }) => {
   return (
-    <label className="container" htmlFor={name}>
+    <label className="container change" htmlFor={name}>
       {children}
       <input
         id={name}
@@ -16,18 +16,7 @@ const CheckboxComponent = ({ name, value, handleChange, children }) => {
       />
       <span className="checkmark"></span>
     </label>
-    //  <div className="checkbox-container">
-    /* <input
-        id={name}
-        name={name}
-        value={value}
-        onChange={handleChange}
-        type="checkbox"
-        defaultChecked={value}
-      />
-      <label className="checkbox-label change" htmlFor={name}>
-        {children}
-      </label> */
+  
   );
 };
 
