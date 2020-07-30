@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Mihailob5017/mk-trader#readme",
   "dependencies": {
     "concurrently": "^5.1.0",
+    "loadash": "^1.0.0",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0"
   }

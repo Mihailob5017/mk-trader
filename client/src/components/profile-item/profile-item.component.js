@@ -3,7 +3,6 @@ import "./profile-item.style.scss";
 import ButtonComponent from "../button/button.somponent";
 import { Link } from "react-router-dom";
 const ProfileItemComponent = ({ item }) => {
-  console.log(item);
   return (
     <div className="profile-item">
       <div className="profile-main">

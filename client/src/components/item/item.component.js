@@ -65,7 +65,10 @@ const ItemComponent = ({
             </button>
           )}
 
-          <h2 className="item-score-text">Rating:{scoreState}</h2>
+          <h2 className="item-score-text">
+            {/* Rating:{scoreState} */}
+          Rating:{scoreState + (scored !== undefined ? scored : 0)}
+          </h2>
           {hasToken && (
             <button
               disabled={posOrNeg == -1 ? true : false}

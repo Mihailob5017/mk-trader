@@ -18,7 +18,7 @@ import proffesional_m from "../../assets/avatars/premium_m.png";
 
 const chooseImage = (hasUrl, gender, avatar) => {
   if (hasUrl === true) return avatar;
-  console.log(hasUrl, gender, avatar);
+
   switch (avatar) {
     case "default":
       return gender === "male" ? default_m : default_f;

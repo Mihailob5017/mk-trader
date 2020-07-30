@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 
 //  Helper Components
 import {
@@ -8,15 +8,15 @@ import {
   getScoredItemsAsync,
   updateScoredItems,
   willUpdate,
-} from '../../redux/item/item.action';
-import { appendScoredList, checkIfEmpty } from '../../helpers/helpers';
-import { storeItems, scoredItems } from '../../redux/item/item.selector';
-import { hasToken, cartItems, profile } from '../../redux/user/user.selector';
-import { asyncGetUserProfile } from '../../redux/user/user.action';
+} from "../../redux/item/item.action";
+import { appendScoredList, checkIfEmpty } from "../../helpers/helpers";
+import { storeItems, scoredItems } from "../../redux/item/item.selector";
+import { hasToken, cartItems, profile } from "../../redux/user/user.selector";
+import { asyncGetUserProfile } from "../../redux/user/user.action";
 
 //  Components
-import HomePage from './home-page';
-import LoadingComponent from '../../components/loading/loading.component';
+import HomePage from "./home-page";
+import LoadingComponent from "../../components/loading/loading.component";
 
 const HomePageContainer = ({
   getItemsAsync,
@@ -30,22 +30,27 @@ const HomePageContainer = ({
   cartItems,
 }) => {
   const [newlyScored, setNewlyScored] = useState({});
-  const [token, setToken] = useState('');
+  const [token, setToken] = useState("");
   const addNewlyScored = (newscore) =>
     setNewlyScored(appendScoredList(newlyScored, newscore));
 
   useEffect(() => {
     getItemsAsync();
     const token =
-      localStorage.getItem('auth-token') ||
-      sessionStorage.getItem('auth-token');
+      localStorage.getItem("auth-token") ||
+      sessionStorage.getItem("auth-token");
     setToken(token);
     if (token && profile === null) asyncGetUserProfile(token);
     if (token && scoredItems === null) getScoredItems(token);
 
     return () => {
-      if (hasToken) updateScoredItems(newlyScored);
-      if (checkIfEmpty(newlyScored)) willUpdate();
+      if (hasToken) {
+        updateScoredItems(newlyScored);
+      
+      }
+      if (checkIfEmpty(newlyScored)) {
+        willUpdate();
+      }
     };
   }, []);
   if (hasToken)

@@ -5,6 +5,7 @@ import InputComponent from "../../components/input/input.component";
 import SelectComponent from "../../components/select/select.component";
 import CheckBoxComponent from "../../components/checkbox/checkbox.component";
 import ButtonComponent from "../../components/button/button.somponent";
+import ItemImageComponent from "../../components/item-image/item-image.component";
 import "./add-page.style.scss";
 
 //  Helpers
@@ -35,7 +36,10 @@ const AddPage = ({ addItem, token }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name === "checkbox") setAddUrl(!willAddUrl);
+    if (name === "checkbox") {
+      setAddUrl(!willAddUrl);
+      if (url !== "" && willAddUrl === true) setUrl("");
+    }
     if (name === "url") setUrl(value);
     if (name === "desc") setDesc(value);
     if (name === "type") setType(value);
@@ -56,36 +60,30 @@ const AddPage = ({ addItem, token }) => {
 
   return (
     <div className="add-page-container">
-      <InputComponent
-        label="Item Name"
-        name="name"
-        value={name}
-        handleChange={handleChange}
-        placeholder="Required"
-      />
-      <InputComponent
-        label="Item Price"
-        type="number"
-        name="price"
-        min={0}
-        value={price}
-        handleChange={handleChange}
-        placeholder="Required"
-      />
-
-      <SelectComponent
-        message="Item type"
-        name="type"
-        value={type}
-        handleChange={handleChange}
-        options={options}
-      />
-
-      <div className="add-page-desc">
-        <h1>Item Description:</h1>
-        <textarea name="desc" value={desc} onChange={handleChange}></textarea>
-      </div>
-      <div className="add-page-checkbox">
+      <div className="basic-info-conatiner">
+        <InputComponent
+          label="Item Name"
+          name="name"
+          value={name}
+          handleChange={handleChange}
+          placeholder="Required"
+        />
+        <InputComponent
+          label="Item Price"
+          type="number"
+          name="price"
+          min={0}
+          value={price}
+          handleChange={handleChange}
+          placeholder="Required"
+        />
+        <SelectComponent
+          message="Item type"
+          name="type"
+          value={type}
+          handleChange={handleChange}
+          options={options}
+        />
         <CheckBoxComponent name="checkbox" handleChange={handleChange}>
           I will link a image-url
         </CheckBoxComponent>
@@ -98,6 +96,17 @@ const AddPage = ({ addItem, token }) => {
             label="Image Url"
           />
         )}
+        <div className="add-page-desc">
+          <h1>Item Description:</h1>
+          <textarea name="desc" value={desc} onChange={handleChange}></textarea>
+        </div>
+      </div>
+      <div className="add-image-container">
+        <ItemImageComponent
+          className="add-item-image"
+          imageUrl={url}
+          type={type}
+        />
         <ButtonComponent actionHandler={addItemExec}>
           Add Item To Store
         </ButtonComponent>

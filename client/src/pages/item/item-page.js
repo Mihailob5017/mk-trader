@@ -7,8 +7,6 @@ import ItemImageComponent from "../../components/item-image/item-image.component
 const axios = require("axios").default;
 
 const ItemPage = ({ hasToken, token, item, isInCart, addToCart }) => {
-  console.log(item.imageUrl);
-  console.log(item.type);
   const [fullImg, setFullImg] = useState(false);
   const [inCart, setInCart] = useState(isInCart === "t" ? true : false);
   const Add = () => {
