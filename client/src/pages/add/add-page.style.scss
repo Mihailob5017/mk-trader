@@ -3,6 +3,7 @@
   width: 100%;
   height: 75vh;
   display: flex;
+  background: #ddd;
   justify-content: space-between;
   .basic-info-conatiner {
     overflow-y: scroll;
@@ -11,14 +12,16 @@
     .add-page-desc {
       margin-left: 2rem;
       h1 {
+        font-size: 1.3rem;
         font-weight: 400;
       }
       textarea {
-        font-size: 1.5rem;
+        font-size: 1rem;
         border: 1px solid royalblue;
         margin: 1em 0;
         width: 75%;
         height: 10rem;
+        background: transparent;
         outline: none;
         resize: none;
       }
@@ -33,7 +36,55 @@
     .add-item-image {
       max-width: 80%;
       max-height: 50vh;
-      object-fit: contain;
+      object-fit: scale-down;
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .add-page-container {
+    background: #ddd;
+    width: 80%;
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    .basic-info-conatiner {
+      width: 100%;
+      height: 100%;
+    }
+    .add-image-container {
+      width: 100%;
+      height: 0%;
+      .add-item-image {
+        max-width: 80%;
+        max-height: 20vh;
+        object-fit: contain;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .add-page-container {
+    background: #ddd;
+    width: 100%;
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    .basic-info-conatiner {
+      width: 100%;
+      height: 100%;
+    }
+    .add-image-container {
+      width: 100%;
+      height: 0%;
+      .add-item-image {
+        max-width: 80%;
+        max-height: 20vh;
+        object-fit: contain;
+      }
     }
   }
 }
