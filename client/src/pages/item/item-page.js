@@ -4,9 +4,11 @@ import { Link } from "react-router-dom";
 import Button from "../../components/button/button.somponent";
 import "./item.style.scss";
 import ItemImageComponent from "../../components/item-image/item-image.component";
+import SimilarItemsComponent from "../../components/similar-items/similar-items-container.component";
+
 const axios = require("axios").default;
 
-const ItemPage = ({ hasToken, token, item, isInCart, addToCart }) => {
+const ItemPage = ({ token, item, isInCart, addToCart }) => {
   const [fullImg, setFullImg] = useState(false);
   const [inCart, setInCart] = useState(isInCart === "t" ? true : false);
   const Add = () => {
@@ -27,9 +29,7 @@ const ItemPage = ({ hasToken, token, item, isInCart, addToCart }) => {
           <div className="exit-icon" onClick={() => setFullImg(false)}>
             <i className="far fa-times-circle"></i>
           </div>
-          {/* <div className="big-image-container">
-            <img src={item.imageUrl} alt={item.name} />
-          </div> */}
+
           <ItemImageComponent
             className="big-image-container"
             imageUrl={item.imageUrl}
@@ -61,16 +61,16 @@ const ItemPage = ({ hasToken, token, item, isInCart, addToCart }) => {
             </div>
           </div>
           <div className="item-page-body">
-            <h2>About:{item.description}</h2>
-            <h1>Other Users gave this item a score of : {item.score}</h1>
-          </div>
-          <div className="item-page-btns">
-            <div className="item-page-btn">
+            <h2>
+              Desription: <br />
+              {item.description}
+            </h2>
+            <h1>Rated by others:{item.score}</h1>
+            <div className="item-btns">
+              {" "}
               <Button fullWidth={true}>
                 <Link to="/home">All items</Link>
-              </Button>
-            </div>
-            {hasToken === true && (
+              </Button>{" "}
               <div className="item-page-btn">
                 {inCart ? (
                   <div className="in-cart-btn">In Cart</div>
@@ -80,8 +80,9 @@ const ItemPage = ({ hasToken, token, item, isInCart, addToCart }) => {
                   </Button>
                 )}
               </div>
-            )}
+            </div>
           </div>
+          <SimilarItemsComponent itemId={item._id} type={item.type} />
         </>
       )}
     </div>
