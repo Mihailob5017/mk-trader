@@ -74,13 +74,13 @@ const FilterComponent = ({ close, searchByName, searchAndFilter }) => {
         <i className="far fa-times-circle" onClick={close}></i>
       </div>
       <SearchComponent action={searchByName} />
-
       <div className="filter-body">
         <div className="search-items-container">
+          <h2>Filter Elements by Specific param</h2>
           <SelectComponent
             options={searchNameType}
             value={searchParam}
-            message="Search by type"
+            message="Type:"
             name="search-type"
             handleChange={handleChange}
           />
@@ -89,7 +89,7 @@ const FilterComponent = ({ close, searchByName, searchAndFilter }) => {
               <SelectComponent
                 options={types}
                 value={param1}
-                message="Type of Item"
+                message="Category"
                 name="item-type"
                 handleChange={handleChange}
               />
@@ -115,16 +115,18 @@ const FilterComponent = ({ close, searchByName, searchAndFilter }) => {
             <></>
           )}
         </div>
-        <SortItemsComponent
-          sortValue={sortValue}
-          sortByName={sortByName}
-          handleChange={handleChange}
-        />
-      </div>
-      <div className="search-and-filter-btn">
-        <ButtonComponent actionHandler={executeSearchAndFilter}>
-          Search
-        </ButtonComponent>
+
+        <div className="sort-items-container">
+          <h2>Sort Items by parameter</h2>{" "}
+          <SortItemsComponent
+            sortValue={sortValue}
+            sortByName={sortByName}
+            handleChange={handleChange}
+          />
+          <ButtonComponent actionHandler={executeSearchAndFilter}>
+            Search
+          </ButtonComponent>
+        </div>
       </div>
     </div>
   );
