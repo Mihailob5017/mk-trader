@@ -38,7 +38,7 @@ const UpdateComponent = ({
           {label}
         </label>
         {isCustom ? (
-          <div>{children}</div>
+          <div className='custom'>{children}</div>
         ) : (
           <input
             type="text"

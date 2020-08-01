@@ -116,22 +116,21 @@ const SettingPage = ({ profile, token, signOut }) => {
           Dangerous
         </div>
       </div>
+
       <SubsectionComponent state={subsection} number={1}>
         <h1 className="update-header change">Account Overview:</h1>
         <div className="update-component">
-          <h2 className="change">Update Username:</h2>
           <UpdateComponent
             token={token}
-            label="Username"
+            label="Update username"
             value={profile.username}
             name="username"
           />
         </div>
         <div className="update-component">
-          <h2 className="change">Update Username:</h2>
           <UpdateComponent
             token={token}
-            label="User Email"
+            label="Update Email"
             value={profile.email}
             type="email"
             name="email"
@@ -142,7 +141,6 @@ const SettingPage = ({ profile, token, signOut }) => {
       <SubsectionComponent state={subsection} number={2}>
         <h1 className="update-header change">Edit Profile:</h1>
         <div className="update-component">
-          <h2 className="change">Update FirstName:</h2>
           <UpdateComponent
             token={token}
             label="First Name"
@@ -151,7 +149,6 @@ const SettingPage = ({ profile, token, signOut }) => {
           />
         </div>
         <div className="update-component">
-          <h2 className="change">Update LastName:</h2>
           <UpdateComponent
             token={token}
             label="Last Name"
@@ -160,7 +157,6 @@ const SettingPage = ({ profile, token, signOut }) => {
           />
         </div>
         <div className="update-component">
-          <h2 className="change">Update City of Residance:</h2>
           <UpdateComponent
             token={token}
             label="Current City"
@@ -169,7 +165,6 @@ const SettingPage = ({ profile, token, signOut }) => {
           />
         </div>
         <div className="update-component">
-          <h2 className="change">Update Current Address</h2>
           <UpdateComponent
             token={token}
             label="Current Addres"
@@ -178,7 +173,6 @@ const SettingPage = ({ profile, token, signOut }) => {
           />
         </div>
         <div className="update-component">
-          <h2 className="change">Update Date of Birth:</h2>
           <UpdateComponent
             token={token}
             label="Date of Birth"
@@ -188,7 +182,6 @@ const SettingPage = ({ profile, token, signOut }) => {
           />
         </div>
         <div className="update-component">
-          <h2 className="change">Update Gender:</h2>
           <UpdateComponent
             isCustom={true}
             name="gender"
@@ -222,9 +215,9 @@ const SettingPage = ({ profile, token, signOut }) => {
               value={willAddItemsToStore}
               handleChange={handleChange}
             />
-          </UpdateComponent>{" "}
+          </UpdateComponent>
         </div>
-        <div className="update-component">
+        <div className="update-component fix-color">
           <h2 className="change">Choose a theme for the website</h2>
           <SelectComponent
             options={themes}
@@ -232,9 +225,9 @@ const SettingPage = ({ profile, token, signOut }) => {
             name="theme"
             value={theme}
             handleChange={handleChange}
-          />{" "}
+          />
         </div>
-        <div className="update-component">
+        <div className="update-component fix-color">
           <h2 className="change">
             If this button is checked,you will be remebered for the next time
             you vist the website
