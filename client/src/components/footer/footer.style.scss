@@ -12,15 +12,15 @@
   }
   .footer-btn {
     margin-left: 2em;
-    width: 10%;
+    width: 20%;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 1px solid black;
-    border-radius: 10px;
+    border-radius: 4px;
     * {
       text-decoration: none;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       color: black;
       font-weight: 600;
     }
@@ -53,7 +53,7 @@
       width: 100%;
       display: flex;
       align-items: center;
-      font-size: 2rem;
+      font-size: 1rem;
       justify-content: center;
       border: 1px solid black;
       border-radius: 0;
