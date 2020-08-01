@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema(
   {
@@ -22,14 +22,13 @@ const UserSchema = new mongoose.Schema(
     password: { type: String, minlength: 5, maxlength: 1024, required: true },
     willAddItemsToStore: { type: Boolean, required: true },
     createdAt: { type: Date, default: Date.now },
-    dateOfBirth: { type: Date, default: '' },
     currentCity: { type: String, minlength: 2, maxlength: 30 },
     currentAddres: { type: String, minlength: 3, maxlength: 60 },
     cartItems: { type: Array, required: true, default: [] },
     scoredItems: { type: Object, required: true, default: {} },
-    gender: { type: String, default: 'male' },
+    gender: { type: String, default: "male" },
   },
   { minimize: false }
 );
 
-module.exports = mongoose.model('users', UserSchema);
+module.exports = mongoose.model("users", UserSchema);

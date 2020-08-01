@@ -53,10 +53,6 @@ const ProfilePage = ({ profile, items, clearCart }) => {
         <h2 className="change">Last Name: {profile.lastname}</h2>
         <h2 className="change">A member since:{profile.createdAt}</h2>
         <h2 className="change">Gender:{profile.gender}</h2>
-        <h2 className="change">
-          Date of Birth:
-          {profile.dateOfBirth ? profile.dateOfBirth : "not defined"}
-        </h2>
         <h2 className="change">Addres:{profile.currentAddres}</h2>
         <h2 className="change">City:{profile.currentCity}</h2>
       </div>

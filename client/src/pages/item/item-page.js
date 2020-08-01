@@ -65,9 +65,10 @@ const ItemPage = ({ token, item, isInCart, addToCart }) => {
               Desription: <br />
               {item.description}
             </h2>
-            <h1>Rated by others:{item.score}</h1>
+            <h2>Rated by others:{item.score}</h2>
+            <h2>Color:{item.color}</h2>
+            <h2>Size:{item.size}</h2>
             <div className="item-btns">
-              {" "}
               <Button fullWidth={true}>
                 <Link to="/home">All items</Link>
               </Button>{" "}

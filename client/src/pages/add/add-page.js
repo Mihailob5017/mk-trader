@@ -25,6 +25,13 @@ const options = [
   { name: "Swimsuits", value: "swimsuits" },
   { name: "Other", value: "other" },
 ];
+const sizes = [
+  { name: "Size: XS", value: "XS" },
+  { name: "Size: S", value: "S" },
+  { name: "Size: M", size: "M" },
+  { name: "Size: L", value: "L" },
+  { name: "Size: XL", value: "XL" },
+];
 
 const AddPage = ({ addItem, token }) => {
   const [willAddUrl, setAddUrl] = useState(false);
@@ -33,6 +40,8 @@ const AddPage = ({ addItem, token }) => {
   const [type, setType] = useState("");
   const [price, setPrice] = useState("");
   const [name, setName] = useState("");
+  const [color, setColor] = useState("");
+  const [size, setSize] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -45,10 +54,20 @@ const AddPage = ({ addItem, token }) => {
     if (name === "type") setType(value);
     if (name === "name") setName(value);
     if (name === "price") setPrice(value);
+    if (name === "color") setColor(value);
+    if (name === "size") setSize(value);
   };
 
   const addItemExec = () => {
-    const item = { name, type, description: desc, imageUrl: url, price };
+    const item = {
+      name,
+      type,
+      description: desc,
+      imageUrl: url,
+      price,
+      color,
+      size,
+    };
     addItem(item, token);
     setPrice("");
     setDesc("");
@@ -56,6 +75,8 @@ const AddPage = ({ addItem, token }) => {
     setType("");
     setAddUrl(false);
     setUrl("");
+    setColor("");
+    setSize("");
   };
 
   return (
@@ -77,12 +98,27 @@ const AddPage = ({ addItem, token }) => {
           handleChange={handleChange}
           placeholder="Required"
         />
+        <InputComponent
+          label="Item Color"
+          type="textr"
+          name="color"
+          value={color}
+          handleChange={handleChange}
+          placeholder="Optional"
+        />
         <SelectComponent
           message="Item type"
           name="type"
           value={type}
           handleChange={handleChange}
           options={options}
+        />
+        <SelectComponent
+          message="Item size"
+          name="size"
+          value={size}
+          handleChange={handleChange}
+          options={sizes}
         />
         <CheckBoxComponent name="checkbox" handleChange={handleChange}>
           I will link a image-url

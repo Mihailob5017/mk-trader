@@ -34,7 +34,6 @@ const SignUp = ({ asyncSignUpStart }) => {
   const [password, setPassword] = useState("");
   const [address, setAddress] = useState("");
   const [currCity, setCurrCity] = useState("");
-  const [date, setDate] = useState("");
   const [willAdd, setWilAdd] = useState(false);
   const [image, setImage] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
@@ -52,7 +51,6 @@ const SignUp = ({ asyncSignUpStart }) => {
     if (name === "password") setPassword(value);
     if (name === "address") setAddress(value);
     if (name === "city") setCurrCity(value);
-    if (name === "date") setDate(value);
     if (name === "willadd") setWilAdd(!willAdd);
     if (name === "setimg") setImage(!image);
     if (name === "imageurl") setImageUrl(value);
@@ -68,15 +66,15 @@ const SignUp = ({ asyncSignUpStart }) => {
       username,
       email,
       password,
-      avatarType: setImage === true ? imageUrl : `${avatar}`,
+      avatarType: image === true ? imageUrl : `${avatar}`,
       willAddItemsToStore: willAdd,
       currentCity: currCity,
       currentAddres: address,
       gender,
-      dateOfBirth: date,
       cartItems: [],
       scoredItems: {},
     };
+
     asyncSignUpStart(obj, kmsi);
     setFirstname("");
     setLastname("");
@@ -85,7 +83,6 @@ const SignUp = ({ asyncSignUpStart }) => {
     setEmail("");
     setCurrCity("");
     setAddress("");
-    setDate("");
     setKmsi(false);
     setImage(false);
     setAvatar("");
@@ -154,14 +151,6 @@ const SignUp = ({ asyncSignUpStart }) => {
             placeholder="Optional * "
             name="city"
             label="Current City:"
-          />
-          <InputComponent
-            value={date}
-            handleChange={handleChange}
-            placeholder="Optional * "
-            name="date"
-            type="date"
-            label="Date of Birth::"
           />
           <RadioComponent
             message="Select Gender:"

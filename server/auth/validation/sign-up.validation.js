@@ -1,4 +1,4 @@
-const Joi = require('@hapi/joi');
+const Joi = require("@hapi/joi");
 
 module.exports = Joi.object({
   firstname: Joi.string().max(20),
@@ -9,9 +9,8 @@ module.exports = Joi.object({
   password: Joi.string().required().min(5).max(1024),
   willAddItemsToStore: Joi.boolean().required(),
   createdAt: Joi.date(),
-  dateOfBirth: Joi.date(),
-  currentCity: Joi.string().min(2).max(30),
-  currentAddres: Joi.string().min(3).max(60),
+  currentCity: Joi.string(),
+  currentAddres: Joi.string(),
   cartItems: Joi.array().required(),
   scoredItems: Joi.object().required(),
   gender: Joi.string(),
