@@ -5,14 +5,16 @@ import { connect } from "react-redux";
 import { getItemsAsync } from "../../redux/item/item.action";
 import { storeItems } from "../../redux/item/item.selector";
 import LoadingComponent from "../loading/loading.component";
+import { getTheme, setTheme } from "../../helpers/helpers";
 const SimilarItemsContainer = ({ getItemsAsync, storeItems, itemId, type }) => {
   useEffect(() => {
+    setTheme(getTheme());
     if (storeItems === null) getItemsAsync();
   });
 
   return (
-    <div className="similar-items-container">
-      <h2>You also may be interested in</h2>
+    <div className="similar-items-container change-bg">
+      <h2 className="change">You also may be interested in</h2>
       {storeItems !== null ? (
         <SimilarItemsComponent itemId={itemId} type={type} items={storeItems} />
       ) : (

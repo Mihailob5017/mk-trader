@@ -81,7 +81,7 @@ const AddPage = ({ addItem, token }) => {
 
   return (
     <div className="add-page-container">
-      <div className="basic-info-conatiner">
+      <div className="basic-info-conatiner change-bg">
         <InputComponent
           label="Item Name"
           name="name"
@@ -133,11 +133,11 @@ const AddPage = ({ addItem, token }) => {
           />
         )}
         <div className="add-page-desc">
-          <h1>Item Description:</h1>
-          <textarea name="desc" value={desc} onChange={handleChange}></textarea>
+          <h1 className='change'>Item Description:</h1>
+          <textarea className='change' name="desc" value={desc} onChange={handleChange}></textarea>
         </div>
       </div>
-      <div className="add-image-container">
+      <div className="add-image-container change-bg">
         <ItemImageComponent
           className="add-item-image"
           imageUrl={url}

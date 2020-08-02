@@ -34,7 +34,7 @@ const SignIn = ({ signIn }) => {
   return (
     <div className="sign-in-container">
       <InputComponent
-        placeholder="Email"
+        placeholder="Email    "
         type="email"
         name="email"
         value={email}

@@ -26,7 +26,7 @@
     }
     &:hover {
       transition: 500ms;
-
+      border: 1px solid transparent;
       background: royalblue;
       * {
         color: white;

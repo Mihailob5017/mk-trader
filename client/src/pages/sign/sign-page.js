@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 //  Components
 import SignIn from "../../components/sign-in/sign-in.component";
 import SignUp from "../../components/sign-up/sign-up.component";
 import "./sign-page.style.scss";
-
+import { getTheme, setTheme } from "../../helpers/helpers";
 const Sign = () => {
   const [signIn, setSignIn] = useState("");
+  useEffect(() => {
+    setTheme(getTheme());
+  });
+
   return (
     <div className="sign-page-container">
       {signIn === "" ? (

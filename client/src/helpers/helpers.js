@@ -64,17 +64,33 @@ export const getTheme = () => {
 
 export const setTheme = (theme) => {
   if (theme === true) {
-    //  more style changes if needed
-    document.body.style.backgroundColor = "#333333";
+    //  Changes the body background
+    document.body.style.backgroundColor = "#111";
+    // Changes the text
     document
       .querySelectorAll(" .change")
       .forEach((el) => (el.style.color = "#aaaaaa"));
+    //  Changes the background
+    document
+      .querySelectorAll(".change-bg")
+      .forEach((el) => (el.style.backgroundColor = "#333"));
+    //Changes the boarder
+    document
+      .querySelectorAll(".change-border")
+      .forEach((el) => (el.style.border = "1px solid white"));
   } else {
     // more style changes if needed
     document.body.style.backgroundColor = "#ffffff";
     document
       .querySelectorAll(" .change")
       .forEach((el) => (el.style.color = "#000000"));
+    document
+      .querySelectorAll(".change-bg")
+      .forEach((el) => (el.style.backgroundColor = "#ddd"));
+    //Changes the boarder
+    document
+      .querySelectorAll(".change-border")
+      .forEach((el) => (el.style.border = "1px solid black"));
   }
 };
 

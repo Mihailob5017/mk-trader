@@ -1,29 +1,31 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 
 //  Helper Components
-import { willAddItems, profile } from '../../redux/user/user.selector';
-import { createStructuredSelector } from 'reselect';
-import { asyncGetUserProfile } from '../../redux/user/user.action';
+import { willAddItems, profile } from "../../redux/user/user.selector";
+import { createStructuredSelector } from "reselect";
+import { asyncGetUserProfile } from "../../redux/user/user.action";
+import { setTheme, getTheme } from "../../helpers/helpers";
 
 //  Componnets
-import AddPage from './add-page';
-import LoadingComponent from '../../components/loading/loading.component';
-import RejectComponent from '../../components/reject/reject.component';
-const Axios = require('axios').default;
+import AddPage from "./add-page";
+import LoadingComponent from "../../components/loading/loading.component";
+import RejectComponent from "../../components/reject/reject.component";
+const Axios = require("axios").default;
 
 const AddPageContainer = ({ asyncGetUserProfile, willAddItems, profile }) => {
-  const [token, setToken] = useState('');
+  const [token, setToken] = useState("");
   const addItem = async (item, token) => {
-    Axios.post('http://localhost:5000/store/add', item, {
-      headers: { ['auth-token']: token },
+    Axios.post("http://localhost:5000/store/add", item, {
+      headers: { ["auth-token"]: token },
     });
   };
 
   useEffect(() => {
+    setTheme(getTheme());
     const token =
-      localStorage.getItem('auth-token') ||
-      sessionStorage.getItem('auth-token');
+      localStorage.getItem("auth-token") ||
+      sessionStorage.getItem("auth-token");
     setToken(token);
     asyncGetUserProfile(token);
   });

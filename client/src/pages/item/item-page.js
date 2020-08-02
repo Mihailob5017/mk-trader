@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 //  Components
 import Button from "../../components/button/button.somponent";
 import "./item.style.scss";
 import ItemImageComponent from "../../components/item-image/item-image.component";
 import SimilarItemsComponent from "../../components/similar-items/similar-items-container.component";
-
+import { setTheme, getTheme } from "../../helpers/helpers";
 const axios = require("axios").default;
 
 const ItemPage = ({ token, item, isInCart, addToCart }) => {
+  useEffect(() => {
+    setTheme(getTheme());
+  });
   const [fullImg, setFullImg] = useState(false);
   const [inCart, setInCart] = useState(isInCart === "t" ? true : false);
   const Add = () => {
@@ -23,7 +26,7 @@ const ItemPage = ({ token, item, isInCart, addToCart }) => {
     );
   };
   return (
-    <div className="item-page-container">
+    <div className="item-page-container ">
       {fullImg === true ? (
         <>
           <div className="exit-icon" onClick={() => setFullImg(false)}>
@@ -38,7 +41,7 @@ const ItemPage = ({ token, item, isInCart, addToCart }) => {
         </>
       ) : (
         <>
-          <div className="item-page-head">
+          <div className="item-page-head  change-bg">
             <div className="item-img-container">
               <div className="item-overlay">
                 <div
@@ -55,19 +58,19 @@ const ItemPage = ({ token, item, isInCart, addToCart }) => {
               />
             </div>
             <div className="item-basic-info">
-              <h1>Name:{item.name}</h1>
-              <h1>Type:{item.type}</h1>
-              <h1>Price:{item.price}$</h1>
+              <h1 className="change">Name:{item.name}</h1>
+              <h1 className="change">Type:{item.type}</h1>
+              <h1 className="change">Price:{item.price}$</h1>
             </div>
           </div>
-          <div className="item-page-body">
-            <h2>
+          <div className="item-page-body change-bg">
+            <h2 className="change">
               Desription: <br />
               {item.description}
             </h2>
-            <h2>Rated by others:{item.score}</h2>
-            <h2>Color:{item.color}</h2>
-            <h2>Size:{item.size}</h2>
+            <h2 className="change">Rated by others:{item.score}</h2>
+            <h2 className="change">Color:{item.color}</h2>
+            <h2 className="change">Size:{item.size}</h2>
             <div className="item-btns">
               <Button fullWidth={true}>
                 <Link to="/home">All items</Link>

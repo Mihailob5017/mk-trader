@@ -10,9 +10,9 @@
       width: 150px;
       height: 150px;
       object-fit: cover;
+      overflow: hidden;
     }
     .basic-info {
-     
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;

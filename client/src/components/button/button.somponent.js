@@ -7,7 +7,7 @@ const ButtonComponent = ({ children, actionHandler, fullWidth, disabled }) => {
     <div className={`button-container `}>
       <button
         disabled={disabled}
-        className={`button-main ${fullWidth && "button-main_fullwidth"} ${
+        className={`button-main change change-border ${fullWidth && "button-main_fullwidth"} ${
            disabled &&
            "disabled-btn"
         }`}

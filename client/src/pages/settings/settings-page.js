@@ -172,15 +172,7 @@ const SettingPage = ({ profile, token, signOut }) => {
             name="currentAddres"
           />
         </div>
-        <div className="update-component">
-          <UpdateComponent
-            token={token}
-            label="Date of Birth"
-            value={profile.dateOfBirth || ""}
-            type="date"
-            name="dateOfBirth"
-          />
-        </div>
+      
         <div className="update-component">
           <UpdateComponent
             isCustom={true}
@@ -217,7 +209,7 @@ const SettingPage = ({ profile, token, signOut }) => {
             />
           </UpdateComponent>
         </div>
-        <div className="update-component fix-color">
+        <div className="update-component ">
           <h2 className="change">Choose a theme for the website</h2>
           <SelectComponent
             options={themes}
@@ -227,7 +219,7 @@ const SettingPage = ({ profile, token, signOut }) => {
             handleChange={handleChange}
           />
         </div>
-        <div className="update-component fix-color">
+        <div className="update-component">
           <h2 className="change">
             If this button is checked,you will be remebered for the next time
             you vist the website
