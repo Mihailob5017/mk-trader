@@ -11,7 +11,7 @@ const SimilarItemsComponent = ({ itemId, items, type }) => {
         .map(
           (item, i) =>
             i < 5 && (
-              <div className="item-container">
+              <div key={i} className="item-container">
                 <ItemImagecomponent
                   className="item-image"
                   imageUrl={item.imageUrl}

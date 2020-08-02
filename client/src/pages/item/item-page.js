@@ -71,16 +71,18 @@ const ItemPage = ({ token, item, isInCart, addToCart }) => {
             <div className="item-btns">
               <Button fullWidth={true}>
                 <Link to="/home">All items</Link>
-              </Button>{" "}
-              <div className="item-page-btn">
-                {inCart ? (
-                  <div className="in-cart-btn">In Cart</div>
-                ) : (
-                  <Button actionHandler={Add} fullWidth={true}>
-                    Add to cart
-                  </Button>
-                )}
-              </div>
+              </Button>
+              {token && (
+                <div className="item-page-btn">
+                  {inCart ? (
+                    <div className="in-cart-btn">In Cart</div>
+                  ) : (
+                    <Button actionHandler={Add} fullWidth={true}>
+                      Add to cart
+                    </Button>
+                  )}
+                </div>
+              )}
             </div>
           </div>
           <SimilarItemsComponent itemId={item._id} type={item.type} />

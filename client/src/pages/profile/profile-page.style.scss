@@ -5,12 +5,13 @@
   flex-direction: row;
   justify-content: space-between;
   .image-component {
+    width: 33vw;
     background: #ddd;
-  }
+  } 
 
   .info-component {
     background: #ddd;
-    width: 35%;
+    width: 33%;
     display: flex;
     flex-direction: column;
     font-weight: 400;
@@ -53,16 +54,18 @@
 @media screen and (max-width: 900px) {
   .profile-container {
     height: 75vh;
-    width: 60vw;
+    width: 70%;
     margin: auto;
-    display: flex;
+    display: initial;
     overflow-y: scroll;
-    flex-direction: column;
     .image-component {
       background: #ddd;
       width: 100%;
       .profile-image {
         border: 1px solid black;
+        width: 70vw;
+        height: auto;
+        margin: auto;
       }
     }
 
@@ -114,14 +117,16 @@
     height: 75vh;
     width: 100%;
     margin: 2em auto;
-    display: flex;
+    display: initial;
     overflow-y: scroll;
-    flex-direction: column;
+
     .image-component {
       background: #ddd;
       width: 100%;
       .profile-image {
         border: 1px solid black;
+        width: 100vw;
+        height: auto;
       }
     }
 
@@ -135,7 +140,7 @@
       height: 100%;
       h2 {
         font-weight: 400;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
       }
     }
     .info-btns {
