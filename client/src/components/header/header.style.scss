@@ -54,21 +54,24 @@
   .header-open {
     width: fit-content;
     height: fit-content;
-    padding: 0 0.45em;
+    padding-top: 0.2em;
+    padding-left: 0.1em;
+    padding-right: 0.1em;
 
-    border: 1px solid black;
     border-radius: 10px;
     &:hover {
-      border-radius: 50%;
       cursor: pointer;
-      background: #444444;
+      background: transparent;
       transition: 500ms;
-      color: white;
+      border: 1px solid royalblue;
+    }
+    * {
+      color: royalblue;
     }
   }
 }
 .header-link_current {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 600;
   * {
     letter-spacing: 5px;

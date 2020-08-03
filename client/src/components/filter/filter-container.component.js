@@ -1,20 +1,21 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 
 //  Helper Components
 
 import {
   searchItemsAsync,
   asyncSearchAndFilter,
-} from '../../redux/item/item.action';
-
+} from "../../redux/item/item.action";
+import { getTheme, setTheme } from "../../helpers/helpers";
 //  Components
-import FilterComponent from './filter.component';
+import FilterComponent from "./filter.component";
 const FilterComonentContainer = ({
   close,
   searchItemsAsync,
   asyncSearchAndFilter,
 }) => {
+  useEffect(() => setTheme(getTheme()));
   const searchByName = (name) => searchItemsAsync(name);
 
   return (

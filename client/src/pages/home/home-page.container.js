@@ -9,7 +9,12 @@ import {
   updateScoredItems,
   willUpdate,
 } from "../../redux/item/item.action";
-import { appendScoredList, checkIfEmpty } from "../../helpers/helpers";
+import {
+  appendScoredList,
+  checkIfEmpty,
+  getTheme,
+  setTheme,
+} from "../../helpers/helpers";
 import { storeItems, scoredItems } from "../../redux/item/item.selector";
 import { hasToken, cartItems, profile } from "../../redux/user/user.selector";
 import { asyncGetUserProfile } from "../../redux/user/user.action";
@@ -46,7 +51,6 @@ const HomePageContainer = ({
     return () => {
       if (hasToken) {
         updateScoredItems(newlyScored);
-      
       }
       if (checkIfEmpty(newlyScored)) {
         willUpdate();

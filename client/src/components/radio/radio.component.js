@@ -9,7 +9,7 @@ const RadioComponent = ({ value, handleChange, values, message }) => {
       <h3 className="change">{message}</h3>
       <div className="radio-btns-main">
         {values.map((singleValue, i) => (
-          <label className="container" key={i} htmlFor={singleValue.value}>
+          <label className="container change" key={i} htmlFor={singleValue.value}>
             {singleValue.name}
             <input
               type="radio"

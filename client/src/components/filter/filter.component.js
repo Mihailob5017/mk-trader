@@ -71,12 +71,12 @@ const FilterComponent = ({ close, searchByName, searchAndFilter }) => {
   return (
     <div className="filter-container">
       <div className="filter-exit">
-        <i className="far fa-times-circle" onClick={close}></i>
+        <i className="far fa-times-circle change" onClick={close}></i>
       </div>
       <SearchComponent action={searchByName} />
-      <div className="filter-body">
-        <div className="search-items-container">
-          <h2>Filter Elements by Specific param</h2>
+      <div className="filter-body ">
+        <div className="search-items-container change-bg">
+          <h2 className='change'>Filter Elements by Specific param</h2>
           <SelectComponent
             options={searchNameType}
             value={searchParam}
@@ -116,8 +116,8 @@ const FilterComponent = ({ close, searchByName, searchAndFilter }) => {
           )}
         </div>
 
-        <div className="sort-items-container">
-          <h2>Sort Items by parameter</h2>{" "}
+        <div className="sort-items-container change-bg">
+          <h2 className='change'>Sort Items by parameter</h2>{" "}
           <SortItemsComponent
             sortValue={sortValue}
             sortByName={sortByName}

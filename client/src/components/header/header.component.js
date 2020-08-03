@@ -94,10 +94,10 @@ const HeaderComponent = ({ location, numOfItems, asyncGetUserProfile }) => {
         <div className="header-closed-bg change">
           <h1 className="header-name">MKTrader</h1>
           <div
-            className="header-open change-border"
+            className="header-open "
             onClick={() => setVisable(true)}
           >
-            <i className="fas fa-ellipsis-v"></i>
+            <i class="fas fa-bars"></i>
           </div>
         </div>
       )}

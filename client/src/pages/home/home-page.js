@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 
 //  Helper Components
-import { isInCart } from '../../helpers/helpers';
+import { isInCart, setTheme, getTheme } from "../../helpers/helpers";
 
 //  Components
-import './home-page.style.scss';
-import ItemComponent from '../../components/item/item.component';
-import ButtonComponent from '../../components/button/button.somponent';
-import FilterComonent from '../../components/filter/filter-container.component';
-import EmptyComponent from '../../components/empty/empty.component';
+import "./home-page.style.scss";
+import ItemComponent from "../../components/item/item.component";
+import ButtonComponent from "../../components/button/button.somponent";
+import FilterComonent from "../../components/filter/filter-container.component";
+import EmptyComponent from "../../components/empty/empty.component";
 
 const HomePage = ({
   items,
@@ -18,6 +18,9 @@ const HomePage = ({
   cartItems,
   getToken,
 }) => {
+  useEffect(() => {
+    setTheme(getTheme());
+  });
   const [isFilterOpen, setFilterOpen] = useState(false);
   return isFilterOpen ? (
     <FilterComonent close={() => setFilterOpen(false)} />

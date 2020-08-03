@@ -41,17 +41,17 @@ const ItemComponent = ({
     );
   };
   return (
-    <div className="item-container">
+    <div className="item-container change-bg">
       <ItemImageComponent
         imageUrl={imageUrl}
         className="item-image"
         type={type}
       />
-      <div className="item-info-container">
+      <div className="item-info-container ">
         <div className="item-info">
-          <h2 className="item-name">Name: {name}</h2>
-          <h2 className="item-type">Type: {type}</h2>
-          <h2 className="item-price">Price: {price}$</h2>
+          <h2 className="item-name change">Name: {name} </h2>
+          <h2 className="item-type change">Type: {type} </h2>
+          <h2 className="item-price change">Price: {price}$</h2>
         </div>
 
         <div className="item-score">
@@ -67,7 +67,7 @@ const ItemComponent = ({
 
           <h2 className="item-score-text">
             {/* Rating:{scoreState} */}
-          Rating:{scoreState + (scored !== undefined ? scored : 0)}
+            Rating:{scoreState + (scored !== undefined ? scored : 0)}
           </h2>
           {hasToken && (
             <button
@@ -92,7 +92,7 @@ const ItemComponent = ({
             </>
           )}
           <ButtonComponent fullWidth={true}>
-            <Link to={`/item/${isInCart ? "t" : "f"}/${_id}`}>More Info</Link>
+            <Link className='change' to={`/item/${isInCart ? "t" : "f"}/${_id}`}>More Info</Link>
           </ButtonComponent>
         </div>
       </div>
