@@ -8,7 +8,8 @@ const ItemSchema = new mongoose.Schema({
   imageUrl: { type: String, default: "" },
   price: { type: Number, min: 0, required: true },
   score: { type: Number, default: 0 },
-  color: { type: String, default: "" },
+  primaryColor: { type: String, default: "" },
+  secendaryColor: { type: String, default: "" },
   size: { type: String, default: "" },
   createdAt: { type: Date, default: Date.now },
 });

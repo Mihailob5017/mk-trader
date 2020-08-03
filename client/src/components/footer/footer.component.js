@@ -13,9 +13,12 @@ const FooterComponent = ({ location }) => {
           </Link>
         </div>
       )}
-      <div className="footer-text change">
-        <h2>Mihailo Boskovic 2020</h2>
-        <h3>All rights reviced</h3>
+      <div className="footer-text">
+        <h2 className='change'>Mihailo Bošković 2020</h2>
+
+        <a className='change' href="https://www.linkedin.com/in/mihailo-boskovic-449634193/">
+          Contact me
+        </a>
       </div>
     </div>
   );

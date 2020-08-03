@@ -61,11 +61,11 @@ const ItemComponent = ({
               className={`item-score-btn ${posOrNeg == 1 && "btn-disabled"}`}
               onClick={scoreHandler(1)}
             >
-              <i className="fas fa-angle-up"></i>
+              <i className="fas fa-angle-up "></i>
             </button>
           )}
 
-          <h2 className="item-score-text">
+          <h2 className="item-score-text change">
             {/* Rating:{scoreState} */}
             Rating:{scoreState + (scored !== undefined ? scored : 0)}
           </h2>
@@ -75,7 +75,7 @@ const ItemComponent = ({
               className={`item-score-btn ${posOrNeg == -1 && "btn-disabled"}`}
               onClick={scoreHandler(-1)}
             >
-              <i className="fas fa-angle-down"></i>
+              <i className="fas fa-angle-down "></i>
             </button>
           )}
         </div>
@@ -92,7 +92,12 @@ const ItemComponent = ({
             </>
           )}
           <ButtonComponent fullWidth={true}>
-            <Link className='change' to={`/item/${isInCart ? "t" : "f"}/${_id}`}>More Info</Link>
+            <Link
+              className="change"
+              to={`/item/${isInCart ? "t" : "f"}/${_id}`}
+            >
+              More Info
+            </Link>
           </ButtonComponent>
         </div>
       </div>

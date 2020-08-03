@@ -8,7 +8,7 @@ import LoadingComponent from "../loading/loading.component";
 import { getTheme, setTheme } from "../../helpers/helpers";
 const SimilarItemsContainer = ({ getItemsAsync, storeItems, itemId, type }) => {
   useEffect(() => {
-    setTheme(getTheme());
+    
     if (storeItems === null) getItemsAsync();
   });
 

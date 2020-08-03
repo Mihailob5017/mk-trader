@@ -34,6 +34,7 @@ const SortItemsComponent = ({ handleChange, sortBy, sortValue }) => {
       <SelectComponent
         message="Sort by"
         value={sortBy}
+        placeholder='Parametar'
         handleChange={handleChange}
         name="sort-by-name"
         options={options}

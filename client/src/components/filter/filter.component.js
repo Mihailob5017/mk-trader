@@ -80,7 +80,8 @@ const FilterComponent = ({ close, searchByName, searchAndFilter }) => {
           <SelectComponent
             options={searchNameType}
             value={searchParam}
-            message="Type:"
+            message="Filter by"
+            placeholder="Parametar"
             name="search-type"
             handleChange={handleChange}
           />
@@ -90,6 +91,7 @@ const FilterComponent = ({ close, searchByName, searchAndFilter }) => {
                 options={types}
                 value={param1}
                 message="Category"
+                placeholder='Cloathing type'
                 name="item-type"
                 handleChange={handleChange}
               />

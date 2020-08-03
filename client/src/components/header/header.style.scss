@@ -48,7 +48,7 @@
     font-size: 2rem;
   }
   .header-name {
-    width: 30%;
+    width: 50%;
     height: 10vh;
   }
   .header-open {
@@ -71,7 +71,7 @@
   }
 }
 .header-link_current {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 600;
   * {
     letter-spacing: 5px;
@@ -80,6 +80,9 @@
   }
 }
 .header-icons {
+  * {
+    color: royalblue;
+  }
   display: flex;
   justify-content: space-between;
   flex-direction: row;
@@ -96,7 +99,7 @@
         text-decoration: none;
         color: white;
       }
-      transform: translateY(-4.5vh);
+      transform: translateY(-37px);
       margin-left: 10px;
       text-align: center;
     }
@@ -159,7 +162,7 @@
         font-size: 1.5rem;
       }
       .header-name {
-        width: 5vw;
+        width: 60%;
         height: 10vh;
       }
       .header-open {

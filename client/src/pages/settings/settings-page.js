@@ -26,15 +26,15 @@ const genders = [
 
 const willAddItems = [
   {
-    name: "will add",
+    name: "Will sell",
     value: true,
   },
-  { name: "wont add", value: false },
+  { name: "Wont sell", value: false },
 ];
 
 const themes = [
-  { name: "light", value: false },
-  { name: "dark", value: true },
+  { name: "Light", value: false },
+  { name: "Dark", value: true },
 ];
 
 const SettingPage = ({ profile, token, signOut }) => {
@@ -172,7 +172,7 @@ const SettingPage = ({ profile, token, signOut }) => {
             name="currentAddres"
           />
         </div>
-      
+
         <div className="update-component">
           <UpdateComponent
             isCustom={true}
@@ -191,10 +191,10 @@ const SettingPage = ({ profile, token, signOut }) => {
       </SubsectionComponent>
 
       <SubsectionComponent state={subsection} number={3}>
-        <h1 className="update-header change">This is about cookies:</h1>
+        <h1 className="update-header change">Themes and cookies:</h1>
 
         <div className="update-component">
-          <h2 className="change">Will you be adding items of your own</h2>
+          <h2 className="change">Will you be also selling products</h2>
           <UpdateComponent
             isCustom={true}
             name="willAddItemsToStore"
@@ -202,6 +202,8 @@ const SettingPage = ({ profile, token, signOut }) => {
             value={willAddItemsToStore}
           >
             <SelectComponent
+              message="Select option"
+              placeholder="Selling option"
               options={willAddItems}
               name="willAddItemsToStore"
               value={willAddItemsToStore}
@@ -213,7 +215,8 @@ const SettingPage = ({ profile, token, signOut }) => {
           <h2 className="change">Choose a theme for the website</h2>
           <SelectComponent
             options={themes}
-            message="theme"
+            message="Select theme"
+            placeholder="Website Theme"
             name="theme"
             value={theme}
             handleChange={handleChange}
@@ -221,8 +224,9 @@ const SettingPage = ({ profile, token, signOut }) => {
         </div>
         <div className="update-component">
           <h2 className="change">
-            If this button is checked,you will be remebered for the next time
-            you vist the website
+            If checked Your account will be rememberd for the next time you
+            visit <br />
+            <br />
           </h2>
           <CheckboxComponent
             value={rememberMeState}
@@ -235,8 +239,10 @@ const SettingPage = ({ profile, token, signOut }) => {
       </SubsectionComponent>
 
       <SubsectionComponent state={subsection} number={4}>
+        {" "}
+        <h1 className="update-header change">Update or Delete:</h1>
         <div className="update-component">
-          <h2 className="change">Update Password:</h2>
+          <h2 className="change">Change Current Password:</h2>
           <InputComponent
             name="password"
             value={password}
@@ -262,9 +268,10 @@ const SettingPage = ({ profile, token, signOut }) => {
           <div className="update-component">
             <h1 className="danger">Dangerous</h1>
             <h4 className="change">
-              Are you sure you want to delete your profile?Choose wisely,because
-              you wont be able to bring it back,also all the items you have
-              added to the store will remain on the store
+              Are you sure you want to delete your profile?
+              <br />
+              Choose wisely,because you wont be able to bring it back<br/>Also, all
+              the items you previously added to the store will remain there untill sold
             </h4>
           </div>
           <CheckboxComponent value={ays} name="ays" handleChange={handleChange}>

@@ -3,10 +3,17 @@ import React from "react";
 //  Components
 import "./select.style.scss";
 
-const SelectComponent = ({ handleChange, name, value, options, message }) => {
+const SelectComponent = ({
+  handleChange,
+  name,
+  value,
+  options,
+  message,
+  placeholder,
+}) => {
   return (
     <div className="select-component-container">
-      <label className="change">Select {message}:</label>
+      <label className="change">{message}:</label>
       <select
         className="select-component"
         onChange={handleChange}
@@ -14,7 +21,7 @@ const SelectComponent = ({ handleChange, name, value, options, message }) => {
         name={name}
       >
         <option className="select-component-option" disabled value="">
-          {message} type
+          {placeholder}
         </option>
         {options.map((option, i) => (
           <option

@@ -7,7 +7,6 @@ import CheckBoxComponent from "../../components/checkbox/checkbox.component";
 import ButtonComponent from "../../components/button/button.somponent";
 import ItemImageComponent from "../../components/item-image/item-image.component";
 import "./add-page.style.scss";
-
 //  Helpers
 const options = [
   { name: "Male", value: "male" },
@@ -25,6 +24,21 @@ const options = [
   { name: "Swimsuits", value: "swimsuits" },
   { name: "Other", value: "other" },
 ];
+
+const colors = [
+  { name: "White", value: "White" },
+  { name: "Black", value: "Black" },
+  { name: "Red", value: "Red" },
+  { name: "Blue", value: "Blue" },
+  { name: "Green", value: "Green" },
+  { name: "Yellow", value: "Yellow" },
+  { name: "Purple", value: "Purple" },
+  { name: "Rose", value: "Rose" },
+  { name: "Orange", value: "Orange" },
+  { name: "Brown", value: "Brown" },
+  { name: "None", value: "None" },
+];
+
 const sizes = [
   { name: "Size: XS", value: "XS" },
   { name: "Size: S", value: "S" },
@@ -40,7 +54,8 @@ const AddPage = ({ addItem, token }) => {
   const [type, setType] = useState("");
   const [price, setPrice] = useState("");
   const [name, setName] = useState("");
-  const [color, setColor] = useState("");
+  const [primaryColor, setPrimaryColor] = useState("");
+  const [secendaryColor, setSecendaryColor] = useState("");
   const [size, setSize] = useState("");
 
   const handleChange = (e) => {
@@ -54,7 +69,8 @@ const AddPage = ({ addItem, token }) => {
     if (name === "type") setType(value);
     if (name === "name") setName(value);
     if (name === "price") setPrice(value);
-    if (name === "color") setColor(value);
+    if (name === "primary-color") setPrimaryColor(value);
+    if (name === "secendary-color") setSecendaryColor(value);
     if (name === "size") setSize(value);
   };
 
@@ -65,7 +81,8 @@ const AddPage = ({ addItem, token }) => {
       description: desc,
       imageUrl: url,
       price,
-      color,
+      primaryColor,
+      secendaryColor,
       size,
     };
     addItem(item, token);
@@ -75,7 +92,8 @@ const AddPage = ({ addItem, token }) => {
     setType("");
     setAddUrl(false);
     setUrl("");
-    setColor("");
+    setPrimaryColor("");
+    setSecendaryColor("");
     setSize("");
   };
 
@@ -83,14 +101,14 @@ const AddPage = ({ addItem, token }) => {
     <div className="add-page-container">
       <div className="basic-info-conatiner change-bg">
         <InputComponent
-          label="Item Name"
+          label="Item Name:"
           name="name"
           value={name}
           handleChange={handleChange}
           placeholder="Required"
         />
         <InputComponent
-          label="Item Price"
+          label="Item Price:"
           type="number"
           name="price"
           min={0}
@@ -98,30 +116,40 @@ const AddPage = ({ addItem, token }) => {
           handleChange={handleChange}
           placeholder="Required"
         />
-        <InputComponent
-          label="Item Color"
-          type="textr"
-          name="color"
-          value={color}
+        <SelectComponent
+          message="Primary color"
+          placeholder="Choose color"
+          value={primaryColor}
           handleChange={handleChange}
-          placeholder="Optional"
+          name="primary-color"
+          options={colors.filter((el, i) => i < colors.length - 1)}
         />
         <SelectComponent
-          message="Item type"
+          message="Secendary color"
+          placeholder="Choose color"
+          name="secendary-color"
+          handleChange={handleChange}
+          value={secendaryColor}
+          options={colors}
+        />
+        <SelectComponent
+          message="Category"
           name="type"
+          placeholder="Choose Type"
           value={type}
           handleChange={handleChange}
           options={options}
         />
         <SelectComponent
-          message="Item size"
+          message="Size"
+          placeholder="Choose Color"
           name="size"
           value={size}
           handleChange={handleChange}
           options={sizes}
         />
         <CheckBoxComponent name="checkbox" handleChange={handleChange}>
-          I will link a image-url
+          I will link the Item image
         </CheckBoxComponent>
         {willAddUrl === true && (
           <InputComponent
@@ -129,12 +157,18 @@ const AddPage = ({ addItem, token }) => {
             name="url"
             value={url}
             handleChange={handleChange}
-            label="Image Url"
+            label="Image Link:"
           />
         )}
         <div className="add-page-desc">
-          <h1 className='change'>Item Description:</h1>
-          <textarea className='change' name="desc" value={desc} onChange={handleChange}></textarea>
+          <h1 className="change">Item Description:</h1>
+          <textarea
+            className="change"
+            name="desc"
+            value={desc}
+            placeholder="Optional"
+            onChange={handleChange}
+          ></textarea>
         </div>
       </div>
       <div className="add-image-container change-bg">
@@ -144,7 +178,7 @@ const AddPage = ({ addItem, token }) => {
           type={type}
         />
         <ButtonComponent actionHandler={addItemExec}>
-          Add Item To Store
+          Add to Store
         </ButtonComponent>
       </div>
     </div>

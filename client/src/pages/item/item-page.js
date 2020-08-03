@@ -69,7 +69,8 @@ const ItemPage = ({ token, item, isInCart, addToCart }) => {
               {item.description}
             </h2>
             <h2 className="change">Rated by others:{item.score}</h2>
-            <h2 className="change">Color:{item.color}</h2>
+            <h2 className="change">Primary color:{item.primaryColor}</h2>
+            <h2 className="change">Secendary color:{item.secendaryColor}</h2>
             <h2 className="change">Size:{item.size}</h2>
             <div className="item-btns">
               <Button fullWidth={true}>

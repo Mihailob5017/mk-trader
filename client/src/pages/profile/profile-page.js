@@ -46,7 +46,7 @@ const ProfilePage = ({ profile, items, clearCart }) => {
         </div>
         <div className="info-btns">
           <ButtonComponent fullWidth={true}>
-            <Link to="/settings">Edit Profile Info</Link>
+            <Link to="/settings">Edit Profile</Link>
           </ButtonComponent>
         </div>
       </div>
@@ -55,7 +55,10 @@ const ProfilePage = ({ profile, items, clearCart }) => {
         <h2 className="change">Username: {profile.username}</h2>
         <h2 className="change">First Name: {profile.firstname}</h2>
         <h2 className="change">Last Name: {profile.lastname}</h2>
-        <h2 className="change">A member since:{profile.createdAt}</h2>
+        <h2 className="change">
+          A member since:{" "}
+          {new Date(profile.createdAt).toISOString().substring(0, 10)}
+        </h2>
         <h2 className="change">Gender:{profile.gender}</h2>
         <h2 className="change">Addres:{profile.currentAddres}</h2>
         <h2 className="change">City:{profile.currentCity}</h2>

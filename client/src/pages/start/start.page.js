@@ -20,7 +20,7 @@ const StartPage = ({ hasToken, signOut }) => {
         Profile
       </PageOverview>
       <PageOverview image={add_img} to="/add">
-        Add
+        Sell
       </PageOverview>
       <PageOverview
         image={sign_img}

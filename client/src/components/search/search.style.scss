@@ -43,13 +43,13 @@
 }
 @media screen and (max-width: 550px) {
   .search-component {
-    width: 80%;
+    width: 100%;
     margin: 2rem auto;
-
+    overflow-y:hidden;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 3rem;
+    height: fit-content;
     .search-input {
       font-size: 1.5rem;
       width: 100%;
