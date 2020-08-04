@@ -17,10 +17,7 @@ import sweaters from "../../assets/art/sweaters.png";
 import swimsuits from "../../assets/art/swimsuits.png";
 
 const chooseAvatar = (hasUrl, imageUrl, type) => {
- 
   if (hasUrl === false) return imageUrl;
-
-    
 
   switch (type) {
     case "male":
@@ -57,14 +54,15 @@ const chooseAvatar = (hasUrl, imageUrl, type) => {
   }
 };
 
-const ItemImagecomponent = ({ imageUrl, type, className  }) => {
- 
+const ItemImagecomponent = ({ imageUrl, type, className }) => {
   return (
     <div className={className}>
       <img
+        alt=""
         src={chooseAvatar(
           imageUrl.length !== 0 ? false : true,
           imageUrl,
+
           type
         )}
       />

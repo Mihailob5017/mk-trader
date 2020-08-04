@@ -72,7 +72,7 @@ const SettingPage = ({ profile, token, signOut }) => {
   const deleteProfile = () => {
     signOut(token);
     axios.delete(
-      "http://localhost:5000/user/delete",
+      "https://mk-trader.herokuapp.com/user/delete",
 
       {
         headers: { ["auth-token"]: token },
@@ -86,7 +86,7 @@ const SettingPage = ({ profile, token, signOut }) => {
 
   const updatePassword = () => {
     axios.put(
-      "http://localhost:5000/user/edit",
+      "https://mk-trader.herokuapp.com/user/edit",
       {
         paramName: "password",
         paramValue: password,
@@ -270,8 +270,10 @@ const SettingPage = ({ profile, token, signOut }) => {
             <h4 className="change">
               Are you sure you want to delete your profile?
               <br />
-              Choose wisely,because you wont be able to bring it back<br/>Also, all
-              the items you previously added to the store will remain there untill sold
+              Choose wisely,because you wont be able to bring it back
+              <br />
+              Also, all the items you previously added to the store will remain
+              there untill sold
             </h4>
           </div>
           <CheckboxComponent value={ays} name="ays" handleChange={handleChange}>

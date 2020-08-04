@@ -41,10 +41,13 @@ export const asyncSignInStart = (data) => async (dispatch) => {
   dispatch(signInStart());
 
   try {
-    const response = await axios.post("http://localhost:5000/signin", {
-      email,
-      password,
-    });
+    const response = await axios.post(
+      "https://mk-trader.herokuapp.com/signin",
+      {
+        email,
+        password,
+      }
+    );
     const token = response.data;
     if (kmsi) localStorage.setItem("auth-token", token);
     else sessionStorage.setItem("auth-token", token);
@@ -67,9 +70,12 @@ export const asyncSignUpStart = (inputObject, kmsi) => async (dispatch) => {
   dispatch(signUpStart);
 
   try {
-    const response = await axios.post("http://localhost:5000/signup", {
-      ...inputObject,
-    });
+    const response = await axios.post(
+      "https://mk-trader.herokuapp.com/signup",
+      {
+        ...inputObject,
+      }
+    );
     const token = response.data;
     if (kmsi) localStorage.setItem("auth-token", token);
     sessionStorage.setItem("auth-token", token);
@@ -96,7 +102,7 @@ export const signOut = (token, scoredItems, shouldUpdate) => async (
   try {
     if (scoredItems && shouldUpdate) {
       await axios.post(
-        "http://localhost:5000/user/scored",
+        "https://mk-trader.herokuapp.com/user/scored",
         { scored: scoredItems },
         {
           headers: { ["auth-token"]: token },
@@ -123,7 +129,7 @@ const getCartItems = (items) => ({ type: GET_CART_ITEMS, payload: items });
 export const asyncGetUserProfile = (token) => async (dispatch) => {
   dispatch(getProfileStart());
   try {
-    const { data } = await axios.get("http://localhost:5000/user", {
+    const { data } = await axios.get("https://mk-trader.herokuapp.com/user", {
       headers: { ["auth-token"]: token },
     });
     dispatch(getCartItems(data.cartItems));

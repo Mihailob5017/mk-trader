@@ -16,7 +16,7 @@ const Axios = require("axios").default;
 const AddPageContainer = ({ asyncGetUserProfile, willAddItems, profile }) => {
   const [token, setToken] = useState("");
   const addItem = async (item, token) => {
-    Axios.post("http://localhost:5000/store/add", item, {
+    Axios.post("https://mk-trader.herokuapp.com/store/add", item, {
       headers: { ["auth-token"]: token },
     });
   };

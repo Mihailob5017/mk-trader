@@ -35,7 +35,7 @@ const ItemComponent = ({
     setInCart(true);
     addToCart(id);
     axios.put(
-      "http://localhost:5000/cart/add",
+      "https://mk-trader.herokuapp.com/cart/add",
       { itemId: id },
       { headers: { ["auth-token"]: token } }
     );

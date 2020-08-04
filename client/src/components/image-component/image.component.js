@@ -39,7 +39,7 @@ const chooseImage = (hasUrl, gender, avatar) => {
 const ImageComponent = ({ className, alt, hasUrl, gender, avatar }) => {
   return (
     <div className={className}>
-      <img src={chooseImage(hasUrl, gender, avatar)} />
+      <img src={chooseImage(hasUrl, gender, avatar)}  alt=''/>
     </div>
   );
 };

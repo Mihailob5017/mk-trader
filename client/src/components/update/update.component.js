@@ -21,7 +21,7 @@ const UpdateComponent = ({
   const [newValue, setValue] = useState(value);
   const updateData = () => {
     Axios.put(
-      "http://localhost:5000/user/edit",
+      "https://mk-trader.herokuapp.com/user/edit",
       {
         paramName: name,
         paramValue: isCustom ? value : newValue,
@@ -38,7 +38,7 @@ const UpdateComponent = ({
           {label}
         </label>
         {isCustom ? (
-          <div className='custom'>{children}</div>
+          <div className="custom">{children}</div>
         ) : (
           <input
             type="text"

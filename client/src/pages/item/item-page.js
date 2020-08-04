@@ -19,7 +19,7 @@ const ItemPage = ({ token, item, isInCart, addToCart, updateICU }) => {
     addToCart(item._id);
     setInCart(true);
     axios.put(
-      "http://localhost:5000/cart/add",
+      "https://mk-trader.herokuapp.com/cart/add",
       { itemId: item._id },
       {
         headers: { ["auth-token"]: token },
@@ -74,7 +74,7 @@ const ItemPage = ({ token, item, isInCart, addToCart, updateICU }) => {
             <h2 className="change">Secendary color:{item.secendaryColor}</h2>
             <h2 className="change">Size:{item.size}</h2>
             <h2 className="change">
-              Viewed by: 
+              Viewed by:
               {Number.isInteger(item.viewCount)
                 ? item.viewCount
                 : item.viewCount - 0.5}

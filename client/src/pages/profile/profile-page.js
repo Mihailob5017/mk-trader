@@ -26,7 +26,7 @@ const ProfilePage = ({ profile, items, clearCart }) => {
     setState(0);
     clearCart();
     await Axios.post(
-      "http://localhost:5000/cart/clear",
+      "https://mk-trader.herokuapp.com/cart/clear",
       {},
       {
         headers: { ["auth-token"]: token },

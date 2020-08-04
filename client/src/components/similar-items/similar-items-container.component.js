@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { getItemsAsync } from "../../redux/item/item.action";
 import { storeItems } from "../../redux/item/item.selector";
 import LoadingComponent from "../loading/loading.component";
-import { getTheme, setTheme } from "../../helpers/helpers";
+
 const SimilarItemsContainer = ({ getItemsAsync, storeItems, itemId, type }) => {
   useEffect(() => {
     
