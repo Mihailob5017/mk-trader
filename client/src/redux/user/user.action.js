@@ -15,15 +15,15 @@ import {
   GET_CART_ITEMS,
   ADD_TO_CART,
   CLEAR_CART,
-} from '../types';
-import { cleanUp } from '../item/item.action';
-const axios = require('axios').default;
+} from "../types";
+import { cleanUp } from "../item/item.action";
+const axios = require("axios").default;
 
 export const getTokenFromStorage = () => ({
   type: GET_TOKEN_FROM_STORAGE,
   payload:
-    localStorage.getItem('auth-token') ||
-    sessionStorage.getItem('auth-token') ||
+    localStorage.getItem("auth-token") ||
+    sessionStorage.getItem("auth-token") ||
     null,
 });
 
@@ -41,16 +41,18 @@ export const asyncSignInStart = (data) => async (dispatch) => {
   dispatch(signInStart());
 
   try {
-    const response = await axios.post('http://localhost:5000/signin', {
+    const response = await axios.post("http://localhost:5000/signin", {
       email,
       password,
     });
     const token = response.data;
-    if (kmsi) localStorage.setItem('auth-token', token);
-    else sessionStorage.setItem('auth-token', token);
+    if (kmsi) localStorage.setItem("auth-token", token);
+    else sessionStorage.setItem("auth-token", token);
     dispatch(signInSuccess(token));
   } catch (error) {
-    console.log(error);
+    alert(
+      "Something went wrong,please double check your username and password"
+    );
     dispatch(signInFailure(error));
   }
 };
@@ -65,15 +67,17 @@ export const asyncSignUpStart = (inputObject, kmsi) => async (dispatch) => {
   dispatch(signUpStart);
 
   try {
-    const response = await axios.post('http://localhost:5000/signup', {
+    const response = await axios.post("http://localhost:5000/signup", {
       ...inputObject,
     });
     const token = response.data;
-    if (kmsi) localStorage.setItem('auth-token', token);
-    sessionStorage.setItem('auth-token', token);
+    if (kmsi) localStorage.setItem("auth-token", token);
+    sessionStorage.setItem("auth-token", token);
     dispatch(signUpSuccess(token));
   } catch (error) {
-    console.log(error);
+    alert(
+      "Something went wrong,please make sure you entered all the required fields correctly"
+    );
     dispatch(signUpFailure(error));
   }
 };
@@ -86,16 +90,16 @@ export const signOut = (token, scoredItems, shouldUpdate) => async (
   dispatch
 ) => {
   dispatch(signOutStart());
-  localStorage.removeItem('auth-token');
-  sessionStorage.removeItem('auth-token');
+  localStorage.removeItem("auth-token");
+  sessionStorage.removeItem("auth-token");
   dispatch(cleanUp());
   try {
     if (scoredItems && shouldUpdate) {
       await axios.post(
-        'http://localhost:5000/user/scored',
+        "http://localhost:5000/user/scored",
         { scored: scoredItems },
         {
-          headers: { ['auth-token']: token },
+          headers: { ["auth-token"]: token },
         }
       );
     }
@@ -119,8 +123,8 @@ const getCartItems = (items) => ({ type: GET_CART_ITEMS, payload: items });
 export const asyncGetUserProfile = (token) => async (dispatch) => {
   dispatch(getProfileStart());
   try {
-    const { data } = await axios.get('http://localhost:5000/user', {
-      headers: { ['auth-token']: token },
+    const { data } = await axios.get("http://localhost:5000/user", {
+      headers: { ["auth-token"]: token },
     });
     dispatch(getCartItems(data.cartItems));
     dispatch(getProfileSuccess(data));

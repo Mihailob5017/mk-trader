@@ -32,8 +32,8 @@ const SignUp = ({ asyncSignUpStart }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [address, setAddress] = useState("");
-  const [currCity, setCurrCity] = useState("");
+  const [address, setAddress] = useState(" ");
+  const [currCity, setCurrCity] = useState(" ");
   const [willAdd, setWilAdd] = useState(false);
   const [image, setImage] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
@@ -68,26 +68,26 @@ const SignUp = ({ asyncSignUpStart }) => {
       password,
       avatarType: image === true ? imageUrl : `${avatar}`,
       willAddItemsToStore: willAdd,
-      currentCity: currCity,
-      currentAddres: address,
+      city: currCity || "",
+      address,
       gender,
       cartItems: [],
       scoredItems: {},
     };
 
     asyncSignUpStart(obj, kmsi);
-    setFirstname("");
-    setLastname("");
-    setPassword("");
-    setUsername("");
-    setEmail("");
-    setCurrCity("");
-    setAddress("");
-    setKmsi(false);
-    setImage(false);
-    setAvatar("");
-    setImageUrl("");
-    setGender("male");
+    // setFirstname("");
+    // setLastname("");
+    // setPassword("");
+    // setUsername("");
+    // setEmail("");
+    // setCurrCity("");
+    // setAddress("");
+    // setKmsi(false);
+    // setImage(false);
+    // setAvatar("");
+    // setImageUrl("");
+    // setGender("male");
   };
 
   if (step === 1)
@@ -150,7 +150,7 @@ const SignUp = ({ asyncSignUpStart }) => {
             handleChange={handleChange}
             placeholder="Optional * "
             name="city"
-            label="Current City:"
+            label="City:"
           />
           <RadioComponent
             message="Select Gender:"
@@ -189,7 +189,7 @@ const SignUp = ({ asyncSignUpStart }) => {
           </CheckboxComponent>
           {image ? (
             <InputComponent
-              label="Image Url:"
+              label="Image Link:"
               placeholder="Optional"
               type="url"
               name="imageurl"
@@ -201,6 +201,7 @@ const SignUp = ({ asyncSignUpStart }) => {
               message="Avatar"
               options={avatars}
               value={avatar}
+              placeholder="Select avatar"
               name="avatar"
               handleChange={handleChange}
             />

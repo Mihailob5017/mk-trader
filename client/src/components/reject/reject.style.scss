@@ -2,13 +2,16 @@
   width: 90%;
   overflow: hidden;
   height: 80vh;
-  .reject-body{
+  .reject-body {
     height: 40vh;
     display: flex;
     flex-direction: column;
-  justify-content: center;
+    justify-content: space-between;
     margin: auto;
     text-align: center;
     width: 30%;
+    * {
+      font-weight: 400;
+    }
   }
 }
