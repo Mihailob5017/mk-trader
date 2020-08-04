@@ -1,22 +1,22 @@
-const Router = require('express').Router();
-const ItemModel = require('../mongodb/item-schema');
-const { filterAndSort, searchForItems } = require('../helpers/item-handler');
+const Router = require("express").Router();
+const ItemModel = require("../mongodb/item-schema");
+const { filterAndSort, searchForItems } = require("../helpers/item-handler");
 
 //  Get all Store Items
-Router.get('/', async (req, res) => {
+Router.get("/", async (req, res) => {
   try {
     const data = await ItemModel.find();
     res.send(data);
   } catch (error) {
     res.status(500).json({
-      message: 'Something went wrong with fetching all the items',
+      message: "Something went wrong with fetching all the items",
       error,
     });
   }
 });
 
 //  Filters & sorts all the items by the request params
-Router.post('/handled', async (req, res) => {
+Router.post("/handled", async (req, res) => {
   try {
     const data = await ItemModel.find();
     const handledData = filterAndSort(data, req.body);
@@ -30,7 +30,7 @@ Router.post('/handled', async (req, res) => {
 });
 
 //  Grabs all the items and filters out by name
-Router.post('/search', async (req, res) => {
+Router.post("/search", async (req, res) => {
   const { name } = req.body;
   try {
     const responseData = await ItemModel.find();
@@ -40,6 +40,16 @@ Router.post('/search', async (req, res) => {
       message: error.message,
       error,
     });
+  }
+});
+
+Router.put("/updateivc", async (req, res) => {
+  const { _id } = req.body;
+  try {
+    await ItemModel.findOneAndUpdate({ _id }, { $inc: { viewCount: 0.5 } });
+    res.send("Successully Updated ViewCount");
+  } catch (error) {
+    res.status(500).json({ message: error.message, error });
   }
 });
 

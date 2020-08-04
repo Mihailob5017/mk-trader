@@ -11,7 +11,7 @@ const ItemSchema = new mongoose.Schema({
   primaryColor: { type: String, default: "" },
   secendaryColor: { type: String, default: "" },
   size: { type: String, default: "" },
-  createdAt: { type: Date, default: Date.now },
+  viewCount: { type: Number, default: 0 },
 });
 
 module.exports = mongoose.model("items", ItemSchema);

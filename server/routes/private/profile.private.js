@@ -89,7 +89,6 @@ Router.get("/scored", jwtAuth, async (req, res) => {
 //Update all of the scored Items
 
 Router.post("/scored", jwtAuth, async (req, res) => {
-  console.log("Updating");
   const token = req.headers["auth-token"];
   const newItems = req.body.scored;
 

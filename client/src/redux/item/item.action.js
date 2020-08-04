@@ -15,9 +15,12 @@ import {
   SEARCH_AND_FILTER_SUCCESS,
   SEARCH_AND_FILTER_FAILURE,
   GET_ITEM,
-} from '../types';
-import { filterOutItem } from '../../helpers/helpers';
-const Axios = require('axios').default;
+  UPDATE_IVC_START,
+  UPDATE_IVC_SUCCESS,
+  UPDATE_IVC_FAILURE,
+} from "../types";
+import { filterOutItem } from "../../helpers/helpers";
+const Axios = require("axios").default;
 
 const getItemsStart = () => ({ type: GET_ITEMS_START });
 const getItemsSuccess = (items) => ({
@@ -29,7 +32,7 @@ const getItemsFailure = (err) => ({ type: GET_ITEMS_FAILURE, payload: err });
 export const getItemsAsync = () => async (dispatch) => {
   dispatch(getItemsStart());
   try {
-    const { data } = await Axios.get('http://localhost:5000/items');
+    const { data } = await Axios.get("http://localhost:5000/items");
     dispatch(getItemsSuccess(data));
   } catch (error) {
     dispatch(getItemsFailure(error));
@@ -51,8 +54,8 @@ const getScoredItemsFailure = (err) => ({
 export const getScoredItemsAsync = (token) => async (dispatch) => {
   dispatch(getScoredItemsStart());
   try {
-    const { data } = await Axios.get('http://localhost:5000/user/scored', {
-      headers: { ['auth-token']: token },
+    const { data } = await Axios.get("http://localhost:5000/user/scored", {
+      headers: { ["auth-token"]: token },
     });
 
     dispatch(getScoredItemsSuccess(data));
@@ -82,7 +85,7 @@ const searchItemsFailure = (err) => ({
 export const searchItemsAsync = (name) => async (dispatch) => {
   dispatch(searchItemsStart());
   try {
-    const { data } = await Axios.post('http://localhost:5000/items/search', {
+    const { data } = await Axios.post("http://localhost:5000/items/search", {
       name,
     });
     dispatch(searchItemsSuccess(data));
@@ -105,7 +108,7 @@ export const asyncSearchAndFilter = (object) => async (dispatch) => {
   dispatch(searchAndFilterStart());
   try {
     const { data } = await Axios.post(
-      'http://localhost:5000/items/handled',
+      "http://localhost:5000/items/handled",
       object
     );
     dispatch(searchAndFilterSuccess(data));
@@ -118,3 +121,19 @@ export const getItemFromStore = (store, item) => ({
   type: GET_ITEM,
   payload: filterOutItem(store, item),
 });
+
+const updateICUStart = () => ({ type: UPDATE_IVC_START });
+
+const updateICUSuccess = () => ({ type: UPDATE_IVC_SUCCESS });
+
+const updateICUFailure = (err) => ({ type: UPDATE_IVC_FAILURE, payload: err });
+
+export const asyncUpdateICU = (id) => async (dispatch) => {
+  dispatch(updateICUStart());
+  try {
+    await Axios.put("http://localhost:5000/items/updateivc", { _id: id });
+    dispatch(updateICUSuccess());
+  } catch (error) {
+    dispatch(updateICUFailure(error));
+  }
+};

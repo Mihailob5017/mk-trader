@@ -15,8 +15,11 @@ import {
   SEARCH_AND_FILTER_SUCCESS,
   SEARCH_AND_FILTER_FAILURE,
   GET_ITEM,
-} from '../types';
-import { appendScoredList } from '../../helpers/helpers';
+  UPDATE_IVC_START,
+  UPDATE_IVC_SUCCESS,
+  UPDATE_IVC_FAILURE,
+} from "../types";
+import { appendScoredList } from "../../helpers/helpers";
 const INITIAL_STATE = {
   store: null,
   scored: null,
@@ -82,6 +85,15 @@ const itemReducer = (state = INITIAL_STATE, action) => {
     }
     case GET_ITEM: {
       return { ...state, item: action.payload };
+    }
+    case UPDATE_IVC_START: {
+      return state;
+    }
+    case UPDATE_IVC_SUCCESS: {
+      return state;
+    }
+    case UPDATE_IVC_FAILURE: {
+      return { ...state, error: action.payload };
     }
 
     default: {

@@ -41,6 +41,10 @@
       font: bolder;
       text-decoration: none;
       font-size: 1.5rem;
+      &:hover {
+        color: royalblue;
+        transition: 500ms;
+      }
     }
   }
 }

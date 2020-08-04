@@ -8,9 +8,10 @@ import SimilarItemsComponent from "../../components/similar-items/similar-items-
 import { setTheme, getTheme } from "../../helpers/helpers";
 const axios = require("axios").default;
 
-const ItemPage = ({ token, item, isInCart, addToCart }) => {
+const ItemPage = ({ token, item, isInCart, addToCart, updateICU }) => {
   useEffect(() => {
     setTheme(getTheme());
+    updateICU(item._id);
   });
   const [fullImg, setFullImg] = useState(false);
   const [inCart, setInCart] = useState(isInCart === "t" ? true : false);
@@ -72,6 +73,13 @@ const ItemPage = ({ token, item, isInCart, addToCart }) => {
             <h2 className="change">Primary color:{item.primaryColor}</h2>
             <h2 className="change">Secendary color:{item.secendaryColor}</h2>
             <h2 className="change">Size:{item.size}</h2>
+            <h2 className="change">
+              Viewed by: 
+              {Number.isInteger(item.viewCount)
+                ? item.viewCount
+                : item.viewCount - 0.5}
+              people
+            </h2>
             <div className="item-btns">
               <Button fullWidth={true}>
                 <Link to="/home">All items</Link>

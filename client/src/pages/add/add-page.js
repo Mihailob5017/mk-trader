@@ -40,11 +40,11 @@ const colors = [
 ];
 
 const sizes = [
-  { name: "Size: XS", value: "XS" },
-  { name: "Size: S", value: "S" },
-  { name: "Size: M", size: "M" },
-  { name: "Size: L", value: "L" },
-  { name: "Size: XL", value: "XL" },
+  { name: "XS", value: "XS" },
+  { name: "S", value: "S" },
+  { name: "M", size: "M" },
+  { name: "L", value: "L" },
+  { name: "XL", value: "XL" },
 ];
 
 const AddPage = ({ addItem, token }) => {
@@ -84,6 +84,7 @@ const AddPage = ({ addItem, token }) => {
       primaryColor,
       secendaryColor,
       size,
+      viewCount: 0,
     };
     addItem(item, token);
     setPrice("");
@@ -142,7 +143,7 @@ const AddPage = ({ addItem, token }) => {
         />
         <SelectComponent
           message="Size"
-          placeholder="Choose Color"
+          placeholder="Choose Size"
           name="size"
           value={size}
           handleChange={handleChange}

@@ -61,7 +61,7 @@ const ItemComponent = ({
               className={`item-score-btn ${posOrNeg == 1 && "btn-disabled"}`}
               onClick={scoreHandler(1)}
             >
-              <i className="fas fa-angle-up "></i>
+              <i className="fas fa-angle-up up"></i>
             </button>
           )}
 
@@ -75,7 +75,7 @@ const ItemComponent = ({
               className={`item-score-btn ${posOrNeg == -1 && "btn-disabled"}`}
               onClick={scoreHandler(-1)}
             >
-              <i className="fas fa-angle-down "></i>
+              <i className="fas fa-angle-down down"></i>
             </button>
           )}
         </div>

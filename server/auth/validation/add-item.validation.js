@@ -7,4 +7,5 @@ module.exports = Joi.object({
   secendaryColor: Joi.string(),
   size: Joi.string(),
   price: Joi.number().required(),
+  viewCount: Joi.number(),
 });

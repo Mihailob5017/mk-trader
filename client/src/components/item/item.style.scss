@@ -35,17 +35,30 @@
         border: none;
         outline: none;
       }
-      i {
+      .up {
         cursor: pointer;
         font-size: 2.5rem;
         &:hover {
           color: royalblue;
         }
       }
+      .down {
+        cursor: pointer;
+        font-size: 2.5rem;
+        &:hover {
+          color: firebrick;
+        }
+      }
       .btn-disabled {
-        color: royalblue;
+        .up {
+          color: royalblue;
+        }
+        .down {
+          color: firebrick;
+        }
       }
     }
+
     .item-btns {
       width: 26%;
       display: flex;
