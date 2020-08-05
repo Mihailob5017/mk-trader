@@ -171,7 +171,7 @@ const SignUp = ({ asyncSignUpStart }) => {
             name="willadd"
             handleChange={handleChange}
           >
-            I will be adding my items to the Store
+            I will be selling items
           </CheckboxComponent>
           <CheckboxComponent
             value={kmsi}
