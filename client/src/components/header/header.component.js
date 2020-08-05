@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { isExact } from "../../helpers/helpers";
+import { isExact } from "../../helpers/helper-functions";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -68,7 +68,7 @@ const HeaderComponent = ({ location, numOfItems, asyncGetUserProfile }) => {
                   : "header-link"
               }`}
             >
-              <Link to="/add">Add Item</Link>
+              <Link to="/add">Sell</Link>
             </div>
             <div
               className={` ${
@@ -93,10 +93,7 @@ const HeaderComponent = ({ location, numOfItems, asyncGetUserProfile }) => {
       ) : (
         <div className="header-closed-bg change">
           <h1 className="header-name">MKTrader</h1>
-          <div
-            className="header-open "
-            onClick={() => setVisable(true)}
-          >
+          <div className="header-open " onClick={() => setVisable(true)}>
             <i className="fas fa-bars"></i>
           </div>
         </div>

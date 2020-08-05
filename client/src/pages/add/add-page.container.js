@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { willAddItems, profile } from "../../redux/user/user.selector";
 import { createStructuredSelector } from "reselect";
 import { asyncGetUserProfile } from "../../redux/user/user.action";
-import { setTheme, getTheme } from "../../helpers/helpers";
+import { setTheme, getTheme } from "../../helpers/helper-functions";
 
 //  Componnets
 import AddPage from "./add-page";

@@ -14,7 +14,7 @@ import {
   checkIfEmpty,
   getTheme,
   setTheme,
-} from "../../helpers/helpers";
+} from "../../helpers/helper-functions";
 import { storeItems, scoredItems } from "../../redux/item/item.selector";
 import { hasToken, cartItems, profile } from "../../redux/user/user.selector";
 import { asyncGetUserProfile } from "../../redux/user/user.action";

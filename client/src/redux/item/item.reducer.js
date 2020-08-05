@@ -19,7 +19,7 @@ import {
   UPDATE_IVC_SUCCESS,
   UPDATE_IVC_FAILURE,
 } from "../types";
-import { appendScoredList } from "../../helpers/helpers";
+import { appendScoredList } from "../../helpers/helper-functions";
 const INITIAL_STATE = {
   store: null,
   scored: null,

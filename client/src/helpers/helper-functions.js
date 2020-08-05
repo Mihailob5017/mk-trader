@@ -63,7 +63,15 @@ export const getTheme = () => {
 };
 
 export const setTheme = (theme) => {
+  /*
+    DISCLAIMER: 
+      I am aware this is a anti-pattern, however i decided to implement this feature 
+      after a two month break and didnt feel like refactoring the whole project.
+  
+  */
+
   if (theme === true) {
+    
     //  Changes the body background
     document.body.style.backgroundColor = "#111";
     // Changes the text
@@ -111,5 +119,3 @@ export const changeRMState = (NRMState) => {
     return;
   } else return;
 };
-
-

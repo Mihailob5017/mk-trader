@@ -7,7 +7,7 @@ import { asyncGetUserProfile, clearCart } from '../../redux/user/user.action';
 import { getItemsAsync } from '../../redux/item/item.action';
 import { getToken, cartItems, profile } from '../../redux/user/user.selector';
 import { storeItems } from '../../redux/item/item.selector';
-import { getCartItems } from '../../helpers/helpers';
+import { getCartItems } from '../../helpers/helper-functions';
 
 //  Components
 import ProfilePage from './profile-page';

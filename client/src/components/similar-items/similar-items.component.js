@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./similar-items.style.scss";
 import { Link } from "react-router-dom";
-import { setTheme, getTheme } from "../../helpers/helpers";
+import { setTheme, getTheme } from "../../helpers/helper-functions";
 import ButtonComponent from "../../components/button/button.somponent";
 import ItemImagecomponent from "../item-image/item-image.component";
 const SimilarItemsComponent = ({ itemId, items, type }) => {

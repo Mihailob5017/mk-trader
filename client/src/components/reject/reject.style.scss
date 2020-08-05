@@ -2,6 +2,7 @@
   width: 90%;
   overflow: hidden;
   height: 80vh;
+  margin: auto;
   .reject-body {
     height: 40vh;
     display: flex;
@@ -12,6 +13,25 @@
     width: 30%;
     * {
       font-weight: 400;
+    }
+  }
+}
+@media screen and (max-width: 700px) {
+  .reject-container {
+    width: 90%;
+    overflow: hidden;
+    height: 80vh;
+    .reject-body {
+      height: 40vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin: auto;
+      text-align: center;
+      width: 100%;
+      * {
+        font-weight: 400;
+      }
     }
   }
 }

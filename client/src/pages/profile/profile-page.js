@@ -2,13 +2,18 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 //  Helper Components
-import { isUrl, getTotal } from "../../helpers/helpers";
+import {
+  getTheme,
+  setTheme,
+  isUrl,
+  getTotal,
+} from "../../helpers/helper-functions";
 
 //  Components
 import ProfileItem from "../../components/profile-item/profile-item.component";
 import ImageComponent from "../../components/image-component/image.component";
 import ButtonComponent from "../../components/button/button.somponent";
-import { getTheme, setTheme } from "../../helpers/helpers";
+
 import "./profile-page.style.scss";
 const Axios = require("axios").default;
 

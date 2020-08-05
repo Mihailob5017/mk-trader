@@ -20,7 +20,7 @@ import RedirectComponent from "./components/redirect/redirect-container.componen
 import { getScoredItemsAsync } from "./redux/item/item.action";
 import HeaderComponent from "./components/header/header.component";
 import FooterComponent from "./components/footer/footer.component";
-import { getTheme, setTheme } from "./helpers/helpers";
+import { getTheme, setTheme } from "./helpers/helper-functions";
 
 const App = ({ getTokenFromStorage, hasToken }) => {
   useEffect(() => {

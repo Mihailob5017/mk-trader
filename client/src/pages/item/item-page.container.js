@@ -8,7 +8,7 @@ import { getItemFromStore, asyncUpdateICU } from "../../redux/item/item.action";
 import { getItem, storeItems } from "../../redux/item/item.selector";
 import { hasToken } from "../../redux/user/user.selector";
 import { asyncGetUserProfile, addToCart } from "../../redux/user/user.action";
-import { getLastParam, getInCartParam } from "../../helpers/helpers";
+import { getLastParam, getInCartParam } from "../../helpers/helper-functions";
 
 //  Components
 import LoadingComponent from "../../components/loading/loading.component";

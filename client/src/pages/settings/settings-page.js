@@ -7,7 +7,8 @@ import {
   setTheme,
   getRMState,
   changeRMState,
-} from "../../helpers/helpers";
+} from "../../helpers/helper-functions";
+import { genders, willAddItems, themes } from "../../helpers/data-sets";
 //  Components
 import "./settings-page.style.scss";
 import UpdateComponent from "../../components/update/update.component";
@@ -18,24 +19,6 @@ import SubsectionComponent from "../../components/subsection/subsection.componen
 import InputComponent from "../../components/input/input.component";
 
 const axios = require("axios").default;
-
-const genders = [
-  { name: "Male", value: "male" },
-  { name: "Female", value: "female" },
-];
-
-const willAddItems = [
-  {
-    name: "Will sell",
-    value: true,
-  },
-  { name: "Wont sell", value: false },
-];
-
-const themes = [
-  { name: "Light", value: false },
-  { name: "Dark", value: true },
-];
 
 const SettingPage = ({ profile, token, signOut }) => {
   const history = useHistory();

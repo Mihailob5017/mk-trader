@@ -16,7 +16,7 @@ import {
   ADD_TO_CART,
   CLEAR_CART,
 } from '../types';
-import { newCartItems } from '../../helpers/helpers';
+import { newCartItems } from '../../helpers/helper-functions';
 const INITIAL_STATE = {
   cart: null,
   user: null,

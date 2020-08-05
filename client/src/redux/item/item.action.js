@@ -19,7 +19,7 @@ import {
   UPDATE_IVC_SUCCESS,
   UPDATE_IVC_FAILURE,
 } from "../types";
-import { filterOutItem } from "../../helpers/helpers";
+import { filterOutItem } from "../../helpers/helper-functions";
 const Axios = require("axios").default;
 
 const getItemsStart = () => ({ type: GET_ITEMS_START });

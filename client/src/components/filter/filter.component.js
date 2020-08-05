@@ -5,27 +5,8 @@ import SortItemsComponent from "../sort-items/sort-items.component";
 import SelectComponent from "../select/select.component";
 import InputComponent from "../input/input.component";
 import ButtonComponent from "../button/button.somponent";
-const searchNameType = [
-  { name: "Type", value: "type" },
-  { name: "Price", value: "price" },
-  { name: "Rating", value: "score" },
-];
-const types = [
-  { name: "Male", value: "male" },
-  { name: "Female", value: "female" },
-  { name: "Sneakers", value: "shoes" },
-  { name: "Shirts", value: "shirts" },
-  { name: "Pants", value: "pants" },
-  { name: "Hats", value: "hats" },
-  { name: "Hoodies", value: "hoodies" },
-  { name: "Polos", value: "polos" },
-  { name: "Shoes", value: "shoes" },
-  { name: "Socks", value: "socks" },
-  { name: "Sweaters", value: "sweaters" },
-  { name: "Heels", value: "heels" },
-  { name: "Swimsuits", value: "swimsuits" },
-  { name: "Other", value: "other" },
-];
+import { searchNameType, types } from "../../helpers/data-sets";
+
 
 const FilterComponent = ({ close, searchByName, searchAndFilter }) => {
   //  Search
@@ -76,7 +57,7 @@ const FilterComponent = ({ close, searchByName, searchAndFilter }) => {
       <SearchComponent action={searchByName} />
       <div className="filter-body ">
         <div className="search-items-container change-bg">
-          <h2 className='change'>Filter Elements by Specific param</h2>
+          <h2 className="change">Filter Elements by Specific param</h2>
           <SelectComponent
             options={searchNameType}
             value={searchParam}
@@ -91,7 +72,7 @@ const FilterComponent = ({ close, searchByName, searchAndFilter }) => {
                 options={types}
                 value={param1}
                 message="Category"
-                placeholder='Cloathing type'
+                placeholder="Cloathing type"
                 name="item-type"
                 handleChange={handleChange}
               />
@@ -119,7 +100,7 @@ const FilterComponent = ({ close, searchByName, searchAndFilter }) => {
         </div>
 
         <div className="sort-items-container change-bg">
-          <h2 className='change'>Sort Items by parameter</h2>{" "}
+          <h2 className="change">Sort Items by parameter</h2>{" "}
           <SortItemsComponent
             sortValue={sortValue}
             sortByName={sortByName}

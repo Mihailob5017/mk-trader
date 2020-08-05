@@ -8,44 +8,7 @@ import ButtonComponent from "../../components/button/button.somponent";
 import ItemImageComponent from "../../components/item-image/item-image.component";
 import "./add-page.style.scss";
 //  Helpers
-const options = [
-  { name: "Male", value: "male" },
-  { name: "Female", value: "female" },
-  { name: "Sneakers", value: "shoes" },
-  { name: "Shirts", value: "shirts" },
-  { name: "Pants", value: "pants" },
-  { name: "Hats", value: "hats" },
-  { name: "Hoodies", value: "hoodies" },
-  { name: "Polos", value: "polos" },
-  { name: "Shoes", value: "shoes" },
-  { name: "Socks", value: "socks" },
-  { name: "Sweaters", value: "sweaters" },
-  { name: "Heels", value: "heels" },
-  { name: "Swimsuits", value: "swimsuits" },
-  { name: "Other", value: "other" },
-];
-
-const colors = [
-  { name: "White", value: "White" },
-  { name: "Black", value: "Black" },
-  { name: "Red", value: "Red" },
-  { name: "Blue", value: "Blue" },
-  { name: "Green", value: "Green" },
-  { name: "Yellow", value: "Yellow" },
-  { name: "Purple", value: "Purple" },
-  { name: "Rose", value: "Rose" },
-  { name: "Orange", value: "Orange" },
-  { name: "Brown", value: "Brown" },
-  { name: "None", value: "None" },
-];
-
-const sizes = [
-  { name: "XS", value: "XS" },
-  { name: "S", value: "S" },
-  { name: "M", size: "M" },
-  { name: "L", value: "L" },
-  { name: "XL", value: "XL" },
-];
+import { colors, options, sizes } from "../../helpers/data-sets";
 
 const AddPage = ({ addItem, token }) => {
   const [willAddUrl, setAddUrl] = useState(false);

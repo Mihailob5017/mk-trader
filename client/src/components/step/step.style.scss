@@ -39,7 +39,8 @@
       display: flex;
       justify-content: space-between;
       flex-direction: column;
-
+      overflow: hidden;
+      height: fit-content;
       button {
         background-color: white;
         width: 100%;

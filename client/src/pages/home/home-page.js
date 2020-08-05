@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 //  Helper Components
-import { isInCart, setTheme, getTheme } from "../../helpers/helpers";
+import { isInCart, setTheme, getTheme } from "../../helpers/helper-functions";
 
 //  Components
 import "./home-page.style.scss";

@@ -5,7 +5,7 @@ import Button from "../../components/button/button.somponent";
 import "./item.style.scss";
 import ItemImageComponent from "../../components/item-image/item-image.component";
 import SimilarItemsComponent from "../../components/similar-items/similar-items-container.component";
-import { setTheme, getTheme } from "../../helpers/helpers";
+import { setTheme, getTheme } from "../../helpers/helper-functions";
 const axios = require("axios").default;
 
 const ItemPage = ({ token, item, isInCart, addToCart, updateICU }) => {

@@ -7,7 +7,7 @@ import {
   searchItemsAsync,
   asyncSearchAndFilter,
 } from "../../redux/item/item.action";
-import { getTheme, setTheme } from "../../helpers/helpers";
+import { getTheme, setTheme } from "../../helpers/helper-functions";
 //  Components
 import FilterComponent from "./filter.component";
 const FilterComonentContainer = ({
