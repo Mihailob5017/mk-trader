@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 
 //  Components
-import './start-page.style.scss';
-import PageOverview from '../../components/page-overview/page-overview.component';
+import "./start-page.style.scss";
+import PageOverview from "../../components/page-overview/page-overview.component";
 
 //  Helpers
-import homepage_img from '../../assets/images/homepage.jpeg';
-import profile_img from '../../assets/images/profile.jpg';
-import add_img from '../../assets/images/add.jpeg';
-import sign_img from '../../assets/images/sign.jpeg';
+import homepage_img from "../../assets/images/homepage.jpeg";
+import profile_img from "../../assets/images/profile.jpg";
+import add_img from "../../assets/images/add.jpeg";
+import sign_img from "../../assets/images/sign.jpeg";
 
 const StartPage = ({ hasToken, signOut }) => {
   return (
@@ -28,7 +28,7 @@ const StartPage = ({ hasToken, signOut }) => {
         isBtn={hasToken ? true : false}
         to="/sign"
       >
-        Sign
+        Sign In/Up
       </PageOverview>
     </div>
   );

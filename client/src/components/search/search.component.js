@@ -2,11 +2,12 @@ import React, { useState } from "react";
 
 //  Components
 import "./search.style.scss";
-const SearchComponent = ({ action }) => {
+const SearchComponent = ({ action, closeAction }) => {
   const [name, setName] = useState("");
   const fireAction = () => {
     action(name);
     setName("");
+    closeAction();
   };
   return (
     <div className="search-component">

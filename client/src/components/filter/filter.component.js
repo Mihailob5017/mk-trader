@@ -7,7 +7,6 @@ import InputComponent from "../input/input.component";
 import ButtonComponent from "../button/button.somponent";
 import { searchNameType, types } from "../../helpers/data-sets";
 
-
 const FilterComponent = ({ close, searchByName, searchAndFilter }) => {
   //  Search
   const [searchParam, setSearchParam] = useState("");
@@ -47,14 +46,16 @@ const FilterComponent = ({ close, searchByName, searchAndFilter }) => {
     setParam2("");
     setSortByName("");
     setSortValue(false);
+    close();
   };
+ 
 
   return (
     <div className="filter-container">
       <div className="filter-exit">
         <i className="far fa-times-circle change" onClick={close}></i>
       </div>
-      <SearchComponent action={searchByName} />
+      <SearchComponent closeAction={close} action={searchByName} />
       <div className="filter-body ">
         <div className="search-items-container change-bg">
           <h2 className="change">Filter Elements by Specific param</h2>

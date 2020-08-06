@@ -2,6 +2,7 @@
   height: 75vh;
   width: 99.9vw;
   display: flex;
+
   flex-direction: row;
   justify-content: space-between;
   .image-component {
@@ -33,7 +34,7 @@
     .cart {
       overflow-y: scroll;
       border-bottom: 1px solid black;
-      height: 80%;
+      height: 75%;
       margin-bottom: 1em;
       overflow-x: hidden;
     }

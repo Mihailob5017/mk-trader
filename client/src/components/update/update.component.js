@@ -14,6 +14,7 @@ const UpdateComponent = ({
   name,
   children,
   token,
+  disabled,
   isCustom,
 
   ...other
@@ -50,7 +51,11 @@ const UpdateComponent = ({
         )}
       </div>
       <div className="btn">
-        <BUttonComponent fullWidth={true} actionHandler={updateData}>
+        <BUttonComponent
+          disabled={disabled}
+          fullWidth={true}
+          actionHandler={updateData}
+        >
           Update
         </BUttonComponent>
       </div>

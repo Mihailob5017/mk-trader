@@ -25,7 +25,10 @@ import { getTheme, setTheme } from "./helpers/helper-functions";
 const App = ({ getTokenFromStorage, hasToken }) => {
   useEffect(() => {
     getTokenFromStorage();
-
+    alert(`
+    U slucaju da ne zelite da pravite nov account,mozete koristiti ovaj:
+    Email: test@gmail.com 
+    Password: password`);
     setTheme(getTheme());
   }, []);
 

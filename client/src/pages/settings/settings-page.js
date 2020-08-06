@@ -22,7 +22,7 @@ const axios = require("axios").default;
 
 const SettingPage = ({ profile, token, signOut }) => {
   const history = useHistory();
-
+  const { email } = profile;
   const [theme, setThemeState] = useState(getTheme());
   const [gender, setGender] = useState(profile.gender);
   const [willAddItemsToStore, setWillAddItemsToStore] = useState(
@@ -36,6 +36,10 @@ const SettingPage = ({ profile, token, signOut }) => {
 
   useEffect(() => {
     localStorage.setItem("theme", theme);
+    if (email === "test@gmail.com")
+      alert(
+        "Korisniku test@gmail.com je zabranjeno da menja password,menja email,ili da brise profil"
+      );
     setTheme(getTheme());
     changeRMState(rememberMeState);
   });
@@ -117,6 +121,7 @@ const SettingPage = ({ profile, token, signOut }) => {
             value={profile.email}
             type="email"
             name="email"
+            disabled={email === "test@gmail.com"}
           />
         </div>
       </SubsectionComponent>
@@ -242,7 +247,11 @@ const SettingPage = ({ profile, token, signOut }) => {
           />
         </div>
         <ButtonComponent
-          disabled={password !== confirmPassword || password.length < 5}
+          disabled={
+            password !== confirmPassword ||
+            password.length < 5 ||
+            email === "test@gmail.com"
+          }
           actionHandler={updatePassword}
         >
           Update Password
@@ -253,7 +262,7 @@ const SettingPage = ({ profile, token, signOut }) => {
             <h4 className="change">
               Are you sure you want to delete your profile?
               <br />
-              Choose wisely,because you wont be able to bring it back
+              Consider wisely,because you wont be able to bring it back
               <br />
               Also, all the items you previously added to the store will remain
               there untill sold
@@ -265,7 +274,7 @@ const SettingPage = ({ profile, token, signOut }) => {
 
           <ButtonComponent
             danger={true}
-            disabled={!ays}
+            disabled={!ays || email === "test@gmail.com"}
             actionHandler={deleteProfile}
           >
             Delete Profile

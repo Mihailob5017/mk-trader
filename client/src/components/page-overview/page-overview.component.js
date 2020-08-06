@@ -13,7 +13,7 @@ const PageOverview = ({ image, children, to, isBtn, action }) => {
           </Link>
         ) : (
           <button className="page-overview-btn" onClick={action}>
-            Log Out
+            Sign Out
           </button>
         )}
       </h2>
